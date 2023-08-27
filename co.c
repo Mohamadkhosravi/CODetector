@@ -1,22 +1,16 @@
 #include "BA45F5240.h"
 
-//#include <math.h>
+#include <math.h>
 #define pA_ppm 5212
 #define co_set 1205 //ppm
 #include "ADC.h" 
 #include "NTC.h" 
 #include "sevenSegment3DigitComplex.h"
-
+#include "GPIO.h" 
+#include "OPAMP.h" 
+#include "systemClock.h" 
 //ADC
-#define VBGREF	0b00011111
-#define OPA0O	0b00101111
-#define OPA1O	0b00111111
 
-
-#define NTC	0b11110001	//_an1
-#define an0	0b11110000
-#define an2	0b11110010
-#define an3	0b11110011
 
 //#define VBAT(ADC_BAT)( (VCC/ADCNumerOfbits) * ADC_NTC )
 
@@ -27,13 +21,6 @@ char test_tm;
 bit test;
 
 
-//output
-#define LED_Y	_pa1
-#define LED_R	_pa3
-#define BUZ		_pa6
- 
- 
- 
 //ISINK 0,1
 #define NTC_GND _isgs0
 #define LED_G 	_isgs1
@@ -124,119 +111,6 @@ _ws2=1;
 //PA7~PA0 wake-up function control
 _pawu=0b00000000;
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-//Pin pull-high function control
-_papu=0b00000000;
-_pbpu=0b00000000;
-
-
-//PxCn: I/O Port x Pin type selection
-//0: Output
-//1: Input
-
-_pac4=0;// SEG1 , TESTE
-// SEG PINOUT
-_pbc1=0;// SEG2
-_pbc2=0;// SEG3
-_pbc3=0;// SEG4
-_pac2=0;// SEG5
-_pac0=0;// SEG6
-
-
-//LED_Y
-_pac1=0;
-
-//LED_R
-_pac3=0;
-
-//BUZ
-_pac6=0;
-
-//NTC
-_pac7=0;
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-//Source Current Selection
-/*
-Bit 7~6 SLEDC7~SLEDC6: PB4 source current selection
-00: Source current=Level 0 (Min.)
-01: Source current=Level 1
-10: Source current=Level 2
-11: Source current=Level 3 (Max.)
-For the BA45F5240-2 device, these two bits are reserved and should be fixed at “00”.
-Bit 5~4 SLEDC5~SLEDC4: PB3~PB0 source current selection
-00: Source current=Level 0 (Min.)
-01: Source current=Level 1
-10: Source current=Level 2
-11: Source current=Level 3 (Max.)
-For the BA45F5240-2 device, these two bits are available for PB3~PB1.
-Bit 3~2 SLEDC3~SLEDC2: PA7~PA4 source current selection
-00: Source current=Level 0 (Min.)
-01: Source current=Level 1
-10: Source current=Level 2
-11: Source current=Level 3 (Max.)
-Bit 1~0 SLEDC1~SLEDC0: PA3~PA0 source current selection
-00: Source current=Level 0 (Min.)
-01: Source current=Level 1
-10: Source current=Level 2
-11: Source current=Level 3 (Max.)
-Note: Users should refer to the Input/Output Characteristics section to obtain the exact value for
-different applications
-*/
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-//Pin Functions
-
-//PA0 = SEG7
-_pas00=0;
-_pas01=0;
-
-//PA1 = A1PI
-_pas02=1;
-_pas03=1;
-
-//PA2 = SEG5
-_pas04=0;
-_pas05=0;
-
-//PA3 = LED_R
-_pas06=0;
-_pas07=0;
-
-//PA4 = SEG1 , TESTE
-_pas10=0;
-_pas11=0;
-
-//PA6 = BUZZ
-_pas14=0;
-_pas15=0;
-
-//PA7 = NTC
-_pas16=0;
-_pas17=1;
-//PB2 = SEG3
-_pbs04=0;
-_pbs05=0;
-//PB3 = RX
-_pbs06=0;
-_pbs07=0;
-//PB1 =TX
-_pbs02=0;
-_pbs03=0;
-
-	
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-//**************************************************************
 
 
 
@@ -383,45 +257,6 @@ float VB_ADC=0;
 
 
 
-//Pin Functions
-
-//PA0 = SEG7
-_pas00=0;
-_pas01=0;
-
-//PA1 = A1PI
-_pas02=0;
-_pas03=0;
-
-//PA2 = SEG5
-_pas04=0;
-_pas05=0;
-
-//PA3 = LED_R
-_pas06=0;
-_pas07=0;
-
-//PA4 = SEG1 , TESTE
-_pas10=0;
-_pas11=0;
-
-//PA6 = BUZZ
-_pas14=0;
-_pas15=0;
-
-//PA7 = NTC
-_pas16=0;
-_pas17=0;
-//PB2 = SEG3
-_pbs04=0;
-_pbs05=0;
-//PB3 = RX
-_pbs06=0;
-_pbs07=0;
-//PB1 =TX
-_pbs02=0;
-_pbs03=0;
-
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -491,60 +326,23 @@ LED_G=0;
   
 while(1){
 
-//temperatur= temperature(S_READ_ADC(1),3.3);
+temperatur= temperature(S_READ_ADC(1),3.3);
  //shwoSegment((1.20*(4095/ VB_ADC))*100);  
 // vbgren enable
 
 
   
-	CONFIGH_SEG1 = INPUT;
-	CONFIGH_SEG2 = INPUT;
-	CONFIGH_SEG3 = INPUT;
-	CONFIGH_SEG4 = INPUT;
-	CONFIGH_SEG5 = INPUT;
-	CONFIGH_SEG6 = INPUT;
- 
+
 	while(1){
 
-//	_clrwdt();
+	_clrwdt();
      //tm  = S_READ_ADC(5);
- 
-    // shwoSegment(205);
-    // oneDigit1();
-     //oneDigit2();
- 
      
-     CONFIGH_SEG1 = INPUT;
-	CONFIGH_SEG2 = INPUT;
-	CONFIGH_SEG3 = INPUT;
-	CONFIGH_SEG4 = INPUT;
-	CONFIGH_SEG5 = INPUT;
-	CONFIGH_SEG6 = INPUT;
-		
-		
-	CONFIGH_SEG2=OUTPUT;
-	CONFIGH_SEG4=OUTPUT;
-	 CONFIGH_SEG5=OUTPUT;
-	 SEG2=1;
-	 SEG4=0;
-	 SEG5=0;
-	 GCC_DELAY(1000);
-	 
-	 
-	CONFIGH_SEG1 = INPUT;
-	CONFIGH_SEG2 = INPUT;
-	CONFIGH_SEG3 = INPUT;
-	CONFIGH_SEG4 = INPUT;
-	CONFIGH_SEG5 = INPUT;
-	CONFIGH_SEG6 = INPUT;
-	 
+    shwoSegment( temperatur);
      
+    cunter++;
      
-     
-     
-     //cunter++;
-     
-	//if(cunter>100)break;
+	if(cunter>100)break;
      }
      cunter=0;
 }
