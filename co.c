@@ -13,8 +13,8 @@
 #define pA_ppm 5212
 #define co_set 1205 //ppm
 
-
-#define VBattery(ADC_BAT)(1.20*(4095/ ADC_BAT)*100)
+//temperatur  =  1.20*(4095.000/ S_READ_ADC(4));
+#define VBattery(ADC_BAT)( 1.20*(4095.000/ ADC_BAT))
 
 //test
 char test_tm;
@@ -126,8 +126,8 @@ while(1){
 _vbgren=1;
   
 float VB_ADC=0;
-//temperatur  =  1.20*(4095.000/ S_READ_ADC(4));
-//	temperatur=temperatur*100.00;
+
+	//temperatur= VBattery(S_READ_ADC(4))*100.00;
  
 	while(1){
 
@@ -137,8 +137,8 @@ float VB_ADC=0;
     // shwoSegment(205);
     // oneDigit1();
      //oneDigit2();
- 
-       
+     //shwoSegment(temperatur);
+      
      shwoSegment( S_READ_ADC(5)/10);
      
      
