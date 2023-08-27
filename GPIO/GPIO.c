@@ -3,9 +3,59 @@
 #include <GPIO.h>
 
 
+
+
+//ISINK 0,1
+
+//void GPIOToGNDCurentInit(char GPIOToGNDPin, char Curent)
+void GPIOToGNDCurentInit(void)
+{
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	//Sink Current Generator
+	
+	//Sink current generator enable control
+	_isgen=1;
+	
+	//Sink current generator control for ISINK0 pin
+	//Current value (mA) = 50 + 10 × (ISGDATA0[4:0])
+	_isgdata0=0b00000000;
+	
+	//Sink current generator control for ISINK1 pin
+	//Current value (mA) = 50 + 5 × (ISGDATA1[4:0])
+	_isgdata1=0b00000000;
+	
+	
+	
+	//Enable/Disable ISINK0 pin sink current control
+	_isgs0=0;
+	
+	//Enable/Disable ISINK1 pin sink current control
+	_isgs1=0;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////	
+
+}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void GPIOInit(void){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+	
 //Pin pull-high function control
 _papu=0b00000000;
 _pbpu=0b00000000;
@@ -112,8 +162,15 @@ _pbs07=0;
 _pbs02=0;
 _pbs03=0;
 
+
+
 	
+//GPIOToGNDCurentInit();	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 //**************************************************************
 
+}
+
+
+ 
