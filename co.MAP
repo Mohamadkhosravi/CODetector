@@ -72,14 +72,14 @@ Input Library File: C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x
      00h     09f5h     0b34h    0140h      CODE               _shwoSegment (c:\users\tech\desktop\codetector\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
      00h     0b35h     0b3ah    0006h      CODE               _GPIOToGNDCurentInit (c:\users\tech\desktop\codetector\GPIO.OBJ)
      00h     0b3bh     0b51h    0017h      CODE               _GPIOInit (c:\users\tech\desktop\codetector\GPIO.OBJ)
-     00h     0b52h     0c6dh    011ch      CODE               _OPAMPset (c:\users\tech\desktop\codetector\OPAMP.OBJ)
-     00h     0c6eh     0c87h    001ah      CODE               _OPAMPInit (c:\users\tech\desktop\codetector\OPAMP.OBJ)
-     00h     0c88h     0c9fh    0018h      CODE               _ClockInit (c:\users\tech\desktop\codetector\SYSTEMCLOCK.OBJ)
-     00h     0ca0h     0ca9h    000ah      CODE               __DELAYX (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0caah     0cb7h    000eh      CODE               _builtin_holtek_delay_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0cb8h     0ceeh    0037h      CODE               _builtin_holtek_divmodhi4_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0cefh     0d01h    0013h      CODE               _builtin_holtek_mulhi3_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0d02h     0d26h    0025h      CODE               _builtin_holtek_divmodqi4_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0b52h     0c63h    0112h      CODE               _OPAMPset (c:\users\tech\desktop\codetector\OPAMP.OBJ)
+     00h     0c64h     0c7dh    001ah      CODE               _OPAMPInit (c:\users\tech\desktop\codetector\OPAMP.OBJ)
+     00h     0c7eh     0c95h    0018h      CODE               _ClockInit (c:\users\tech\desktop\codetector\SYSTEMCLOCK.OBJ)
+     00h     0c96h     0c9fh    000ah      CODE               __DELAYX (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0ca0h     0cadh    000eh      CODE               _builtin_holtek_delay_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0caeh     0ce4h    0037h      CODE               _builtin_holtek_divmodhi4_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0ce5h     0cf7h    0013h      CODE               _builtin_holtek_mulhi3_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0cf8h     0d1ch    0025h      CODE               _builtin_holtek_divmodqi4_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
      00h     0080h     0081h    0002h      DATA     0         @BITDATASEC (c:\users\tech\desktop\codetector\STARTUP1_L.OBJ)
      00h     0082h     0082h    0001h      DATA     44        @data_ra (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
      00h     0083h     0083h    0001h      DATA     109       @data_rb (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
@@ -185,11 +185,11 @@ Input Library File: C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x
 
      Public Symbols Information
      Address            Public by Name
-     0c88h              _ClockInit
+     0c7eh              _ClockInit
      0081h[2]           _FT
      0b3bh              _GPIOInit
      0b35h              _GPIOToGNDCurentInit
-     0c6eh              _OPAMPInit
+     0c64h              _OPAMPInit
      0b52h              _OPAMPset
      0263h              _S_ADC_Init
      0269h              _S_READ_ADC
@@ -204,22 +204,22 @@ Input Library File: C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x
      00d6h              _V_op1
      00c3h              _V_ref
      00c5h              _Vdd
-     0ca6h              __DELAYX0
-     0ca5h              __DELAYX1
-     0ca4h              __DELAYX2
-     0ca3h              __DELAYX3
-     0ca2h              __DELAYX4
-     0ca1h              __DELAYX5
-     0ca0h              __DELAYX6
-     0cafh              __DELAYY0_isr00
-     0caeh              __DELAYY1_isr00
-     0cadh              __DELAYY2_isr00
-     0cach              __DELAYY3_isr00
-     0cabh              __DELAYY4_isr00
-     0caah              __DELAYY5_isr00
+     0c9ch              __DELAYX0
+     0c9bh              __DELAYX1
+     0c9ah              __DELAYX2
+     0c99h              __DELAYX3
+     0c98h              __DELAYX4
+     0c97h              __DELAYX5
+     0c96h              __DELAYX6
+     0ca5h              __DELAYY0_isr00
+     0ca4h              __DELAYY1_isr00
+     0ca3h              __DELAYY2_isr00
+     0ca2h              __DELAYY3_isr00
+     0ca1h              __DELAYY4_isr00
+     0ca0h              __DELAYY5_isr00
      0080h[1]           _bat_low
-     0cb8h              _builtin_holtek_divmodhi4_isr00
-     0d02h              _builtin_holtek_divmodqi4_isr00
+     0caeh              _builtin_holtek_divmodhi4_isr00
+     0cf8h              _builtin_holtek_divmodqi4_isr00
      0024h              _builtin_holtek_dtadd
      019dh              _builtin_holtek_dtdecode1
      0192h              _builtin_holtek_dtdecode2
@@ -248,11 +248,11 @@ Input Library File: C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x
      008ah              _builtin_holtek_mant1
      0097h              _builtin_holtek_mant12p
      0090h              _builtin_holtek_mant2
-     0cefh              _builtin_holtek_mulhi3_isr00
+     0ce5h              _builtin_holtek_mulhi3_isr00
      0094h              _builtin_holtek_prod
      008eh              _builtin_holtek_signs
-     0ccah              _builtin_holtek_udivmodhi4_isr00
-     0d0eh              _builtin_holtek_udivmodqi4_isr00
+     0cc0h              _builtin_holtek_udivmodhi4_isr00
+     0d04h              _builtin_holtek_udivmodqi4_isr00
      00e5h              _builtin_holtek_uitod
      0125h              _builtin_holtek_uitof
      00d3h              _buz_delay
@@ -425,31 +425,31 @@ Input Library File: C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x
      0b35h              _GPIOToGNDCurentInit
      0b3bh              _GPIOInit
      0b52h              _OPAMPset
-     0c6eh              _OPAMPInit
-     0c88h              _ClockInit
-     0ca0h              __DELAYX6
-     0ca1h              __DELAYX5
-     0ca2h              __DELAYX4
-     0ca3h              __DELAYX3
-     0ca4h              __DELAYX2
-     0ca5h              __DELAYX1
-     0ca6h              __DELAYX0
-     0caah              __DELAYY5_isr00
-     0cabh              __DELAYY4_isr00
-     0cach              __DELAYY3_isr00
-     0cadh              __DELAYY2_isr00
-     0caeh              __DELAYY1_isr00
-     0cafh              __DELAYY0_isr00
-     0cb8h              _builtin_holtek_divmodhi4_isr00
-     0ccah              _builtin_holtek_udivmodhi4_isr00
-     0cefh              _builtin_holtek_mulhi3_isr00
-     0d02h              _builtin_holtek_divmodqi4_isr00
-     0d0eh              _builtin_holtek_udivmodqi4_isr00
+     0c64h              _OPAMPInit
+     0c7eh              _ClockInit
+     0c96h              __DELAYX6
+     0c97h              __DELAYX5
+     0c98h              __DELAYX4
+     0c99h              __DELAYX3
+     0c9ah              __DELAYX2
+     0c9bh              __DELAYX1
+     0c9ch              __DELAYX0
+     0ca0h              __DELAYY5_isr00
+     0ca1h              __DELAYY4_isr00
+     0ca2h              __DELAYY3_isr00
+     0ca3h              __DELAYY2_isr00
+     0ca4h              __DELAYY1_isr00
+     0ca5h              __DELAYY0_isr00
+     0caeh              _builtin_holtek_divmodhi4_isr00
+     0cc0h              _builtin_holtek_udivmodhi4_isr00
+     0ce5h              _builtin_holtek_mulhi3_isr00
+     0cf8h              _builtin_holtek_divmodqi4_isr00
+     0d04h              _builtin_holtek_udivmodqi4_isr00
 
 
 ROM Usage Statistics
      Size      Used     Percentage
-     1000h     0d27h    82%
+     1000h     0d1dh    81%
 
 RAM Usage Statistics
     Bank      Size      Used     Percentage

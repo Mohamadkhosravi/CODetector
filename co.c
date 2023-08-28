@@ -139,14 +139,14 @@ float VB_ADC=0;
      //oneDigit2();
      //shwoSegment(temperatur);
       
-     shwoSegment( S_READ_ADC(5)/10);
+    shwoSegment( S_READ_ADC(5)/10);
      
      
      
     cunter++;
      
-	if(cunter>100)break;
-     }
+		if(cunter>100)break;
+    }
      cunter=0;
     
   

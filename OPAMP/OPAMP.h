@@ -2,13 +2,6 @@
 #include "BA45F5240.h"
 
 
-
-
-
-
-
-
-
 //OPAMP 
 bit FT=0;	//opamp ofset callbration
 int V_op0;
@@ -20,5 +13,8 @@ bit opamp0,opamp1;
 	#define OP0EN _sda0en
 	#define OP1EN _sda1en
 	
-void OPAMPset (void);
-void OPAMPInit(void);	
+
+
+
+
+	
