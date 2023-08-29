@@ -8,11 +8,18 @@
 
 
 
-
-
 #define pA_ppm 5212
 #define co_set 1205 //ppm
 
+
+
+
+#define RF 2 //*100k
+#define R2 3 //*100k max 300k
+#define R3 0 //*10k+10k
+#define RS 1000
+
+#define I(VOut)(VOut+((RS+(RF)/RS*(RF))*((R2/R3)+1)))
 //temperatur  =  1.20*(4095.000/ S_READ_ADC(4));
 #define VBattery(ADC_BAT)( 1.20*(4095.000/ ADC_BAT))
 
@@ -54,7 +61,7 @@ void main()
 	
 ClockInit();
 GPIOInit();
-OPAMPInit();
+OPAMPInit(RF, R2, R3);
 
 
 
@@ -114,9 +121,11 @@ LEDToGND=0;
   _vbgren=1;
   
   float temperatur=0.0;
+  float vss;
   int cunter=0;
   int tm;
-  
+ _sda0en=1;
+ _sda1en=1; 
 while(1){
 
 //temperatur= temperature(S_READ_ADC(1),3.3);
@@ -126,8 +135,10 @@ while(1){
 _vbgren=1;
   
 float VB_ADC=0;
+  temperatur = 0;
 
-	//temperatur= VBattery(S_READ_ADC(4))*100.00;
+//RT = ((R1 * RB * (RS + R2) * (I - vout - 1)) / ((I - vout - 1) - RB * (RS + R2))) - R1
+	vss = VBattery(S_READ_ADC(4));
  
 	while(1){
 
@@ -138,10 +149,12 @@ float VB_ADC=0;
     // oneDigit1();
      //oneDigit2();
      //shwoSegment(temperatur);
-      
-    shwoSegment( S_READ_ADC(5)/10);
      
+       
+    temperatur = I(S_READ_ADC(6)*0.00011721612);
+    shwoSegment(temperatur*100);
      
+    
      
     cunter++;
      

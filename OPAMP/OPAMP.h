@@ -13,7 +13,7 @@ bit opamp0,opamp1;
 	#define OP0EN _sda0en
 	#define OP1EN _sda1en
 	
-
+void OPAMPInit(char R1,char R2,char R3);
 
 
 
