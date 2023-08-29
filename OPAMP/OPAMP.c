@@ -147,7 +147,7 @@ _sda1en=0;
 
 
 
-void OPAMPInit(char R1,char R2,char R3){
+void OPAMPInit(void){
 
 
 //PA1 = A1PI
@@ -161,21 +161,18 @@ _pas03=1;
 //AFE SW
 _sds0=0;
 _sds1=0;
-_sds2=1;////////
+_sds2=0;////////
 _sds3=0;////////
 _sds4=1;
-_sds5=1;
-_sds6=0;
-
-
+_sds5=0;
+_sds6=1;
 
 //R1 resistance control
-_sdpgac0=0b00000010;  //*100k
-//_sdpgac0=R1;
+_sdpgac0=0b00000001;  //*100k
+
 //5-0: R2 resistance control ?100k
 //7-6: R3 resistance control *10k+10k
-_sdpgac1=0b00000011;
-//_sdpgac1=R2|(R3<<6);
+_sdpgac1=0b11000001;
 
 //OPAMP0 bandwidth control 00: 5kHz
 _sda0bw0=0;

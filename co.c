@@ -4,7 +4,7 @@
 #include "sevenSegment3DigitComplex.h"
 #include "systemClock.h"
 #include "GPIO.h"
-
+//#include "OPAMP.h"
 
 
 
@@ -18,6 +18,13 @@
 #define R2 3 //*100k max 300k
 #define R3 0 //*10k+10k
 #define RS 1000
+
+#define AVAmplifier1 995 //RS*RF/RS+RF   RS=1k external RF=150k external
+#define AVAmplifier2 31//1+R2/R3  R2=300k internal R3=10k internal
+
+#define MAXppm 1000
+#define slope 0.25 //m = y2-y1/x2-x1
+
 
 #define I(VOut)(VOut+((RS+(RF)/RS*(RF))*((R2/R3)+1)))
 //temperatur  =  1.20*(4095.000/ S_READ_ADC(4));
@@ -40,7 +47,7 @@ bit co_falt;
 
 
 //bat
-float Vdd;
+float VDD=0;
 bit bat_low;
 int V_ref;
 
@@ -61,7 +68,7 @@ void main()
 	
 ClockInit();
 GPIOInit();
-OPAMPInit(RF, R2, R3);
+OPAMPInit();
 
 
 
@@ -113,19 +120,24 @@ LEDToGND=0;
 	ppm=19.2;
 
     //temp=0;
-	Vdd=0;
+
 	V_ref=0;
 	GCC_DELAY(100000);
 	
 	S_ADC_Init();
   _vbgren=1;
-  
+  float COValue =0.0;
   float temperatur=0.0;
+  float Amplifier1=0.0;
+  float tempAmplifier1=0.0;
+  float tempAmplifier2=0.0;
+  float Amplifier2=0.0;
   float vss;
   int cunter=0;
   int tm;
- _sda0en=1;
- _sda1en=1; 
+  int i;
+_sda0en=1;
+_sda1en=1; 
 while(1){
 
 //temperatur= temperature(S_READ_ADC(1),3.3);
@@ -135,11 +147,40 @@ while(1){
 _vbgren=1;
   
 float VB_ADC=0;
-  temperatur = 0;
+//  temperatur = 0;
 
 //RT = ((R1 * RB * (RS + R2) * (I - vout - 1)) / ((I - vout - 1) - RB * (RS + R2))) - R1
-	vss = VBattery(S_READ_ADC(4));
- 
+	VDD = VBattery(S_READ_ADC(4));
+	temperatur= temperature(S_READ_ADC(1),3.3);
+
+    
+    /*
+    tempAmplifier1=0;
+    Amplifier1=0;
+    
+    for (i=0;i<100;i++)
+    {
+       Amplifier1=S_READ_ADC(5);
+       tempAmplifier1=tempAmplifier1+Amplifier1;
+       
+    }
+    Amplifier1=tempAmplifier1/100;
+   
+    */
+    tempAmplifier2=0;
+    Amplifier2=0;
+    
+    for (i=0;i<100;i++)
+    {
+       Amplifier2=S_READ_ADC(6);
+       tempAmplifier2=tempAmplifier2+Amplifier2;
+       
+    }
+    Amplifier2=tempAmplifier2/100;
+    COValue=(((Amplifier2*(VDD/4095)/(AVAmplifier1*AVAmplifier2))/slope )*100000);
+
+    
+   // Amplifier1=(Amplifier1/4095)*3.3;
 	while(1){
 
    	_clrwdt();
@@ -151,11 +192,17 @@ float VB_ADC=0;
      //shwoSegment(temperatur);
      
        
-    temperatur = I(S_READ_ADC(6)*0.00011721612);
-    shwoSegment(temperatur*100);
+   //temperatur = I(S_READ_ADC(6)*0.00011721612);
+   /* shwoSegment(S_READ_ADC(5)/10);*/
+   //shwoSegment( (Amplifier2*0.0011477*100)/30);
+   
+     //shwoSegment( (Amplifier1*0.0011477/AVAmplifier1)*10000);
      
+    //shwoSegment( (Amplifier1*(VDD/4095)/AVAmplifier1)*10000);
+   // shwoSegment( (((Amplifier2*(VDD/4095)/(AVAmplifier1*AVAmplifier2))/slope )*100000));
+    shwoSegment(COValue);
     
-     
+      //shwoSegment( (Amplifier2*(VDD/4095)/AVAmplifier2)*10000);
     cunter++;
      
 		if(cunter>100)break;
@@ -164,7 +211,7 @@ float VB_ADC=0;
     
   
 }
-     Vdd=0;
+    VDD=0;
 //-------------------calculate Temperature-----------------------------<<<
 
 
@@ -191,7 +238,7 @@ if (test==1){
 
 //----------bat chek-----------
 
-if (Vdd<3.00){
+if (VDD<3.00){
 	bat_low=1;
 	}else{
 		bat_low=0;

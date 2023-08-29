@@ -1231,6 +1231,13 @@ int length(int number){
 	int digNumber=0;
 	int firstNumber;
 
+	if(number==0)
+	{
+	 ziroDigit1();
+	 return 1;	
+	}
+	
+
 	if(number<0)
 	{
 	 error1Seg();
