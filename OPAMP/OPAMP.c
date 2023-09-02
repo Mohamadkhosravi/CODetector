@@ -164,8 +164,8 @@ _sds1=0;
 _sds2=0;////////
 _sds3=0;////////
 _sds4=1;
-_sds5=0;
-_sds6=1;
+_sds5=1;
+_sds6=0;
 
 //R1 resistance control
 _sdpgac0=0b00000001;  //*100k

@@ -41,12 +41,12 @@
 			return -1.0; // Not defined for non-positive numbers
 		}
 		
-		double epsilon = 1e-10; // Small value for accuracy
-		double result = 0.0;
-		double term = (x - 1) / (x + 1);
-		double term_squared = term * term;
-		double term_squared_power = term_squared;
-		double current_term = term;
+		float epsilon = 1e-10; // Small value for accuracy
+		float result = 0.0;
+		float term = (x - 1) / (x + 1);
+		float term_squared = term * term;
+		float term_squared_power = term_squared;
+		float current_term = term;
 		
 		for ( n = 1; current_term > epsilon; n++) {
 			
