@@ -161,14 +161,19 @@ _pas03=1;
 //AFE SW
 _sds0=0;
 _sds1=0;
-_sds2=0;////////
+_sds2=1;////////
 _sds3=0;////////
 _sds4=1;
-_sds5=1;
+//01: AC coupling mode
+_sds5=0;
 _sds6=0;
+
+_sda0ofm=0;
+_sda1ofm=0;
 
 //R1 resistance control
 _sdpgac0=0b00000001;  //*100k
+
 
 //5-0: R2 resistance control ?100k
 //7-6: R3 resistance control *10k+10k
