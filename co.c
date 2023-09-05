@@ -20,7 +20,7 @@
 #define RS 1000
 */
 //#define AVAmplifier1 995 //RS*RF/RS+RF   RS=1k external RF=150k external
-#define AVAmplifier1 995
+#define gainAmplifier1 6.666666666666667
 #define AVAmplifier2 13//1+R2/R3  R2=300k internal R3=10k internal
 
 #define MAXppm 1000
@@ -74,6 +74,7 @@ float COValue =0.0;
 float temperatur=0.0;
 float Amplifier1=0.0;
 float tempAmplifier1=0.0;
+float VAmplifier1=0.0;
 float tempAmplifier2=0.0;
 float Amplifier2=0.0;
 float adcValue=0.0;
@@ -171,10 +172,10 @@ void main()
 		
 		//RT = ((R1 * RB * (RS + R2) * (I - vout - 1)) / ((I - vout - 1) - RB * (RS + R2))) - R1
 		
-	//	VDD = VBattery(S_READ_ADC(4));
+	VDD = VBattery(S_READ_ADC(4));
 		//shwoSegment(VDD*10);
 		
-	/*
+/*
 		tempAmplifier1=0;
 		Amplifier1=0;
 	
@@ -186,7 +187,7 @@ void main()
 		}
 		Amplifier1=tempAmplifier1/10;
 		
-	*/	
+*/
 		/*	
 		tempAmplifier2=0;
 		Amplifier2=0;
@@ -210,7 +211,7 @@ void main()
 			
 			
 			
-			/*
+			
 			tempAmplifier1=0;
 			Amplifier1=0;
 			
@@ -223,7 +224,7 @@ void main()
 			Amplifier1=tempAmplifier1/10;
 		
 			
-		
+		/*
 			tempAmplifier2=0;
 			Amplifier2=0;
 			
@@ -238,11 +239,15 @@ void main()
 		
 			//COValue=(((Amplifier1*(VDD/4095)/(AVAmplifier1))/slope )*100000);
 		*/
-		  adcValue=S_READ_ADC(3);
+		  //adcValue=S_READ_ADC(3);
 		
 		    //shwoSegment(COValue);
 		    //shwoSegment(COValue*PPM(temperatur/10));
-			shwoSegment(adcValue/10);
+		
+			
+			 VAmplifier1=(((Amplifier1*(VDD/4095))/gainAmplifier1*1000)/15)*1000;
+			 COValue=VAmplifier1*slope;
+			 shwoSegment(COValue);
 			
 			
 		//	cunter++;
