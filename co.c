@@ -4,18 +4,14 @@
 #include "sevenSegment3DigitComplex.h"
 #include "systemClock.h"
 #include "GPIO.h"
-
-#include <stdint.h>
-//extern void movir();
 //#include "OPAMP.h"
-   *mp1l = 0;
+
+
+
 #define pA_ppm 5212
 #define co_set 1205 //ppm
 
 
-// Define extended memory pointers for sector 1
-volatile char* MP1H = (volatile char*)0x1A0; // Replace with the correct address for MP1H
-volatile char* MP1L = (volatile char*)0x1A1; // Replace with the correct address for MP1L
 /*
 
 #define RF 2 //*100k
@@ -27,16 +23,16 @@ volatile char* MP1L = (volatile char*)0x1A1; // Replace with the correct address
 #define gainAmplifier1 6.666666666666667
 #define AVAmplifier2 13//1+R2/R3  R2=300k internal R3=10k internal
 
-//#define MAXppm 1000
+#define MAXppm 1000
 #define slope 0.0275 //m = y2-y1/x2-x1
-/*
+
 #define ConstA 0.000000056
 #define ConstB 0.000007217
 #define ConstC 0.000202579
 #define ConstD 0.0133869
-*/
-//(ConstA*(x*x*x*x))-
-//#define PPM(x)((ConstA*(x*x*x*x))-(ConstB*(x*x*x))+(ConstC*(x*x))+(ConstD*(x))+0.7)
+#define PPM(x)((ConstB*(x*x*x))+(ConstC*(x*x))+(ConstD*(x))+0.7)
+
+
 #define I(VOut)(VOut+((RS+(RF)/RS*(RF))*((R2/R3)+1)))
 //temperatur  =  1.20*(4095.000/ S_READ_ADC(4));
 #define VBattery(ADC_BAT)( 1.20*(4095.000/ ADC_BAT))
@@ -52,7 +48,7 @@ int buz_delay;
 
 	
 //co
-char ppm;
+int ppm;
 bit co;
 bit co_falt;
 
@@ -60,13 +56,7 @@ bit co_falt;
 //bat
 float VDD=0;
 bit bat_low;
-//int V_ref;
-
-
-char adres1;
-char adres2;
-
-char block;
+int V_ref;
 
 
 
@@ -74,25 +64,21 @@ char block;
 //float V_ntc;
 bit falt;
 
-//#pragma rambank1
-//#pragma rambank=RAM_BANK1
+	
+	
+void OPAMPset (void);
+//int ADC ( char pin);
+
 
 float COValue =0.0;
 float temperatur=0.0;
 float Amplifier1=0.0;
 float tempAmplifier1=0.0;
 float VAmplifier1=0.0;
-//#pragma rambank=RAM_BANK1
-//#pragma norambank
-	
-void OPAMPset (void);
-//int ADC ( char pin);
-
-
-//float tempAmplifier2=0.0;
-//float Amplifier2=0.0;
-//float adcValue=0.0;
-//float vss;
+float tempAmplifier2=0.0;
+float Amplifier2=0.0;
+float adcValue=0.0;
+float vss;
 int cunter=0;
 // float tm =0.0;
 int i;
@@ -100,25 +86,6 @@ int i;
 
 
 
-void floatToBytes(float value, char* bytes) {
-    // Assuming little-endian architecture
-    int intValue = *((int*)&value);
-    bytes[0] = (char)(intValue);
-    bytes[1] = (char)(intValue >> 8);
-    bytes[2] = (char)(intValue >> 16);
-    bytes[3] = (char)(intValue >> 24);
-}
-
-
-
-
-
-
-
-
-
-
-char my_by[4]={1,2,3,4};
 
 void main()
 {
@@ -128,28 +95,6 @@ void main()
 	GPIOToGNDCurentInit();
 	OPAMPInit();
 	S_ADC_Init();
-	
-  // Set MP1H to indicate sector 1
-    *MP1H = 0x00;
-
-    // Initialize the low byte of MP1L with the starting address within sector 1
-    *MP1L = 0x00; // Replace with the specific address within sector 1
-
-    // Define a float variable and convert it to bytes
-    float myFloat = 3.14159; // Replace with your float value
-    char floatBytes[4];
-    floatToBytes(myFloat, floatBytes);
-
-    // Loop to write the float bytes to memory using extended instructions
-   for ( i = 0; i < 4; i++) {
-        // Access data memory using pointers
-        volatile char* memAddress = MP1L; // Pointer to current memory address
-       // *memAddress = floatBytes[i];         // Store the byte in memory
-       
-       *memAddress = my_by;
-        MP1L++;                              // Increment the memory address
-    }
-
 
 
 	
@@ -212,65 +157,11 @@ void main()
 		
 		_sda0en=1;
 		_sda1en=1; 
-      
- 
-/*
-    // Setup the memory sector
- 
-
-    // Call the function to clear the block starting from adres1
-   
-
-    // Check if the last memory location has been cleared
-
-
- // Setup size of the block
-    char size = 0x04;
-    block = size;
-
-    // Setup the memory sector
-    char sector = 0x01;
-
-    // Call the function to clear the block starting from adres1
-    clearMemoryBlock(&adres1, size);
-
-    // Call the function to write data to adres2
-    char dataToWrite = 0x42; // Change this data as needed
-    writeToMemory(&adres2, dataToWrite);
-
-    // Check if the last memory location has been cleared
-
-
-*/
-
-
-
-
-
 
 	while(1){
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		NTCToGND=1;
-		temperatur= temperature(S_READ_ADC(1),3.3);
+		//temperatur= temperature(S_READ_ADC(1),3.3);
 		//shwoSegment((1.20*(4095/ VB_ADC))*100);  
 		// vbgren enable
 		
@@ -317,7 +208,7 @@ void main()
 		//	Amplifier1=S_READ_ADC(5);
 			_clrwdt();
 			
-			  
+			
 			
 			
 			
@@ -356,10 +247,10 @@ void main()
 			
 			 VAmplifier1=(((Amplifier1*(VDD/4095))/gainAmplifier1*1000)/15)*1000;
 			 COValue=VAmplifier1*slope;
-		//	 shwoSegment(PPM(temperatur/10));
+			 shwoSegment(COValue);
 			
 			
-		cunter++;
+		//	cunter++;
 		
 		if(cunter>100)break;
 		}
