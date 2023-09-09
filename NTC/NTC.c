@@ -42,11 +42,11 @@
 		}
 		
 		float epsilon = 1e-10; // Small value for accuracy
-		float result = 0.0;
-		float term = (x - 1) / (x + 1);
-		float term_squared = term * term;
-		float term_squared_power = term_squared;
-		float current_term = term;
+		char result = 0.0;
+		char term = (x - 1) / (x + 1);
+		char term_squared = term * term;
+		char term_squared_power = term_squared;
+		char current_term = term;
 		
 		for ( n = 1; current_term > epsilon; n++) {
 			
