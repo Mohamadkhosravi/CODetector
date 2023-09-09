@@ -35,8 +35,14 @@ volatile char* MP1L = (volatile char*)0x1A1; // Replace with the correct address
 #define ConstC 0.000202579
 #define ConstD 0.0133869
 */
+
+#define ConstA 0.000000025
+#define ConstB 0.000003611
+#define ConstC 0.000052182
+#define ConstD 0.0151944
+
 //(ConstA*(x*x*x*x))-
-//#define PPM(x)((ConstA*(x*x*x*x))-(ConstB*(x*x*x))+(ConstC*(x*x))+(ConstD*(x))+0.7)
+#define PPM(x)((ConstA*(x*x*x*x))-(ConstB*(x*x*x))+(ConstC*(x*x))+(ConstD*(x))+0.7)
 #define I(VOut)(VOut+((RS+(RF)/RS*(RF))*((R2/R3)+1)))
 //temperatur  =  1.20*(4095.000/ S_READ_ADC(4));
 #define VBattery(ADC_BAT)( 1.20*(4095.000/ ADC_BAT))
@@ -99,27 +105,6 @@ int i;
 
 
 
-
-void floatToBytes(float value, char* bytes) {
-    // Assuming little-endian architecture
-    int intValue = *((int*)&value);
-    bytes[0] = (char)(intValue);
-    bytes[1] = (char)(intValue >> 8);
-    bytes[2] = (char)(intValue >> 16);
-    bytes[3] = (char)(intValue >> 24);
-}
-
-
-
-
-
-
-
-
-
-
-char my_by[4]={1,2,3,4};
-
 void main()
 {
 	
@@ -129,26 +114,7 @@ void main()
 	OPAMPInit();
 	S_ADC_Init();
 	
-  // Set MP1H to indicate sector 1
-    *MP1H = 0x00;
-
-    // Initialize the low byte of MP1L with the starting address within sector 1
-    *MP1L = 0x00; // Replace with the specific address within sector 1
-
-    // Define a float variable and convert it to bytes
-    float myFloat = 3.14159; // Replace with your float value
-    char floatBytes[4];
-    floatToBytes(myFloat, floatBytes);
-
-    // Loop to write the float bytes to memory using extended instructions
-   for ( i = 0; i < 4; i++) {
-        // Access data memory using pointers
-        volatile char* memAddress = MP1L; // Pointer to current memory address
-       // *memAddress = floatBytes[i];         // Store the byte in memory
-       
-       *memAddress = my_by;
-        MP1L++;                              // Increment the memory address
-    }
+  
 
 
 
@@ -249,25 +215,7 @@ void main()
 
 
 	while(1){
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 		
 		NTCToGND=1;
 		temperatur= temperature(S_READ_ADC(1),3.3);
@@ -312,6 +260,8 @@ void main()
 		// shwoSegment(COValue*10);
 		*/
 		//temperatur= temperature(S_READ_ADC(1),3.3);
+		//	Amplifier1=S_READ_ADC(5);
+		
 		
 		while(1){
 		//	Amplifier1=S_READ_ADC(5);
@@ -320,7 +270,7 @@ void main()
 			  
 			
 			
-			
+	
 			tempAmplifier1=0;
 			Amplifier1=0;
 			
@@ -332,7 +282,7 @@ void main()
 			}
 			Amplifier1=tempAmplifier1/10;
 		
-			
+		
 		/*
 			tempAmplifier2=0;
 			Amplifier2=0;
@@ -352,15 +302,16 @@ void main()
 		
 		    //shwoSegment(COValue);
 		    //shwoSegment(COValue*PPM(temperatur/10));
+	
 		
 			
-			 VAmplifier1=(((Amplifier1*(VDD/4095))/gainAmplifier1*1000)/15)*1000;
-			 COValue=VAmplifier1*slope;
-		//	 shwoSegment(PPM(temperatur/10));
-			
-			
-		cunter++;
+			VAmplifier1=(((Amplifier1*(VDD/4095))/gainAmplifier1*1000)/15)*1000;
+			COValue=VAmplifier1*slope;
+		//	shwoSegment(temperatur/10);
+			shwoSegment(COValue * PPM(temperatur/10));
 		
+			cunter++;
+			
 		if(cunter>100)break;
 		}
 		cunter=0;
