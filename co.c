@@ -88,6 +88,8 @@ float temperatur=0.0;
 float Amplifier1=0.0;
 float tempAmplifier1=0.0;
 float VAmplifier1=0.0;
+unsigned int TimerValue=0;
+
 //#pragma rambank=RAM_BANK1
 //#pragma norambank
 	
@@ -101,19 +103,21 @@ void OPAMPset (void);
 //float vss;
 int cunter=0;
 // float tm =0.0;
-int i;
-
+char i;
 
 
 void main()
 {
-	
+
+
 	ClockInit();
 	GPIOInit();
 	GPIOToGNDCurentInit();
 	OPAMPInit();
 	S_ADC_Init();
-	
+    STimerInit();
+    
+
   
 
 
@@ -209,14 +213,14 @@ void main()
 
 */
 
-
+	
 
 
 	
 
 	while(1){
 
-		
+	
 		NTCToGND=1;
 		temperatur= temperature(S_READ_ADC(1),3.3);
 		//shwoSegment((1.20*(4095/ VB_ADC))*100);  
@@ -262,86 +266,13 @@ void main()
 		//temperatur= temperature(S_READ_ADC(1),3.3);
 		//	Amplifier1=S_READ_ADC(5);
 		
-		/*********************
-		STPAU: STM Counter Pause Control
-		0: Run
-		1: Pause
-		*/
-		_stpau=0;
-		
-		/********************
-		STCK2~STCK0: Select STM Counter Clock
-		000: fSYS/4
-		001: fSYS
-		010: fH/16
-		011: fH/64
-		100: fSUB
-		101: fSUB
-		110: STCK rising edge clock
-		111: STCK falling edge clock
-		*/
-		_stck0=1;
-		_stck1=1;
-		_stck2=0;
-		
-		/*
-		STON: STM Counter On/Off Control
-		0: Off
-		1: On
-		This bit controls the overall on/off function of the STM
-		*/
-		_ston =1;
-		
-		/*		
-		STRP2~STRP0: STM CCRP 3-bit register, compared with the STM counter bit 9~bit 7
-		Comparator P Match Period =
-		000: 1024 STM clocks
-		001: 128 STM clocks
-		010: 256 STM clocks
-		011: 384 STM clocks
-		100: 512 STM clocks
-		101: 640 STM clocks
-		110: 768 STM clocks
-		111: 896 STM clocks
-		*/		
-		_strp0=0;
-		_strp1=0;
-		_strp2=0;
-		
-		/*
-		STM1~STM0: Select STM Operating Mode
-		00: Compare Match Output Mode
-		01: Capture Input Mode
-		10: PWM Output Mode or Single Pulse Output Mode
-		11: Timer/Counter Mode
-		
-		*/	
-		_stm0=1;
-		_stm1=1;
-		/*
-		STIO1~STIO0: Select STM External Pins Function
-		Compare Match Output Mode
-		STIO1~STIO0: Select STM External Pins Function
-		Compare Match Output Mode
-		00: No change
-		01: Output low
-		10: Output high
-		11: Toggle output
-		...	
-		*/
-		_stio0=0;
-		_stio1=0;
-		
 	
-		
-		unsigned int TimerValue=0;
-		TimerValue =((_stmdl)|(_stmdh<<8));
-	
+		TimerValue=readSTimer();
 
 		while(1){
 		//	Amplifier1=S_READ_ADC(5);
 		
-			_clrwdt();
+		_clrwdt();
 			
 			  
 			
@@ -385,11 +316,13 @@ void main()
 			COValue=VAmplifier1*slope;
 		//	shwoSegment(temperatur/10);
 		//	shwoSegment(COValue * PPM(temperatur/10));
-	
-			
+	     shwoSegment(TimerValue);
+	     
+	     
+		cunter++;
 		if(cunter>100)break;
 		}
-		cunter=0;
+	    cunter=0;
 		
 	    VDD=0;
 	//-------------------calculate Temperature-----------------------------<<<
