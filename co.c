@@ -4,18 +4,15 @@
 #include "sevenSegment3DigitComplex.h"
 #include "systemClock.h"
 #include "GPIO.h"
-
+#include "EEPROM.h"
 #include <stdint.h>
 //extern void movir();
 //#include "OPAMP.h"
-   *mp1l = 0;
+ 
 #define pA_ppm 5212
 #define co_set 1205 //ppm
 
 
-// Define extended memory pointers for sector 1
-volatile char* MP1H = (volatile char*)0x1A0; // Replace with the correct address for MP1H
-volatile char* MP1L = (volatile char*)0x1A1; // Replace with the correct address for MP1L
 /*
 
 #define RF 2 //*100k
@@ -89,7 +86,8 @@ float Amplifier1=0.0;
 float tempAmplifier1=0.0;
 float VAmplifier1=0.0;
 unsigned int TimerValue=0;
-
+int my_E = 1;
+int my_E2 = 0;
 //#pragma rambank=RAM_BANK1
 //#pragma norambank
 	
@@ -115,10 +113,13 @@ void main()
 	GPIOToGNDCurentInit();
 	OPAMPInit();
 	S_ADC_Init();
-    STimerInit();
-    
+	STimerInit();
+ 
 
-  
+	readFromEEPROM(0x1,&my_E) ;
+	my_E=my_E + 1;
+	writeToEEPROM(0x1,my_E );
+	readFromEEPROM(0x1,&my_E2) ;
 
 
 
@@ -213,7 +214,6 @@ void main()
 
 */
 
-	
 
 
 	
@@ -268,15 +268,46 @@ void main()
 		
 	
 		TimerValue=readSTimer();
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+		
+	//my_E =_eed;
+	
+		/*
+		D7~D0: Data EEPROM data
+		Data EEPROM data bit 7 ~ bit 0
+		*/
+		//my_ee =_eed;
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 		while(1){
 		//	Amplifier1=S_READ_ADC(5);
 		
-		_clrwdt();
+    //	_clrwdt();
 			
 			  
+		
 			
-			
+		
 	
 			tempAmplifier1=0;
 			Amplifier1=0;
@@ -316,7 +347,11 @@ void main()
 			COValue=VAmplifier1*slope;
 		//	shwoSegment(temperatur/10);
 		//	shwoSegment(COValue * PPM(temperatur/10));
-	     shwoSegment(TimerValue);
+		
+		
+		
+	
+	     shwoSegment(my_E2);
 	     
 	     
 		cunter++;
