@@ -42,7 +42,7 @@ _cks2=0;
 
 
 
-
+/*
 //WDT function software control Enable
 _we0=0;
 _we1=1;
@@ -55,7 +55,7 @@ _ws0=1;
 _ws1=1;
 _ws2=1;
 
-
+*/
 
 
 //PA7~PA0 wake-up function control
