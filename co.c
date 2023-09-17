@@ -44,43 +44,6 @@
 //temperatur  =  1.20*(4095.000/ S_READ_ADC(4));
 #define VBattery(ADC_BAT)( 1.20*(4095.000/ ADC_BAT))
 
-//test
-char test_tm;
-bit test;
-
-
-
-//BUZ
-int buz_delay;
-
-	
-//co
-char ppm;
-bit co;
-bit co_falt;
-
-
-//bat
-float VDD=0;
-bit bat_low;
-//int V_ref;
-
-
-char adres1;
-char adres2;
-
-char block;
-
-
-
-
-//float V_ntc;
-bit falt;
-
-//#pragma rambank1
-//#pragma rambank=RAM_BANK1
-
-//if( _to||_pdf)
 
 float COValue =0.0;
 float temperatur=0.0;
@@ -88,166 +51,44 @@ float Amplifier1=0.0;
 float tempAmplifier1=0.0;
 float VAmplifier1=0.0;
 unsigned int TimerValue=0;
-int my_E = 1;
+int my_E ;
 int my_E2 = 0;
-
-
-
-//#pragma rambank=RAM_BANK1
-//#pragma norambank
 	
 void OPAMPset (void);
-//int ADC ( char pin);
-
-
-//float tempAmplifier2=0.0;
-//float Amplifier2=0.0;
-//float adcValue=0.0;
-//float vss;
 int cunter=0;
-// float tm =0.0;
 char i;
 
 
-void main()
-{
 
-
-	ClockInit();
-	GPIOInit();
-	GPIOToGNDCurentInit();
-	OPAMPInit();
-	S_ADC_Init();
-	STimerInit();
- 
-/*
-	readFromEEPROM(0x1,&my_E) ;
-	my_E=my_E + 1;
-	writeToEEPROM(0x1,my_E );
-	readFromEEPROM(0x1,&my_E2) ;
-*/
-if( _to||_pdf)
-{
-my_E2=my_E2++;
-
-}	
-	do
+	
+	void main()
 	{
+
+		
+		if(_to==0)
+		{
+		 my_E=0;	
+		}
+
 	
-	
-		//LED_G=1;
-		
-		//-----------------test but chek------------------------>>>
-		/*
-		_pac4=1;//SEG1, TEST BUT pin Input
-		_papu=0b00010000;//Pin pull-high function control
-		GCC_DELAY(100); 
-		if (_pa4==0)test=1;
-		_pac4=0;//SEG1, TEST BUT pin output
-		_papu=0b00000000;//Pin pull-high function control
-		*/
-		
-		//-----------------test but chek------------------------<<<
-		
-		
-		
-		//---------------------ADC read------------------------->>>
-		
-		
+		ClockInit();
+		GPIOInit();
+		GPIOToGNDCurentInit();
+		OPAMPInit();
+		S_ADC_Init();
 		
 		NTCToGND=1;
-		
-		
-		
-		GCC_DELAY(1000);
-		
-		
-		
-		//V_op0=Vdd*V_op0/4096;
-		//V_op1=Vdd*V_op1/4096;
-		
-		//ppm=pA_ppm / V_op0 ;
-		
-		
-		//---------------------ADC read-------------------------<<<
-		
-		
 		LEDToGND=0;
-		//-------------------calculate Temperature--------------------------->>>
-		
-		
-		//V_op0=29;
-		ppm=19.2;
-		
-		//temp=0;
-		
-		//	V_ref=0;
-		GCC_DELAY(1000);
-		
-		S_ADC_Init();
+
 		_vbgren=1;
-		
-		
-		
 		_sda0en=1;
 		_sda1en=1; 
-      
- 
-/*
-    // Setup the memory sector
- 
-
-    // Call the function to clear the block starting from adres1
-   
-
-    // Check if the last memory location has been cleared
-
-
- // Setup size of the block
-    char size = 0x04;
-    block = size;
-
-    // Setup the memory sector
-    char sector = 0x01;
-
-    // Call the function to clear the block starting from adres1
-    clearMemoryBlock(&adres1, size);
-
-    // Call the function to write data to adres2
-    char dataToWrite = 0x42; // Change this data as needed
-    writeToMemory(&adres2, dataToWrite);
-
-    // Check if the last memory location has been cleared
-
-
-*/
-
-
-
-	
-
-	while(1){
-
-	
-		NTCToGND=1;
-		temperatur= temperature(S_READ_ADC(1),3.3);
-		//shwoSegment((1.20*(4095/ VB_ADC))*100);  
-		// vbgren enable
+		_clrwdt();
 		
-		_vbgren=1;
-		
-		//float VB_ADC=0;
-		//  temperatur = 0;
-		
-		//RT = ((R1 * RB * (RS + R2) * (I - vout - 1)) / ((I - vout - 1) - RB * (RS + R2))) - R1
-		
-	VDD = VBattery(S_READ_ADC(4));
-		//shwoSegment(VDD*10);
-		
-/*
+		/*
 		tempAmplifier1=0;
 		Amplifier1=0;
-	
+		
 		for (i=0;i<10;i++)
 		{
 			Amplifier1=S_READ_ADC(5);
@@ -255,228 +96,66 @@ my_E2=my_E2++;
 		
 		}
 		Amplifier1=tempAmplifier1/10;
-		
-*/
-		/*	
-		tempAmplifier2=0;
-		Amplifier2=0;
-	
-		for (i=0;i<10;i++)
-		{
-			Amplifier2=S_READ_ADC(6);
-			tempAmplifier2=tempAmplifier2+Amplifier2;
-		
-		}
-		Amplifier2=tempAmplifier2/10;
-		COValue=(((Amplifier2*(VDD/4095)/(AVAmplifier1*AVAmplifier2))/slope )*100000);
-		// shwoSegment(COValue*10);
 		*/
-		//temperatur= temperature(S_READ_ADC(1),3.3);
-		//	Amplifier1=S_READ_ADC(5);
+		//adcValue=S_READ_ADC(3);
 		
-	
-		TimerValue=readSTimer();
-	
+		//shwoSegment(COValue);
+		//shwoSegment(COValue*PPM(temperatur/10));
 		
 		
 		
-		
-		  	_clrwdt();
-		
-		
-		
-		
-	
-		
-	//my_E =_eed;
-	
-		/*
-		D7~D0: Data EEPROM data
-		Data EEPROM data bit 7 ~ bit 0
-		*/
-		//my_ee =_eed;
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-		while(1){
-		//	Amplifier1=S_READ_ADC(5);
-		
-  	_clrwdt();
-			
-			  
-		
-			
-		
-	
-			tempAmplifier1=0;
-			Amplifier1=0;
-			
-			for (i=0;i<10;i++)
-			{
-				Amplifier1=S_READ_ADC(5);
-				tempAmplifier1=tempAmplifier1+Amplifier1;
-				
-			}
-			Amplifier1=tempAmplifier1/10;
-		
-		
-		/*
-			tempAmplifier2=0;
-			Amplifier2=0;
-			
-			for (i=0;i<10;i++)
-			{
-				Amplifier2=S_READ_ADC(6);
-				tempAmplifier2=tempAmplifier2+Amplifier2;
-			
-			}
-			Amplifier2=tempAmplifier2/10;
-			
-		
-			//COValue=(((Amplifier1*(VDD/4095)/(AVAmplifier1))/slope )*100000);
-		*/
-		  //adcValue=S_READ_ADC(3);
-		
-		    //shwoSegment(COValue);
-		    //shwoSegment(COValue*PPM(temperatur/10));
-	
-		
-			
 		//	VAmplifier1=(((Amplifier1*(VDD/4095))/gainAmplifier1*1000)/15)*1000;
-			COValue=VAmplifier1*slope;
+		//  COValue=VAmplifier1*slope;
 		//	shwoSegment(temperatur/10);
 		//	shwoSegment(COValue * PPM(temperatur/10));
 		
 		
 		
-	
-	     shwoSegment(my_E2);
-	     
-	     
-		cunter++;
-		if(cunter>100)break;
-		}
-	    cunter=0;
 		
-	    VDD=0;
-	//-------------------calculate Temperature-----------------------------<<<
-	}
-
-
-
-//----------test but-----------
-/*
-if (test==1){
-	ppm=co_set+2;
-	LED_R=!LED_R;
-	_clrwdt();
-	test_tm++;
-	if(test_tm>5){
-		test=0;
-		test_tm=0;
-		}	
-	}
-	*/
-//----------test but-----------
-
-
-
-
-/*
-//----------bat chek-----------
-
-if (VDD<3.00){
-	bat_low=1;
-	}else{
-		bat_low=0;
-		}
-*/	
-//----------bat chek-----------
-
-
-/*
-//----------falt chek-----------
-
-falt=co_falt==1 || bat_low==1;
-
-if(falt){
-	LED_Y=1;
-	GCC_DELAY(10000); 
-	LED_Y=0;
-	GCC_DELAY(10000); 
-	LED_Y=1;
-	GCC_DELAY(10000);
-	LED_Y=0;
-	}else{
-		LEDToGND=1;
-		GCC_DELAY(10000); 
-		LEDToGND=0;
-		}
 		
-//----------bat chek-----------
-*/
+		
+		my_E++;
 
-/*	
-//----------buz-----------		
-
-while(co || falt){
-	BUZ=1;
-	GCC_DELAY(312);
-	BUZ=0;
-	GCC_DELAY(312);
-	buz_delay++;
+		
+		while(1){
+			
+			_clrwdt();
+			
+			while(1){
+			
+			
+				_clrwdt();
+				
+				cunter++;
+			
+				shwoSegment(my_E);
+			
+			if(cunter>100) break;
+			}
+			cunter=0;
+			
+			_halt();
+			
 	
-	if (falt==1 && buz_delay>1000)break;
-	if (co==1 && buz_delay>3000)break;
+		}
+	
+
+	
+	
+	
+	
+	
+		
+		_clrwdt();
+		
+		//Low Frequency oscillator control when CPU is switched off Disable
+	//	_fsiden=0;
+	
+	
 	}
 	
-//----------buz-----------	
-
-*/
-
-
-//----------co alarm chek-----------	
-/*	
-if (ppm>=co_set){
-	co=1;
-	LED_R=!LED_R;
-	_clrwdt();
-	}else{
-		co=0;
-		LED_R=0;
-		}
-
-
-//while(1){}
-*/
-	}while(co);
-
-//----------co alarm chek-----------	
-
-
-
-	//PA7~PA0 wake-up function control
-	_pawu=0b00010000;
 	
-	_clrwdt();
 	
-	//Low Frequency oscillator control when CPU is switched off Disable
-	_fsiden=0;
-
-
-}
-
-
-
-	
+		
 
 

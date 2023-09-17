@@ -1,4 +1,46 @@
-#include"STimer.h"
+#include"Timer.h"
+
+
+void timerBaseInit(void)
+{
+	
+	/*
+	CLKSEL1~CLKSEL0: Prescaler clock source selection
+	00: fSYS
+	01: fSYS/4
+	1x: fSUB 
+	*/  
+	_pscr=0b00000001;
+	
+	/*  
+	Bit 7 TBnON: Time Base n Control
+	0: Disable
+	1: Enabl 
+	Bit 6~3 Unimplemented, read as “0
+	Bit 2~0 TBn2~TBn0: Select Time Base n Time-out Period
+	
+	000: 28/fPSC
+	001: 29/fPSC
+	010: 210/fPSC
+	011: 211/fPSC
+	100: 212/fPSC
+	101: 213/fPSC
+	110: 214/fPSC
+	111: 215/fPSC
+	
+	*/  
+	_tb0c=0b00000000;
+	_tb1c=0b10000111;
+	
+	_tb1e=1;
+	_tb1f=0;
+	
+	_tb0e=1;
+	_tb0f=0;
+	
+	_emi=1;
+	  
+}
 
 void STimerInit(void){
 
@@ -156,5 +198,3 @@ int readSTimer(void){
 	return((_stmdl)|(_stmdh<<8));
 		
 }
-
-

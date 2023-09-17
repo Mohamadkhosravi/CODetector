@@ -41,7 +41,7 @@ _cks2=0;
 //A WDT overflow
 
 
-
+/*
 
 //WDT function software control Enable
 _we0=0;
@@ -51,6 +51,8 @@ _we3=1;
 _we4=0;
 
 
+
+
 //WDT time-out period selection 2^18/fLIRC
 _ws0=1;
 _ws1=1;
@@ -58,8 +60,7 @@ _ws2=1;
 
 
 
-
 //PA7~PA0 wake-up function control
-//_pawu=0b00000000;
+_pawu=0b00000000;*/
 
 }

@@ -4,6 +4,7 @@
 
 #include "BA45F5240.h"
 
+void timerBaseInit(void);
 
 void STimerInit(void);
 int readSTimer(void);
