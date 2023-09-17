@@ -41,7 +41,7 @@ _cks2=0;
 //A WDT overflow
 
 
-/*
+
 
 //WDT function software control Enable
 _we0=0;
@@ -61,6 +61,6 @@ _ws2=1;
 
 
 //PA7~PA0 wake-up function control
-_pawu=0b00000000;*/
+_pawu=0b00000000;
 
 }

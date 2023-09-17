@@ -59,16 +59,10 @@ int cunter=0;
 char i;
 
 
-
 	
 	void main()
 	{
-
-		
-		if(_to==0)
-		{
-		 my_E=0;	
-		}
+	
 
 	
 		ClockInit();
@@ -109,6 +103,72 @@ char i;
 		//	shwoSegment(temperatur/10);
 		//	shwoSegment(COValue * PPM(temperatur/10));
 		
+	
+						
+	/*			 
+    /*	Bit 3~2 INT1S1~INT1S0: Interrupt edge control for INT1 pin
+				00: Disable
+				01: Rising edge
+				10: Falling edge
+				11: Rising and falling edges
+				Note: For the BA45F5240-2 device, the INT1 external input pin is unavailable, so
+				these bits should be fixed at “00”.
+				Bit 1~0 INT0S1~INT0S0: Interrupt edge control for INT0 pin
+				00: Disable
+				01: Rising edge
+				10: Falling edge
+				11: Rising and falling edges
+				Note: For the BA45F5240-2 device, the INT0 external input pin is unavailable, so
+				these bits should be fixed at “00
+				*/
+				_int1s0 =0;
+				_int1s1 =1;
+				/*
+				INT1E: INT1 interrupt control
+				0: Disable
+				1: Enable
+				*/
+				_int1e=0;
+				/*
+				INT1F: INT1 interrupt request flag
+				0: No request
+				1: Interrupt request
+				
+				*/
+				_int1f=0;
+			  _int1e=1;
+				
+		
+		
+		
+	
+			
+				CONFIGH_SEG3=INPUT;
+				CONFIGH_SEG1=OUTPUT;
+				CONFIGH_SEG4=OUTPUT;
+				_papu4=1;
+		    	_pawu4=1;
+
+		
+				if(_pa4 ==1 )	
+				{
+				CONFIGH_SEG1=OUTPUT;
+				CONFIGH_SEG4=OUTPUT;
+				SEG1=0;
+				SEG4=1;	
+				GCC_DELAY(1000);
+				}
+				else{ 
+				CONFIGH_SEG1=INPUT;
+				CONFIGH_SEG4=INPUT;
+				SEG1=0;
+				SEG4=0;
+					GCC_DELAY(1000);
+					}
+		
+		
+		
+		
 		
 		
 		
@@ -124,11 +184,42 @@ char i;
 			while(1){
 			
 			
+			
+			
+		
+		
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				if(_to==0)
+				{
+				 my_E=0;	
+				}
+					
+			
+			
+			
+			
+			
+			
+			
+			
+			
 				_clrwdt();
 				
 				cunter++;
 			
-				shwoSegment(my_E);
+		    	shwoSegment(22);
 			
 			if(cunter>100) break;
 			}
@@ -153,9 +244,3 @@ char i;
 	
 	
 	}
-	
-	
-	
-		
-
-
