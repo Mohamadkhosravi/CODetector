@@ -80,6 +80,8 @@ bit falt;
 //#pragma rambank1
 //#pragma rambank=RAM_BANK1
 
+//if( _to||_pdf)
+
 float COValue =0.0;
 float temperatur=0.0;
 float Amplifier1=0.0;
@@ -88,7 +90,9 @@ float VAmplifier1=0.0;
 unsigned int TimerValue=0;
 int my_E = 1;
 int my_E2 = 0;
-char lim =0;
+
+
+
 //#pragma rambank=RAM_BANK1
 //#pragma norambank
 	
@@ -116,19 +120,20 @@ void main()
 	S_ADC_Init();
 	STimerInit();
  
-
+/*
 	readFromEEPROM(0x1,&my_E) ;
 	my_E=my_E + 1;
 	writeToEEPROM(0x1,my_E );
 	readFromEEPROM(0x1,&my_E2) ;
+*/
+if( _to||_pdf)
+{
+my_E2=my_E2++;
 
-
-         _clrwdt();
-			
-
-	
+}	
 	do
 	{
+	
 	
 		//LED_G=1;
 		
@@ -219,18 +224,10 @@ void main()
 
 
 
-         _clrwdt();
-			
 	
-			
-			
-
-	CONFIGH_SEG1=OUTPUT;
-
-			
 
 	while(1){
-     _clrwdt();
+
 	
 		NTCToGND=1;
 		temperatur= temperature(S_READ_ADC(1),3.3);
@@ -278,12 +275,13 @@ void main()
 		//	Amplifier1=S_READ_ADC(5);
 		
 	
+		TimerValue=readSTimer();
 	
 		
 		
 		
 		
-		
+		  	_clrwdt();
 		
 		
 		
@@ -312,12 +310,12 @@ void main()
 		while(1){
 		//	Amplifier1=S_READ_ADC(5);
 		
-         _clrwdt();
+  	_clrwdt();
 			
 			  
-			STimerInit();
+		
 			
-		/*
+		
 	
 			tempAmplifier1=0;
 			Amplifier1=0;
@@ -329,26 +327,7 @@ void main()
 				
 			}
 			Amplifier1=tempAmplifier1/10;
-		*/
 		
-			TimerValue=readSTimer();
-	    	if (TimerValue>=512)
-			{
-				lim =!lim;
-				_stmdl=0;
-				_stmdh=0;	
-			
-			}
-		
-			if(lim==0)
-			{
-				
-				SEG1=0;	
-			}
-		    if(lim==1)
-			{
-	      		SEG1=1;
-			}
 		
 		/*
 			tempAmplifier2=0;
@@ -373,18 +352,18 @@ void main()
 		
 			
 		//	VAmplifier1=(((Amplifier1*(VDD/4095))/gainAmplifier1*1000)/15)*1000;
-		//	COValue=VAmplifier1*slope;
+			COValue=VAmplifier1*slope;
 		//	shwoSegment(temperatur/10);
 		//	shwoSegment(COValue * PPM(temperatur/10));
 		
 		
 		
 	
-	   // shwoSegment(TimerValue);
+	     shwoSegment(my_E2);
 	     
-	          _clrwdt();
-		//cunter++;
-		//if(cunter>100)break;
+	     
+		cunter++;
+		if(cunter>100)break;
 		}
 	    cunter=0;
 		

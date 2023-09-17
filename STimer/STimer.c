@@ -75,7 +75,6 @@ void STimerInit(void){
 		_stio1=0;
 			
 	#endif
-
 	#ifdef COMPARE_MATCH_OUTPUT_MODE
 		/*
 		STM1~STM0: Select STM Operating Mode
@@ -125,7 +124,6 @@ void STimerInit(void){
 		*/
 		
 		_stdpx=1;		
-		
 				
 		/*
 		STCCLR: STM Counter Clear Condition Selection
@@ -144,33 +142,19 @@ void STimerInit(void){
 		D9~D8: STM CCRA High Byte Register bit 1 ~ bit 0
 		STM 10-bit CCRA bit 9 ~ bit 8
 		*/
-		
 		_stmah=0b11;
-		
-		
 
-
-	 _clrwdt();
+        _stmae=1;
+    	_stmaf=1;
 		
-#endif
-		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	#endif
 	
 	
 	
 }
-int readSTimer(void){
-	 _clrwdt();
-		
+int readSTimer(void){	
 	return((_stmdl)|(_stmdh<<8));
 		
 }
+
+
