@@ -1337,7 +1337,17 @@ int length(int number){
  }
 
 
-
+	void clearSegment(void)
+	{
+		
+		CONFIGH_SEG1 = INPUT;
+		CONFIGH_SEG2 = INPUT;
+		CONFIGH_SEG3 = INPUT;
+		CONFIGH_SEG4 = INPUT;
+		CONFIGH_SEG5 = INPUT;
+		CONFIGH_SEG6 = INPUT;	
+		
+	}
 
 
 

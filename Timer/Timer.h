@@ -1,6 +1,6 @@
 
-#ifndef STM_H
-#define STM_H
+#ifndef TM_H
+#define TM_H
 
 #include "BA45F5240.h"
 

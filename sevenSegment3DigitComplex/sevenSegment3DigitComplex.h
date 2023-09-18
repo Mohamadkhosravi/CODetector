@@ -78,6 +78,6 @@
 	
 	int length(int number);
 	int shwoSegment(int number);
-
+	void clearSegment(void);
 
 #endif

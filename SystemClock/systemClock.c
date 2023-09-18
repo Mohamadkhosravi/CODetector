@@ -52,7 +52,6 @@ _we4=0;
 
 
 
-
 //WDT time-out period selection 2^18/fLIRC
 _ws0=1;
 _ws1=1;
