@@ -6,6 +6,7 @@
 #include "GPIO.h"
 #include "EEPROM.h"
 #include <stdint.h>
+#include "Button.h"
 //extern void movir();
 //#include "OPAMP.h"
  
@@ -57,17 +58,31 @@ int my_E2;
 void OPAMPset (void);
 int cunter=0;
 char i;
+	int currentTime	;
+int state;
+ enum {
 
+	IDLE,
+	SINGLE,
+	DOUBLE,
+	LONGPRESS
 
-	
+}buttonStatus;
+
 	void main()
 	{
-		
+	 	
 
 		if(_to==0)
 		{
 		 my_E=0;
-		 my_E2=0;	
+		 my_E2=0;
+		 currentTime=0;	
+		 state=0;
+	     debounceCounter=0;
+		 
+		 
+		  //buttonStatus:BUTTON_STATE_IDLE;
 		}
 			
 			
@@ -88,60 +103,119 @@ char i;
 		
 		clearSegment();
 
-				
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	while(1)
-	{	
-			
+		char pressFlag=0;
 		while(1)
-		{
+		{	
+			
+	    	buttonStatus =IDLE;
 			clearSegment();
 			_papu4=1;
 			_pawu4=1;
-			_pawu=0b111000;
+			_pawu=0b111000;	
+			char dot=0;
+		    pressCount = 0;
+		char flag =1;
+		while(1){	
+				_clrwdt();
+				
+				_papu4=1;
+			    _pawu4=1;
+			   _pawu=0b111000;	
+			   clearSegment();
+			   
+	
+			
+			
+			    if(_pa4 == 0 )	
+				{
+				  debounceCounter++;
+				  
+					 if ((flag==1)&&(pressFlag==0))
+					 {
+					  dot=(!dot);
+					  flag=0;
+					 }
+					 if(debounceCounter>10000)
+					 {
+					  pressFlag=1;	
+					 	
+					 }
+				 
+	
+				}
+				if((_pa4 == 1)&&(pressFlag ==0))
+				{
+				  flag=1;
+				 debounceCounter=0;
+		             cunter=0;
+			       clearSegment();
+		             _papu4=1;
+				      _pawu4=1;
+		               
+		               	
+		               if((dot==1))
+						{
+							
+							buttonStatus  =DOUBLE;
+							debounceCounter=0;
+							pressCount=1;
+							
+						}
+	                    if((dot==0))
+	                    {
+		                    clearSegment();
+							buttonStatus =SINGLE;	
+	                    	
+	                    }
+		               		
+				        
+					    
+				    
+			
+				      if(	buttonStatus==DOUBLE)
+				      {
+				      	 clearSegment();
+				      	 shwoSegment(222);
+				      	 clearSegment();
+				      }
+				      if(buttonStatus==SINGLE)
+				      {
+				      	clearSegment();
+				      	 shwoSegment(111);
+				      	 clearSegment();
+				      	
+				      	}
+		            
+			        
+					    clearSegment();	
+				        cunter=0;
+						_papu4=1;
+						_pawu4=1;
+	
+			        
+		             	}  
+		         if((_pa4 == 1)&&(pressFlag ==1))
+				{    
+					
+				
+						
+		          	clearSegment();
+				      	 shwoSegment(333);
+				      	 clearSegment(); 
+				      	   cunter=0;
+						_papu4=1;
+						_pawu4=1; 
+						
+						
+				
+		             	
+				}    	
+		             	 
+			
 		
-		if(_pa4 ==0 )	
-		{
-			my_E2++;
-			GCC_DELAY(200);
-		     break;
-		}
+		      }  
+		}	
 		
-		else{ 
-		
-		
-			GCC_DELAY(200);
-		}
-		
-		clearSegment();
-		
-		
-		}
-		while(1)
-		{
-			cunter++;	
-			shwoSegment(my_E2);
-			if(cunter>200) break;
-		
-		}
-		clearSegment();
-		cunter=0;
-		_papu4=1;
-		_pawu4=1;
-		_halt();
 		
 	}	
 	 // goto start;
@@ -188,6 +262,6 @@ char i;
 
 		
 	
-	}
+
 	
 	
