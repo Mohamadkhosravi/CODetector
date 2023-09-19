@@ -94,4 +94,3 @@ float temperature(int ADCValue, float VDD) {
 	return temperatureCelsius;
 
 }
-

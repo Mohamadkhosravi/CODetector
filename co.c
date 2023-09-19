@@ -6,7 +6,7 @@
 #include "GPIO.h"
 #include "EEPROM.h"
 #include <stdint.h>
-#include "Button.h"
+
 //extern void movir();
 //#include "OPAMP.h"
  
@@ -52,15 +52,23 @@ float Amplifier1=0.0;
 float tempAmplifier1=0.0;
 float VAmplifier1=0.0;
 unsigned int TimerValue=0;
+
+
 int my_E ;
 int my_E2;
 
 void OPAMPset (void);
 int cunter=0;
 char i;
-	int currentTime	;
+int currentTime	;
 int state;
- enum {
+
+#define SET 0
+#define RESET 1
+#define DEBOUNCE_THRESHOLD 2
+
+
+enum {
 
 	IDLE,
 	SINGLE,
@@ -69,6 +77,19 @@ int state;
 
 }buttonStatus;
 
+int pressCount;
+int debounceCounter;
+char dot=0;
+pressCount = 0;
+char flag =2;
+char pressFlag;
+float VDD;
+ key(void);
+		
+
+		
+		
+	//buttonStatus key(void);
 	void main()
 	{
 	 	
@@ -80,7 +101,7 @@ int state;
 		 currentTime=0;	
 		 state=0;
 	     debounceCounter=0;
-		 
+		 pressFlag=0;
 		 
 		  //buttonStatus:BUTTON_STATE_IDLE;
 		}
@@ -103,131 +124,27 @@ int state;
 		
 		clearSegment();
 
-		char pressFlag=0;
+	
 		while(1)
 		{	
 			
-	    	buttonStatus =IDLE;
-			clearSegment();
-			_papu4=1;
-			_pawu4=1;
-			_pawu=0b111000;	
-			char dot=0;
-		    pressCount = 0;
-		char flag =1;
-		while(1){	
-				_clrwdt();
+			
+			
+			NTCToGND=1;
+			temperatur= temperature(S_READ_ADC(1),3.3);
+			//shwoSegment((1.20*(4095/ VB_ADC))*100);  
+			// vbgren enable
+			
+			_vbgren=1;
+			
+			float VB_ADC=0;
+			//  temperatur = 0;
+			
+			//RT = ((R1 * RB * (RS + R2) * (I - vout - 1)) / ((I - vout - 1) - RB * (RS + R2))) - R1	
 				
-				_papu4=1;
-			    _pawu4=1;
-			   _pawu=0b111000;	
-			   clearSegment();
-			   
+			VDD = VBattery(S_READ_ADC(4));	
+			
 	
-			
-			
-			    if(_pa4 == 0 )	
-				{
-				  debounceCounter++;
-				  
-					 if ((flag==1)&&(pressFlag==0))
-					 {
-					  dot=(!dot);
-					  flag=0;
-					 }
-					 if(debounceCounter>10000)
-					 {
-					  pressFlag=1;	
-					 	
-					 }
-				 
-	
-				}
-				if((_pa4 == 1)&&(pressFlag ==0))
-				{
-				  flag=1;
-				 debounceCounter=0;
-		             cunter=0;
-			       clearSegment();
-		             _papu4=1;
-				      _pawu4=1;
-		               
-		               	
-		               if((dot==1))
-						{
-							
-							buttonStatus  =DOUBLE;
-							debounceCounter=0;
-							pressCount=1;
-							
-						}
-	                    if((dot==0))
-	                    {
-		                    clearSegment();
-							buttonStatus =SINGLE;	
-	                    	
-	                    }
-		               		
-				        
-					    
-				    
-			
-				      if(	buttonStatus==DOUBLE)
-				      {
-				      	 clearSegment();
-				      	 shwoSegment(222);
-				      	 clearSegment();
-				      }
-				      if(buttonStatus==SINGLE)
-				      {
-				      	clearSegment();
-				      	 shwoSegment(111);
-				      	 clearSegment();
-				      	
-				      	}
-		            
-			        
-					    clearSegment();	
-				        cunter=0;
-						_papu4=1;
-						_pawu4=1;
-	
-			        
-		             	}  
-		         if((_pa4 == 1)&&(pressFlag ==1))
-				{    
-					
-				
-						
-		          	clearSegment();
-				      	 shwoSegment(333);
-				      	 clearSegment(); 
-				      	   cunter=0;
-						_papu4=1;
-						_pawu4=1; 
-						
-						
-				
-		             	
-				}    	
-		             	 
-			
-		
-		      }  
-		}	
-		
-		
-	}	
-	 // goto start;
-		/*while(1)
-		{
-				
-			shwoSegment(111);
-			
-		
-		}*/
-			
-		/*
 		tempAmplifier1=0;
 		Amplifier1=0;
 		
@@ -237,8 +154,8 @@ int state;
 			tempAmplifier1=tempAmplifier1+Amplifier1;
 		
 		}
-		Amplifier1=tempAmplifier1/10;
-		*/
+	
+	
 		//adcValue=S_READ_ADC(3);
 		
 		//shwoSegment(COValue);
@@ -246,18 +163,164 @@ int state;
 		
 		
 		
-		//	VAmplifier1=(((Amplifier1*(VDD/4095))/gainAmplifier1*1000)/15)*1000;
-		//  COValue=VAmplifier1*slope;
+	
 		//	shwoSegment(temperatur/10);
 		//	shwoSegment(COValue * PPM(temperatur/10));
+	
+		//	shwoSegment(temperatur/10);
+			
+			
+			
+				clearSegment();
+			_papu4=1;
+			_pawu4=1;
+			_pawu=0b111000;	
+			buttonStatus =IDLE;
+			
+			
+			while(1){
+					
+				
+				
+				_papu4=1;
+				_pawu4=1;
+				_pawu=0b111000;	
+				clearSegment();
+				
+				
+				key();
+				
+				
+				_papu4=1;
+				_pawu4=1;
+				_pawu=0b111000;	
+				clearSegment();
+				
+			
+			
+			
+				
+				
+				if(buttonStatus==IDLE)
+				{
+					
+					clearSegment(); 
+					cunter=0;
+					_papu4=1;
+					_pawu4=1; 
+				}
+				if(buttonStatus==DOUBLE)
+				{
+					clearSegment();
+					shwoSegment(222);
+					clearSegment();
+				}
+				if(buttonStatus==SINGLE)
+				{
+					clearSegment();
+				    shwoSegment(111);
+					clearSegment();
+				
+				}
+				
+				if(buttonStatus==LONGPRESS)
+				{
+					clearSegment();
+					shwoSegment(333);
+					clearSegment(); 
+					cunter=0;
+					_papu4=1;
+					_pawu4=1; 
+				
+				
+				}
+				
+			cunter++;
+			
+			_papu4=1;
+			_pawu4=1;
+			_pawu=0b111000;	
+			clearSegment();
+			
+			
+		   
+		
+		  	} 
+			shwoSegment(444);
+			cunter=0;	
+			_halt();
+			debounceCounter=0; 
+		}
+		
+	    
+		
+	}	
+
 		
 	
 	
 		
+
+	 key(void){
+		
+
+
+		
+		if(_pa4 == 0 )	
+		{
+			debounceCounter++;
+			buttonStatus  =IDLE;
+		
+			if ((flag==1)&&(pressFlag==0))
+			{
+				dot=(!dot);
+			
+				flag=0;
+			}
+			if(debounceCounter>5000)
+			{
+				pressFlag=1;	
+			
+			}
+			
+		}
+		if((_pa4 == 1)&&(pressFlag ==0))
+		{
+			flag=1;
+			debounceCounter=0;
+			cunter=0;
+			clearSegment();
+			_papu4=1;
+			_pawu4=1;
+		
+		   if((dot==1))
+			{
+		
+		  	  buttonStatus  =DOUBLE;
+			  pressCount=1;
+				
+			}
+		    if((dot==0))
+		    {
+		   	 buttonStatus= SINGLE;
+		    }
+		
+		    clearSegment();	
+		    cunter=0;
+			_papu4=1;
+			_pawu4=1;
+		
+		
+		}  
+		if((_pa4 == 1)&&(pressFlag ==1))
+		{    
+			buttonStatus =LONGPRESS;
+	
+		}
 		
 		
 		
-		
+	 }  	   	 
 	
 
 		
