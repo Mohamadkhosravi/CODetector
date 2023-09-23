@@ -146,7 +146,8 @@ _pas10=0;
 _pas11=0;
 
 //PA6 = BUZZ
-_pas14=0;
+//PTP PWM OUTPUT
+_pas14=1;
 _pas15=0;
 
 //PA7 = NTC
