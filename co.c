@@ -33,6 +33,10 @@
 #define ConstC 0.000202579
 #define ConstD 0.0133869
 */
+#define _8_HOURS  3600
+#define _240_MINUTES 1800
+#define _50_MINUTES 375
+#define _15_MINUTES 112
 
 #define ConstA 0.000000025
 #define ConstB 0.000003611
@@ -53,15 +57,20 @@ float tempAmplifier1=0.0;
 float VAmplifier1=0.0;
 unsigned int TimerValue=0;
 unsigned int keyCounter=0;
-
+unsigned int alarmCounter;
+unsigned int pressTimer;
 int my_E ;
 int my_E2;
 
 void OPAMPset (void);
 int cunter=0;
 char i;
+
 int currentTime	;
 int state;
+char f;
+char alarmCounterFlag;
+
 
 #define SET 0
 #define RESET 1
@@ -73,7 +82,8 @@ enum {
 	IDLE,
 	SINGLE,
 	DOUBLE,
-	LONGPRESS
+	LONGPRESS,
+	NONPRESS
 
 }buttonStatus;
 
@@ -97,13 +107,14 @@ void OPAMPset (void);
 
 		if(_to==0)
 		{
-		 my_E=0;
-		 my_E2=0;
-		 currentTime=0;	
-		 state=0;
-	     debounceCounter=0;
-		  cunter=0;
-		 
+			f=0;
+			my_E=0;
+			my_E2=0;
+			currentTime=0;	
+			state=0;
+			debounceCounter=0;
+			cunter=0;
+			alarmCounterFlag =0;
 		  //buttonStatus:BUTTON_STATE_IDLE;
 		}
 			
@@ -120,41 +131,49 @@ void OPAMPset (void);
 		_vbgren=1;
 		_sda0en=1;
 		_sda1en=1; 
-		_clrwdt();
+		//_clrwdt();
 		
 		
 		clearSegment();
 
+
 	
-		while(1)
-		{	
+	
+     	
+
+		my_E++;
+	
+	//	while(1)
+	//	{	
 			
-			
+		
 			
 			NTCToGND=1;
-			GCC_DELAY(100);
+		
 			LEDToGND=0;
-			GCC_DELAY(100);
+		
 			S_ADC_Init();
-			
+
 	    	_vbgren=1;
 			_sda0en=1;
 			_sda1en=1; 
 		
-			temperatur= temperature(S_READ_ADC(1),3.3);
+			VDD = VBattery(S_READ_ADC(4));
+		
+		
 			//shwoSegment((1.20*(4095/ VB_ADC))*100);  
 			// vbgren enable
 			
 			_vbgren=1;
 			
-			float VB_ADC=0;
+
 			//  temperatur = 0;
 			
 			//RT = ((R1 * RB * (RS + R2) * (I - vout - 1)) / ((I - vout - 1) - RB * (RS + R2))) - R1	
 					
-				VDD = VBattery(S_READ_ADC(4));	
-				
-		
+			
+			temperatur= temperature(S_READ_ADC(1),VDD);	
+			
 			tempAmplifier1=0;
 			Amplifier1=0;
 			
@@ -166,24 +185,17 @@ void OPAMPset (void);
 			}
 		     Amplifier1=tempAmplifier1/10;
 		     VAmplifier1=(((Amplifier1*(VDD/4095))/gainAmplifier1*1000)/15)*1000;
-		    COValue=VAmplifier1*slope;
-		
-			//adcValue=S_READ_ADC(3);
-		
-		//shwoSegment(COValue);
-		//shwoSegment(COValue*PPM(temperatur/10));
-		
-		
-		
-	
-		//	shwoSegment(temperatur/10);
+		     COValue=VAmplifier1*slope;
+
+
 		//	shwoSegment(COValue * PPM(temperatur/10));
 	
-		//	shwoSegment(temperatur/10);
+	
+	
 			
 			
 			
-				clearSegment();
+			clearSegment();
 			_papu4=1;
 			_pawu4=1;
 			_pawu=0b111000;	
@@ -191,91 +203,137 @@ void OPAMPset (void);
 			pressFlag=0;
 			
 			debounceCounter=0;
+		
+		 	
+	      cunter=0;
 			
+			keyCounter=0;
+			
+			
+		if ((COValue>30)&&(alarmCounter>= _8_HOURS)){
+		
+		}
+		else if ((COValue>70)&&(alarmCounter>= _240_MINUTES)){
+		
+		}
+		else if ((COValue>150)&&(alarmCounter>=_50_MINUTES)){
+		
+		}
+		else if ((COValue>400)&&(alarmCounter>= _15_MINUTES)){
+		
+		}
+		else
+		{	
+		
+		}
+		
+		
+		if(alarmCounterFlag==1)
+		{	
+		alarmCounter++;
+		}
 		
 			
 			
+			
+			
 			while(1){
-					
-			 
-				
-			
-				 buttonStatus =IDLE;
-				_papu4=1;
-				_pawu4=1;
-				_pawu=0b111000;	
-				clearSegment();
-				
-				
-				key();
-				
-				
-				_papu4=1;
-				_pawu4=1;
-				_pawu=0b111000;	
-				clearSegment();
 			
 			
-				
-				
-				if(buttonStatus==IDLE)
+		    	key();
+			
+			    if(buttonStatus==NONPRESS)
 				{
-					
-					clearSegment(); 
-					 
+				
+					//shwoSegment(my_E);
+						_halt();			
+				}
+			    else
+			    {
+					key();
 					_papu4=1;
-					_pawu4=1; 
-				}
-				if(buttonStatus==DOUBLE)
-				{
+					_pawu4=1;
+					_pawu=0b111000;	
+					clearSegment();
+				
+					// shwoSegment(my_E);
+			     	if(buttonStatus==IDLE)
+					{
+						//_clrwdt();
+						clearSegment(); 
+						_papu4=1;
+						_pawu4=1; 
+					}
+					else if(buttonStatus==DOUBLE)
+					{
+						_clrwdt();
+						clearSegment();
+					   // shwoSegment(COValue * PPM(temperatur/10));
+					   shwoSegment(COValue);
+						clearSegment();
+						
+					}
+					else if(buttonStatus==SINGLE)
+					{
+						_clrwdt();
+						clearSegment();
+					    shwoSegment(temperatur/10);
+						clearSegment();
+					}
+					else if(buttonStatus==LONGPRESS)
+					{
+						_clrwdt();
+						clearSegment();
+						shwoSegment(333);
+						clearSegment(); 
+						cunter=0;
+						_papu4=1;
+						_pawu4=1; 
+						
+					}
+				   
+				
+			    	clearSegment();	
+					_papu4=1;
+					_pawu4=1;
+					cunter++;
+				//	if (cunter>200)break;
 					
-					clearSegment();
-				   // shwoSegment(COValue * PPM(temperatur/10));
-				   shwoSegment(COValue);
-					clearSegment();
+				  //shwoSegment(cunter);*/
+			    // if(cunter>500) break;
 				}
-				if(buttonStatus==SINGLE)
-				{
-					clearSegment();
-				    shwoSegment(temperatur/10);
-					clearSegment();
-				
-				}
-				
-				if(buttonStatus==LONGPRESS)
-				{
-					clearSegment();
-					shwoSegment(333);
-					clearSegment(); 
+					clearSegment();	
+					_papu4=1;
+					_pawu4=1;
+					_pawu=0b111000;	
 					cunter=0;
-					_papu4=1;
-					_pawu4=1; 
-				
-				
-				}
-				
-				clearSegment();	
-				cunter=0;
-				_papu4=1;
-				_pawu4=1;
-				cunter++;
-				
-			  //shwoSegment(cunter);
-			/*	 if(cunter>200000){
-				 cunter=0;
-			     break;
 			
-			  	 }*/ 
 			}
+			
+			
+			
+		    //	_papu4=1;
+			//	_pawu4=1;
+			//	_pawu=0b111000;	
+			//	clearSegment();
+		//	_halt();
+		  //  ClockInit();
 	
-		clearSegment();
-		_papu4=1;
-		_pawu4=1;
-		_pawu=0b111000;
-		_halt();
-		cunter=0;		
-		debounceCounter=0; 
-		}
+				//WDT function software control Enable
+		
+//
+	
+	
+	
+		//	 clearSegment();
+		//	_papu4=1;
+		//	_pawu4=1;
+		//	_pawu=0b111000;
+		//	_halt();
+			//cunter=0;		
+		//	debounceCounter=0; 
+		
+		//}
 		
 	    
 		
@@ -324,12 +382,28 @@ void OPAMPset (void);
 			{
 		
 		  	  buttonStatus  =DOUBLE;
+		  	  keyCounter++;
+		  	  
+		  	  if(keyCounter>=500)
+		  	  {
+		  	  	debounceCounter=0;
+		  	  	pressFlag=0;
+		  	  	keyCounter=0;
+		  	  }
 			 // pressCount=1;
 				
 			}
 		    if((dot==0))
 		    {
 		   	 buttonStatus= SINGLE;
+		   	 keyCounter++;
+		   	  if(keyCounter>=500)
+		  	  {
+		  	  	debounceCounter=0;
+		  	  	pressFlag=0;
+		  	  	keyCounter=0;
+		  	  }
+		   	 
 		    }
 		
 		    clearSegment();	
@@ -342,10 +416,24 @@ void OPAMPset (void);
 		if((_pa4 == 1)&&(pressFlag ==2))
 		{    
 			buttonStatus =LONGPRESS;
+			keyCounter++;
+			
+		    	if(keyCounter>=500)
+		  	  {
+		  	  	debounceCounter=0;
+		  	  	pressFlag=0;
+		  	  	keyCounter=0;
+		  	  }
+			
+			
+		//	if (pressTimer>=200)
 	
 		}
 		
-		
+		if((pressFlag ==0))
+		{
+			buttonStatus= NONPRESS;			
+		}
 		
 		
 	 }  	   	 
