@@ -267,7 +267,7 @@ _ptcclr=1;
 }
 
 
- void PWMSeter(int status)
+ void PWMSeter(char status)
  {
  	if(status)
  	{

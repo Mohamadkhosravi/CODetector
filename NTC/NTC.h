@@ -56,7 +56,7 @@ https://www.thinksrs.com/downloads/programs/therm%20calc/ntccalibrator/ntccalcul
 #define  C  0.0000000876741
 
 
-float temperature(int temp , float VDD);
+float temperature(int ADCValue, float VDD);
    
 
 #endif
