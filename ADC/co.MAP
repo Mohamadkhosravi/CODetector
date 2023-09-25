@@ -1,203 +1,203 @@
 
 Linker Version 8.7.7.220718
-Input Object File: Y:\Desktop\CODetector\ADC\CO.OBJ
-Input Object File: Y:\Desktop\CODetector\ADC\STARTUP1_L.OBJ
-Input Object File: Y:\Desktop\CODetector\ADC\ADC.OBJ
-Input Object File: Y:\Desktop\CODetector\ADC\NTC.OBJ
-Input Object File: Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ
-Input Object File: Y:\Desktop\CODetector\ADC\GPIO.OBJ
-Input Object File: Y:\Desktop\CODetector\ADC\OPAMP.OBJ
-Input Object File: Y:\Desktop\CODetector\ADC\SYSTEMCLOCK.OBJ
-Input Object File: Y:\Desktop\CODetector\ADC\TIMER.OBJ
+Input Object File: c:\users\tech\desktop\codetector\ADC\CO.OBJ
+Input Object File: c:\users\tech\desktop\codetector\ADC\STARTUP1_L.OBJ
+Input Object File: c:\users\tech\desktop\codetector\ADC\ADC.OBJ
+Input Object File: c:\users\tech\desktop\codetector\ADC\NTC.OBJ
+Input Object File: c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ
+Input Object File: c:\users\tech\desktop\codetector\ADC\GPIO.OBJ
+Input Object File: c:\users\tech\desktop\codetector\ADC\OPAMP.OBJ
+Input Object File: c:\users\tech\desktop\codetector\ADC\SYSTEMCLOCK.OBJ
+Input Object File: c:\users\tech\desktop\codetector\ADC\TIMER.OBJ
 
 Input Library File: C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB
 Input Library File: C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\v3_lmrsc.lib
 
 
      Bank    Start     End      Length     Class    AvgIns    Name
-     00h     0000h     0000h    0001h      CODE               @code (Y:\Desktop\CODetector\ADC\CO.OBJ)
-     00h     0001h     0021h    0021h      CODE               @start (Y:\Desktop\CODetector\ADC\CO.OBJ)
-     00h     0022h     002eh    000dh      CODE               @ROMDATA_BASE (Y:\Desktop\CODetector\ADC\STARTUP1_L.OBJ)
-     00h     002fh     0033h    0005h      CODE               itodaz (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0034h     006fh    003ch      CODE               _builtin_holtek_dtdiv (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0070h     00afh    0040h      CODE               _builtin_holtek_dtmul (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     00b0h     00e1h    0032h      CODE               _builtin_holtek_ftdiv (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     00e2h     0116h    0035h      CODE               _builtin_holtek_ftmul (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0117h     014ah    0034h      CODE               @builtin_holtek_ftsubadd (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     014bh     0188h    003eh      CODE               @builtin_holtek_dtsubadd (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0189h     01b3h    002bh      CODE               _builtin_holtek_dtol (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     01b4h     01deh    002bh      CODE               @builtin_holtek_ftol (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     01dfh     01ebh    000dh      CODE               itofaz (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     01ech     021fh    0034h      CODE               _builtin_holtek_dtnorm (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0220h     0237h    0018h      CODE               @builtin_holtek_dtdecode (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0238h     0266h    002fh      CODE               _builtin_holtek_ftnorm (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0267h     027ch    0016h      CODE               @builtin_holtek_ftdecode (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     027dh     0283h    0007h      CODE               _builtin_holtek_dtinf (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0284h     0289h    0006h      CODE               _builtin_holtek_ftinf (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     028ah     0301h    0078h      CODE               _key (Y:\Desktop\CODetector\ADC\CO.OBJ)
-     00h     0302h     0670h    036fh      CODE               _main (Y:\Desktop\CODetector\ADC\CO.OBJ)
-     00h     0671h     0676h    0006h      CODE               _S_ADC_Init (Y:\Desktop\CODetector\ADC\ADC.OBJ)
-     00h     0677h     06e7h    0071h      CODE               _S_READ_ADC (Y:\Desktop\CODetector\ADC\ADC.OBJ)
-     00h     06e8h     0818h    0131h      CODE               _custom_log (Y:\Desktop\CODetector\ADC\NTC.OBJ)
-     00h     0819h     098ch    0174h      CODE               _temperature (Y:\Desktop\CODetector\ADC\NTC.OBJ)
-     00h     098dh     0995h    0009h      CODE               _oneDigit1 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0996h     099eh    0009h      CODE               _oneDigit2 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     099fh     09a9h    000bh      CODE               _sevenDigit1 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     09aah     09b4h    000bh      CODE               _sevenDigit2 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     09b5h     09bfh    000bh      CODE               _sevenDigit3 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     09c0h     09d7h    0018h      CODE               _length (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     09d8h     09deh    0007h      CODE               _clearSegment (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     09dfh     0a02h    0024h      CODE               _errorSeg (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0a03h     0a2fh    002dh      CODE               _error1Seg (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0a30h     0a4eh    001fh      CODE               _ziroDigit1 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0a4fh     0a6bh    001dh      CODE               _ziroDigit2 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0a6ch     0a88h    001dh      CODE               _ziroDigit3 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0a89h     0a92h    000ah      CODE               _oneDigit3 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0a93h     0aa6h    0014h      CODE               _towDigit1 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0aa7h     0abah    0014h      CODE               _towDigit2 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0abbh     0acfh    0015h      CODE               _towDigit3 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0ad0h     0ae7h    0018h      CODE               _threeDigit1 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0ae8h     0afbh    0014h      CODE               _threeDigit2 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0afch     0b0fh    0014h      CODE               _threeDigit3 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0b10h     0b21h    0012h      CODE               _fourDigit1 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0b22h     0b33h    0012h      CODE               _fourDigit2 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0b34h     0b45h    0012h      CODE               _fourDigit3 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0b46h     0b59h    0014h      CODE               _fiveDigit1 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0b5ah     0b6dh    0014h      CODE               _fiveDigit2 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0b6eh     0b81h    0014h      CODE               _fiveDigit3 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0b82h     0b97h    0016h      CODE               _sixDigit1 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0b98h     0badh    0016h      CODE               _sixDigit2 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0baeh     0bc3h    0016h      CODE               _sixDigit3 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0bc4h     0be0h    001dh      CODE               _eightDigit1 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0be1h     0bfdh    001dh      CODE               _eightDigit2 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0bfeh     0c15h    0018h      CODE               _eightDigit3 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0c16h     0c32h    001dh      CODE               _nineDigit1 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0c33h     0c4dh    001bh      CODE               _nineDigit2 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0c4eh     0c63h    0016h      CODE               _nineDigit3 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0c64h     0da7h    0144h      CODE               _shwoSegment (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0da8h     0dadh    0006h      CODE               _GPIOToGNDCurentInit (Y:\Desktop\CODetector\ADC\GPIO.OBJ)
-     00h     0daeh     0dc4h    0017h      CODE               _GPIOInit (Y:\Desktop\CODetector\ADC\GPIO.OBJ)
-     00h     0dc5h     0ed6h    0112h      CODE               _OPAMPset (Y:\Desktop\CODetector\ADC\OPAMP.OBJ)
-     00h     0ed7h     0ef2h    001ch      CODE               _OPAMPInit (Y:\Desktop\CODetector\ADC\OPAMP.OBJ)
-     00h     0ef3h     0f0ah    0018h      CODE               _ClockInit (Y:\Desktop\CODetector\ADC\SYSTEMCLOCK.OBJ)
-     00h     0f0bh     0f15h    000bh      CODE               _timerBaseInit (Y:\Desktop\CODetector\ADC\TIMER.OBJ)
-     00h     0f16h     0f2bh    0016h      CODE               _STimerInit (Y:\Desktop\CODetector\ADC\TIMER.OBJ)
-     00h     0f2ch     0f38h    000dh      CODE               _readSTimer (Y:\Desktop\CODetector\ADC\TIMER.OBJ)
-     00h     0f39h     0f44h    000ch      CODE               _PTimerInit (Y:\Desktop\CODetector\ADC\TIMER.OBJ)
-     00h     0f45h     0f56h    0012h      CODE               _PWMSeter (Y:\Desktop\CODetector\ADC\TIMER.OBJ)
-     00h     0f57h     0f60h    000ah      CODE               __DELAYX (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0f61h     0f97h    0037h      CODE               _builtin_holtek_divmodhi4_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0f98h     0faah    0013h      CODE               _builtin_holtek_mulhi3_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0fabh     0fcfh    0025h      CODE               _builtin_holtek_divmodqi4_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0080h     0080h    0001h      DATA     0         @BITDATASEC (Y:\Desktop\CODetector\ADC\STARTUP1_L.OBJ)
-     00h     0081h     0081h    0001h      DATA     58        @data_ra (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0082h     0082h    0001h      DATA     138       @data_rb (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0083h     0083h    0001h      DATA     131       @data_rc (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0084h     0084h    0001h      DATA     106       @data_rd (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0085h     0085h    0001h      DATA     110       @data_re (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0086h     0086h    0001h      DATA     81        @data_rf (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0087h     0087h    0001h      DATA     81        @data_rg (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0088h     0088h    0001h      DATA     30        @data_rh (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0089h     008eh    0006h      DATA     96.833    ftdata1 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     008fh     0091h    0003h      DATA     47        dtdata (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0092h     0098h    0007h      DATA     40.429    ftdata2 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     00c9h     00cah    0002h      DATA     8         @HCCINIT_keyCounter (Y:\Desktop\CODetector\ADC\CO.OBJ)
-     00h     00cbh     00cbh    0001h      DATA     8         @HCCINIT_pressFlag (Y:\Desktop\CODetector\ADC\CO.OBJ)
-     00h     00cch     00cch    0001h      DATA     3         @HCCINIT_pressLockFlag (Y:\Desktop\CODetector\ADC\CO.OBJ)
-     00h     00cdh     00cdh    0001h      DATA     3         @HCCINIT_keyState (Y:\Desktop\CODetector\ADC\CO.OBJ)
-     00h     00ceh     00d0h    0003h      DATA     3         @HCCINIT_temperatur (Y:\Desktop\CODetector\ADC\CO.OBJ)
-     00h     00d1h     00d3h    0003h      DATA     3         @HCCINIT_COValue (Y:\Desktop\CODetector\ADC\CO.OBJ)
-     00h     00d4h     00d6h    0003h      DATA     2         @HCCINIT_VDD (Y:\Desktop\CODetector\ADC\CO.OBJ)
-     00h     00d7h     00d9h    0003h      DATA     1         @HCCINIT_Amplifier1 (Y:\Desktop\CODetector\ADC\CO.OBJ)
-     00h     00dah     00dbh    0002h      DATA     1         @HCCINIT_n (Y:\Desktop\CODetector\ADC\NTC.OBJ)
-     00h     00dch     00ddh    0002h      DATA     7         @HCCINIT0_debounceCounter (Y:\Desktop\CODetector\ADC\CO.OBJ)
-     00h     00deh     00dfh    0002h      DATA     7         @HCCINIT0_buttonStatus (Y:\Desktop\CODetector\ADC\CO.OBJ)
-     00h     00e0h     00e0h    0001h      DATA     4         @HCCINIT0_VA0OS1 (Y:\Desktop\CODetector\ADC\OPAMP.OBJ)
-     00h     00e1h     00e2h    0002h      DATA     3         @HCCINIT0_alarmCounter (Y:\Desktop\CODetector\ADC\CO.OBJ)
-     00h     00e3h     00e3h    0001h      DATA     2         @HCCINIT0_VA1OS1 (Y:\Desktop\CODetector\ADC\OPAMP.OBJ)
-     00h     00e4h     00e4h    0001h      DATA     1         @HCCINIT0_VA1OS2 (Y:\Desktop\CODetector\ADC\OPAMP.OBJ)
-     00h     00e5h     00e5h    0001h      DATA     1         @HCCINIT0_VA1OS (Y:\Desktop\CODetector\ADC\OPAMP.OBJ)
-     00h     00e6h     00e6h    0001h      DATA     1         @HCCINIT0_VA0OS2 (Y:\Desktop\CODetector\ADC\OPAMP.OBJ)
-     00h     00e7h     00e7h    0001h      DATA     1         @HCCINIT0_VA0OS (Y:\Desktop\CODetector\ADC\OPAMP.OBJ)
-     00h     00e8h     00e9h    0002h      DATA     0         @HCCINIT0_V_op1 (Y:\Desktop\CODetector\ADC\OPAMP.OBJ)
-     00h     00eah     00ebh    0002h      DATA     0         @HCCINIT0_V_op0 (Y:\Desktop\CODetector\ADC\OPAMP.OBJ)
+     00h     0000h     0000h    0001h      CODE               @code (c:\users\tech\desktop\codetector\ADC\CO.OBJ)
+     00h     0001h     0021h    0021h      CODE               @start (c:\users\tech\desktop\codetector\ADC\CO.OBJ)
+     00h     0022h     0030h    000fh      CODE               @ROMDATA_BASE (c:\users\tech\desktop\codetector\ADC\STARTUP1_L.OBJ)
+     00h     0031h     0035h    0005h      CODE               itodaz (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0036h     0071h    003ch      CODE               _builtin_holtek_dtdiv (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0072h     00b1h    0040h      CODE               _builtin_holtek_dtmul (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     00b2h     00e3h    0032h      CODE               _builtin_holtek_ftdiv (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     00e4h     0118h    0035h      CODE               _builtin_holtek_ftmul (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0119h     0143h    002bh      CODE               @builtin_holtek_ftol (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0144h     0181h    003eh      CODE               @builtin_holtek_dtsubadd (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0182h     01b5h    0034h      CODE               @builtin_holtek_ftsubadd (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     01b6h     01c2h    000dh      CODE               itofaz (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     01c3h     01f6h    0034h      CODE               _builtin_holtek_dtnorm (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     01f7h     020eh    0018h      CODE               @builtin_holtek_dtdecode (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     020fh     023dh    002fh      CODE               _builtin_holtek_ftnorm (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     023eh     0253h    0016h      CODE               @builtin_holtek_ftdecode (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0254h     025ah    0007h      CODE               _builtin_holtek_dtinf (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     025bh     0260h    0006h      CODE               _builtin_holtek_ftinf (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0261h     03f7h    0197h      CODE               _main (c:\users\tech\desktop\codetector\ADC\CO.OBJ)
+     00h     03f8h     046fh    0078h      CODE               _key (c:\users\tech\desktop\codetector\ADC\CO.OBJ)
+     00h     0470h     0475h    0006h      CODE               _S_ADC_Init (c:\users\tech\desktop\codetector\ADC\ADC.OBJ)
+     00h     0476h     04e6h    0071h      CODE               _S_READ_ADC (c:\users\tech\desktop\codetector\ADC\ADC.OBJ)
+     00h     04e7h     0617h    0131h      CODE               _custom_log (c:\users\tech\desktop\codetector\ADC\NTC.OBJ)
+     00h     0618h     078bh    0174h      CODE               _temperature (c:\users\tech\desktop\codetector\ADC\NTC.OBJ)
+     00h     078ch     0794h    0009h      CODE               _oneDigit1 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0795h     079dh    0009h      CODE               _oneDigit2 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     079eh     07a8h    000bh      CODE               _sevenDigit1 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     07a9h     07b3h    000bh      CODE               _sevenDigit2 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     07b4h     07beh    000bh      CODE               _sevenDigit3 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     07bfh     07d6h    0018h      CODE               _length (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     07d7h     07ddh    0007h      CODE               _clearSegment (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     07deh     0801h    0024h      CODE               _errorSeg (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0802h     082eh    002dh      CODE               _error1Seg (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     082fh     084dh    001fh      CODE               _ziroDigit1 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     084eh     086ah    001dh      CODE               _ziroDigit2 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     086bh     0887h    001dh      CODE               _ziroDigit3 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0888h     0891h    000ah      CODE               _oneDigit3 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0892h     08a5h    0014h      CODE               _towDigit1 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     08a6h     08b9h    0014h      CODE               _towDigit2 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     08bah     08ceh    0015h      CODE               _towDigit3 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     08cfh     08e6h    0018h      CODE               _threeDigit1 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     08e7h     08fah    0014h      CODE               _threeDigit2 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     08fbh     090eh    0014h      CODE               _threeDigit3 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     090fh     0920h    0012h      CODE               _fourDigit1 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0921h     0932h    0012h      CODE               _fourDigit2 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0933h     0944h    0012h      CODE               _fourDigit3 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0945h     0958h    0014h      CODE               _fiveDigit1 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0959h     096ch    0014h      CODE               _fiveDigit2 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     096dh     0980h    0014h      CODE               _fiveDigit3 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0981h     0996h    0016h      CODE               _sixDigit1 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0997h     09ach    0016h      CODE               _sixDigit2 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     09adh     09c2h    0016h      CODE               _sixDigit3 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     09c3h     09dfh    001dh      CODE               _eightDigit1 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     09e0h     09fch    001dh      CODE               _eightDigit2 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     09fdh     0a14h    0018h      CODE               _eightDigit3 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0a15h     0a31h    001dh      CODE               _nineDigit1 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0a32h     0a4ch    001bh      CODE               _nineDigit2 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0a4dh     0a62h    0016h      CODE               _nineDigit3 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0a63h     0bc4h    0162h      CODE               _shwoSegment (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0bc5h     0bcah    0006h      CODE               _GPIOToGNDCurentInit (c:\users\tech\desktop\codetector\ADC\GPIO.OBJ)
+     00h     0bcbh     0be1h    0017h      CODE               _GPIOInit (c:\users\tech\desktop\codetector\ADC\GPIO.OBJ)
+     00h     0be2h     0cf3h    0112h      CODE               _OPAMPset (c:\users\tech\desktop\codetector\ADC\OPAMP.OBJ)
+     00h     0cf4h     0d0fh    001ch      CODE               _OPAMPInit (c:\users\tech\desktop\codetector\ADC\OPAMP.OBJ)
+     00h     0d10h     0d27h    0018h      CODE               _ClockInit (c:\users\tech\desktop\codetector\ADC\SYSTEMCLOCK.OBJ)
+     00h     0d28h     0d32h    000bh      CODE               _timerBaseInit (c:\users\tech\desktop\codetector\ADC\TIMER.OBJ)
+     00h     0d33h     0d48h    0016h      CODE               _STimerInit (c:\users\tech\desktop\codetector\ADC\TIMER.OBJ)
+     00h     0d49h     0d55h    000dh      CODE               _readSTimer (c:\users\tech\desktop\codetector\ADC\TIMER.OBJ)
+     00h     0d56h     0d61h    000ch      CODE               _PTimerInit (c:\users\tech\desktop\codetector\ADC\TIMER.OBJ)
+     00h     0d62h     0d73h    0012h      CODE               _PWMSeter (c:\users\tech\desktop\codetector\ADC\TIMER.OBJ)
+     00h     0d74h     0d7dh    000ah      CODE               __DELAYX (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0d7eh     0db4h    0037h      CODE               _builtin_holtek_divmodhi4_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0db5h     0dc7h    0013h      CODE               _builtin_holtek_mulhi3_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0dc8h     0dech    0025h      CODE               _builtin_holtek_divmodqi4_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0080h     0080h    0001h      DATA     0         @BITDATASEC (c:\users\tech\desktop\codetector\ADC\STARTUP1_L.OBJ)
+     00h     0081h     0081h    0001h      DATA     55        @data_ra (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0082h     0082h    0001h      DATA     127       @data_rb (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0083h     0083h    0001h      DATA     120       @data_rc (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0084h     0084h    0001h      DATA     90        @data_rd (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0085h     0085h    0001h      DATA     95        @data_re (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0086h     0086h    0001h      DATA     56        @data_rf (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0087h     0087h    0001h      DATA     56        @data_rg (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0088h     0088h    0001h      DATA     21        @data_rh (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0089h     008eh    0006h      DATA     75.667    ftdata1 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     008fh     0091h    0003h      DATA     37        dtdata (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0092h     0098h    0007h      DATA     32.714    ftdata2 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     00bdh     00beh    0002h      DATA     8         @HCCINIT_keyCounter (c:\users\tech\desktop\codetector\ADC\CO.OBJ)
+     00h     00bfh     00bfh    0001h      DATA     8         @HCCINIT_pressFlag (c:\users\tech\desktop\codetector\ADC\CO.OBJ)
+     00h     00c0h     00c1h    0002h      DATA     3         @HCCINIT_counter (c:\users\tech\desktop\codetector\ADC\CO.OBJ)
+     00h     00c2h     00c2h    0001h      DATA     3         @HCCINIT_pressLockFlag (c:\users\tech\desktop\codetector\ADC\CO.OBJ)
+     00h     00c3h     00c3h    0001h      DATA     3         @HCCINIT_keyState (c:\users\tech\desktop\codetector\ADC\CO.OBJ)
+     00h     00c4h     00c6h    0003h      DATA     2         @HCCINIT_COValue (c:\users\tech\desktop\codetector\ADC\CO.OBJ)
+     00h     00c7h     00c9h    0003h      DATA     2         @HCCINIT_VDD (c:\users\tech\desktop\codetector\ADC\CO.OBJ)
+     00h     00cah     00cch    0003h      DATA     1         @HCCINIT_VAmplifier1 (c:\users\tech\desktop\codetector\ADC\CO.OBJ)
+     00h     00cdh     00cfh    0003h      DATA     1         @HCCINIT_Amplifier1 (c:\users\tech\desktop\codetector\ADC\CO.OBJ)
+     00h     00d0h     00d2h    0003h      DATA     1         @HCCINIT_temperatur (c:\users\tech\desktop\codetector\ADC\CO.OBJ)
+     00h     00d3h     00d4h    0002h      DATA     1         @HCCINIT_n (c:\users\tech\desktop\codetector\ADC\NTC.OBJ)
+     00h     00d5h     00d6h    0002h      DATA     7         @HCCINIT0_debounceCounter (c:\users\tech\desktop\codetector\ADC\CO.OBJ)
+     00h     00d7h     00d8h    0002h      DATA     5         @HCCINIT0_buttonStatus (c:\users\tech\desktop\codetector\ADC\CO.OBJ)
+     00h     00d9h     00d9h    0001h      DATA     4         @HCCINIT0_VA0OS1 (c:\users\tech\desktop\codetector\ADC\OPAMP.OBJ)
+     00h     00dah     00dah    0001h      DATA     2         @HCCINIT0_VA1OS1 (c:\users\tech\desktop\codetector\ADC\OPAMP.OBJ)
+     00h     00dbh     00dbh    0001h      DATA     1         @HCCINIT0_VA1OS2 (c:\users\tech\desktop\codetector\ADC\OPAMP.OBJ)
+     00h     00dch     00dch    0001h      DATA     1         @HCCINIT0_VA1OS (c:\users\tech\desktop\codetector\ADC\OPAMP.OBJ)
+     00h     00ddh     00ddh    0001h      DATA     1         @HCCINIT0_VA0OS2 (c:\users\tech\desktop\codetector\ADC\OPAMP.OBJ)
+     00h     00deh     00deh    0001h      DATA     1         @HCCINIT0_VA0OS (c:\users\tech\desktop\codetector\ADC\OPAMP.OBJ)
+     00h     00dfh     00e0h    0002h      DATA     0         @HCCINIT0_alarmCounter (c:\users\tech\desktop\codetector\ADC\CO.OBJ)
+     00h     00e1h     00e2h    0002h      DATA     0         @HCCINIT0_V_op1 (c:\users\tech\desktop\codetector\ADC\OPAMP.OBJ)
+     00h     00e3h     00e4h    0002h      DATA     0         @HCCINIT0_V_op0 (c:\users\tech\desktop\codetector\ADC\OPAMP.OBJ)
 
      Local Sections
 
      Bank    Start     End      Length     Class    AvgIns    Name
-     00h     00c9h     00c9h    0000h      LOCAL    0         @dummy (Y:\Desktop\CODetector\ADC\CO.OBJ)
-     00h     00bah     00c8h    000fh      LOCAL    4.4667    _main (Y:\Desktop\CODetector\ADC\CO.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _ClockInit (Y:\Desktop\CODetector\ADC\SYSTEMCLOCK.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _GPIOInit (Y:\Desktop\CODetector\ADC\GPIO.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _GPIOToGNDCurentInit (Y:\Desktop\CODetector\ADC\GPIO.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _OPAMPInit (Y:\Desktop\CODetector\ADC\OPAMP.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _OPAMPset (Y:\Desktop\CODetector\ADC\OPAMP.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _S_ADC_Init (Y:\Desktop\CODetector\ADC\ADC.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _PTimerInit (Y:\Desktop\CODetector\ADC\TIMER.OBJ)
-     00h     0099h     0099h    0001h      LOCAL    1         _PWMSeter (Y:\Desktop\CODetector\ADC\TIMER.OBJ)
-     00h     0099h     0099h    0001h      LOCAL    1         _S_READ_ADC (Y:\Desktop\CODetector\ADC\ADC.OBJ)
+     00h     00bdh     00bdh    0000h      LOCAL    0         @dummy (c:\users\tech\desktop\codetector\ADC\CO.OBJ)
+     00h     00bah     00bch    0003h      LOCAL    3         _main (c:\users\tech\desktop\codetector\ADC\CO.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _ClockInit (c:\users\tech\desktop\codetector\ADC\SYSTEMCLOCK.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _GPIOInit (c:\users\tech\desktop\codetector\ADC\GPIO.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _GPIOToGNDCurentInit (c:\users\tech\desktop\codetector\ADC\GPIO.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _OPAMPInit (c:\users\tech\desktop\codetector\ADC\OPAMP.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _OPAMPset (c:\users\tech\desktop\codetector\ADC\OPAMP.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _S_ADC_Init (c:\users\tech\desktop\codetector\ADC\ADC.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _PTimerInit (c:\users\tech\desktop\codetector\ADC\TIMER.OBJ)
+     00h     0099h     0099h    0001h      LOCAL    1         _PWMSeter (c:\users\tech\desktop\codetector\ADC\TIMER.OBJ)
+     00h     0099h     0099h    0001h      LOCAL    1         _S_READ_ADC (c:\users\tech\desktop\codetector\ADC\ADC.OBJ)
      00h     0099h     0099h    0000h      LOCAL    0         __DELAYX (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
      00h     0099h     0099h    0000h      LOCAL    0         _builtin_holtek_uitod (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
      00h     0099h     0099h    0000h      LOCAL    0         _builtin_holtek_dtdiv (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
      00h     0099h     0099h    0000h      LOCAL    0         _builtin_holtek_dtdecode (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
      00h     0099h     0099h    0000h      LOCAL    0         _builtin_holtek_dtmul (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     00adh     00b9h    000dh      LOCAL    3.6923    _temperature (Y:\Desktop\CODetector\ADC\NTC.OBJ)
+     00h     00adh     00b9h    000dh      LOCAL    3.6923    _temperature (c:\users\tech\desktop\codetector\ADC\NTC.OBJ)
      00h     0099h     0099h    0000h      LOCAL    0         _builtin_holtek_ftdiv (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
      00h     0099h     0099h    0000h      LOCAL    0         _builtin_holtek_ftdecode (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
      00h     0099h     0099h    0000h      LOCAL    0         _builtin_holtek_itof (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
      00h     0099h     0099h    0000h      LOCAL    0         _builtin_holtek_ftmul (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
      00h     0099h     0099h    0000h      LOCAL    0         _builtin_holtek_ftsubadd (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0099h     00ach    0014h      LOCAL    3.7       _custom_log (Y:\Desktop\CODetector\ADC\NTC.OBJ)
+     00h     0099h     00ach    0014h      LOCAL    3.7       _custom_log (c:\users\tech\desktop\codetector\ADC\NTC.OBJ)
      00h     0099h     0099h    0000h      LOCAL    0         _builtin_holtek_dtsubadd (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
      00h     0099h     0099h    0000h      LOCAL    0         _builtin_holtek_uitof (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0099h     0099h    0000h      LOCAL    0         _clearSegment (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0001h      LOCAL    3         _key (Y:\Desktop\CODetector\ADC\CO.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _builtin_holtek_dtol (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
      00h     0099h     0099h    0000h      LOCAL    0         _builtin_holtek_ftol (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     00a1h     00a5h    0005h      LOCAL    6.6       _shwoSegment (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _ziroDigit1 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _error1Seg (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _errorSeg (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     00a1h     00a5h    0005h      LOCAL    6.6       _shwoSegment (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _ziroDigit1 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _clearSegment (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _error1Seg (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _errorSeg (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
      00h     0099h     00a0h    0008h      LOCAL    7.375     _builtin_holtek_divmodhi4_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
      00h     0099h     009eh    0006h      LOCAL    3.1667    _builtin_holtek_mulhi3_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0099h     0099h    0000h      LOCAL    0         _nineDigit3 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _ziroDigit3 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _oneDigit3 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _towDigit3 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _threeDigit3 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _fourDigit3 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _fiveDigit3 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _sixDigit3 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _sevenDigit3 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _eightDigit3 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _nineDigit2 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _ziroDigit2 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _oneDigit2 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _towDigit2 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _threeDigit2 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _fourDigit2 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _fiveDigit2 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _sixDigit2 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _sevenDigit2 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _eightDigit2 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _nineDigit1 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _oneDigit1 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _towDigit1 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _threeDigit1 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _fourDigit1 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _fiveDigit1 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _sixDigit1 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _sevenDigit1 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
-     00h     0099h     0099h    0000h      LOCAL    0         _eightDigit1 (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _nineDigit3 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _ziroDigit3 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _oneDigit3 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _towDigit3 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _threeDigit3 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _fourDigit3 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _fiveDigit3 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _sixDigit3 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _sevenDigit3 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _eightDigit3 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _nineDigit2 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _ziroDigit2 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _oneDigit2 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _towDigit2 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _threeDigit2 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _fourDigit2 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _fiveDigit2 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _sixDigit2 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _sevenDigit2 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _eightDigit2 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _nineDigit1 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _oneDigit1 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _towDigit1 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _threeDigit1 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _fourDigit1 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _fiveDigit1 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _sixDigit1 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _sevenDigit1 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0000h      LOCAL    0         _eightDigit1 (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
      00h     0099h     009dh    0005h      LOCAL    6.4       _builtin_holtek_divmodqi4_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     00a1h     00a2h    0002h      LOCAL    3         _length (Y:\Desktop\CODetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
+     00h     0099h     0099h    0001h      LOCAL    3         _key (c:\users\tech\desktop\codetector\ADC\CO.OBJ)
+     00h     00a1h     00a2h    0002h      LOCAL    3         _length (c:\users\tech\desktop\codetector\ADC\SEVENSEGMENT3DIGITCOMPLEX.OBJ)
 
      Indepentent Local Sections
 
      Bank    Start     End      Length     Class    AvgIns    Name
-     00h     0099h     0099h    0000h      ILOCAL   0         _timerBaseInit (Y:\Desktop\CODetector\ADC\TIMER.OBJ)
-     00h     0099h     0099h    0000h      ILOCAL   0         _STimerInit (Y:\Desktop\CODetector\ADC\TIMER.OBJ)
-     00h     0099h     0099h    0000h      ILOCAL   0         _readSTimer (Y:\Desktop\CODetector\ADC\TIMER.OBJ)
+     00h     0099h     0099h    0000h      ILOCAL   0         _timerBaseInit (c:\users\tech\desktop\codetector\ADC\TIMER.OBJ)
+     00h     0099h     0099h    0000h      ILOCAL   0         _STimerInit (c:\users\tech\desktop\codetector\ADC\TIMER.OBJ)
+     00h     0099h     0099h    0000h      ILOCAL   0         _readSTimer (c:\users\tech\desktop\codetector\ADC\TIMER.OBJ)
      00h     0099h     0099h    0000h      ILOCAL   0         _builtin_holtek_dtnorm (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
      00h     0099h     0099h    0000h      ILOCAL   0         _builtin_holtek_ftnorm (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
      00h     0099h     0099h    0000h      ILOCAL   0         _builtin_holtek_dtinf (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x\LIB\LIBHOLTEKGCC.LIB)
@@ -205,127 +205,128 @@ Input Library File: C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x
 
      Public Symbols Information
      Address            Public by Name
-     00d7h              _Amplifier1
-     00d1h              _COValue
-     0ef3h              _ClockInit
+     00cdh              _Amplifier1
+     00c4h              _COValue
+     0d10h              _ClockInit
      0080h[2]           _FT
-     0daeh              _GPIOInit
-     0da8h              _GPIOToGNDCurentInit
-     0ed7h              _OPAMPInit
-     0dc5h              _OPAMPset
-     0f39h              _PTimerInit
-     0f45h              _PWMSeter
-     0f16h              _STimerInit
-     0671h              _S_ADC_Init
-     0677h              _S_READ_ADC
-     00e7h              _VA0OS
-     00e0h              _VA0OS1
-     00e6h              _VA0OS2
-     00e5h              _VA1OS
-     00e3h              _VA1OS1
-     00e4h              _VA1OS2
-     00d4h              _VDD
-     00eah              _V_op0
-     00e8h              _V_op1
-     0f5dh              __DELAYX0
-     0f5ch              __DELAYX1
-     0f5bh              __DELAYX2
-     0f5ah              __DELAYX3
-     0f59h              __DELAYX4
-     0f58h              __DELAYX5
-     0f57h              __DELAYX6
-     00e1h              _alarmCounter
-     0f61h              _builtin_holtek_divmodhi4_isr00
-     0fabh              _builtin_holtek_divmodqi4_isr00
-     014dh              _builtin_holtek_dtadd
-     022bh              _builtin_holtek_dtdecode1
-     0220h              _builtin_holtek_dtdecode2
-     0034h              _builtin_holtek_dtdiv
-     027dh              _builtin_holtek_dtinf
-     0070h              _builtin_holtek_dtmul
-     01ech              _builtin_holtek_dtnorm
-     0189h              _builtin_holtek_dtol
-     014bh              _builtin_holtek_dtsub
-     0233h              _builtin_holtek_dtzero
-     0236h              _builtin_holtek_dtzero1
+     0bcbh              _GPIOInit
+     0bc5h              _GPIOToGNDCurentInit
+     0cf4h              _OPAMPInit
+     0be2h              _OPAMPset
+     0d56h              _PTimerInit
+     0d62h              _PWMSeter
+     0d33h              _STimerInit
+     0470h              _S_ADC_Init
+     0476h              _S_READ_ADC
+     00deh              _VA0OS
+     00d9h              _VA0OS1
+     00ddh              _VA0OS2
+     00dch              _VA1OS
+     00dah              _VA1OS1
+     00dbh              _VA1OS2
+     00cah              _VAmplifier1
+     00c7h              _VDD
+     00e3h              _V_op0
+     00e1h              _V_op1
+     0d7ah              __DELAYX0
+     0d79h              __DELAYX1
+     0d78h              __DELAYX2
+     0d77h              __DELAYX3
+     0d76h              __DELAYX4
+     0d75h              __DELAYX5
+     0d74h              __DELAYX6
+     00dfh              _alarmCounter
+     0d7eh              _builtin_holtek_divmodhi4_isr00
+     0dc8h              _builtin_holtek_divmodqi4_isr00
+     0146h              _builtin_holtek_dtadd
+     0202h              _builtin_holtek_dtdecode1
+     01f7h              _builtin_holtek_dtdecode2
+     0036h              _builtin_holtek_dtdiv
+     0254h              _builtin_holtek_dtinf
+     0072h              _builtin_holtek_dtmul
+     01c3h              _builtin_holtek_dtnorm
+     0144h              _builtin_holtek_dtsub
+     020ah              _builtin_holtek_dtzero
+     020dh              _builtin_holtek_dtzero1
      008ch              _builtin_holtek_exp1
      0095h              _builtin_holtek_exp2
      008eh              _builtin_holtek_floatflag
-     0119h              _builtin_holtek_ftadd
-     0271h              _builtin_holtek_ftdecode1
-     0267h              _builtin_holtek_ftdecode2
-     00b0h              _builtin_holtek_ftdiv
-     0284h              _builtin_holtek_ftinf
-     00e2h              _builtin_holtek_ftmul
-     0238h              _builtin_holtek_ftnorm
-     01b4h              _builtin_holtek_ftol
-     0117h              _builtin_holtek_ftsub
-     0279h              _builtin_holtek_ftzero
-     027bh              _builtin_holtek_ftzero1
-     01dfh              _builtin_holtek_itof
+     0184h              _builtin_holtek_ftadd
+     0248h              _builtin_holtek_ftdecode1
+     023eh              _builtin_holtek_ftdecode2
+     00b2h              _builtin_holtek_ftdiv
+     025bh              _builtin_holtek_ftinf
+     00e4h              _builtin_holtek_ftmul
+     020fh              _builtin_holtek_ftnorm
+     0119h              _builtin_holtek_ftol
+     0182h              _builtin_holtek_ftsub
+     0250h              _builtin_holtek_ftzero
+     0252h              _builtin_holtek_ftzero1
+     01b6h              _builtin_holtek_itof
      0089h              _builtin_holtek_mant1
      008fh              _builtin_holtek_mant12p
      0092h              _builtin_holtek_mant2
-     0f98h              _builtin_holtek_mulhi3_isr00
+     0db5h              _builtin_holtek_mulhi3_isr00
      0096h              _builtin_holtek_prod
      008dh              _builtin_holtek_signs
-     0f73h              _builtin_holtek_udivmodhi4_isr00
-     0fb7h              _builtin_holtek_udivmodqi4_isr00
-     002fh              _builtin_holtek_uitod
-     01e8h              _builtin_holtek_uitof
-     00deh              _buttonStatus
-     09d8h              _clearSegment
-     06e8h              _custom_log
+     0d90h              _builtin_holtek_udivmodhi4_isr00
+     0dd4h              _builtin_holtek_udivmodqi4_isr00
+     0031h              _builtin_holtek_uitod
+     01bfh              _builtin_holtek_uitof
+     00d7h              _buttonStatus
+     07d7h              _clearSegment
+     00c0h              _counter
+     04e7h              _custom_log
      009ah              _custom_log_2
-     00dch              _debounceCounter
-     0bc4h              _eightDigit1
-     0be1h              _eightDigit2
-     0bfeh              _eightDigit3
-     0a03h              _error1Seg
-     09dfh              _errorSeg
-     0b46h              _fiveDigit1
-     0b5ah              _fiveDigit2
-     0b6eh              _fiveDigit3
-     0b10h              _fourDigit1
-     0b22h              _fourDigit2
-     0b34h              _fourDigit3
-     028ah              _key
-     00c9h              _keyCounter
-     00cdh              _keyState
-     09c0h              _length
-     0302h              _main
-     00dah              _n
-     0c16h              _nineDigit1
-     0c33h              _nineDigit2
-     0c4eh              _nineDigit3
-     098dh              _oneDigit1
-     0996h              _oneDigit2
-     0a89h              _oneDigit3
+     00d5h              _debounceCounter
+     09c3h              _eightDigit1
+     09e0h              _eightDigit2
+     09fdh              _eightDigit3
+     0802h              _error1Seg
+     07deh              _errorSeg
+     0945h              _fiveDigit1
+     0959h              _fiveDigit2
+     096dh              _fiveDigit3
+     090fh              _fourDigit1
+     0921h              _fourDigit2
+     0933h              _fourDigit3
+     03f8h              _key
+     00bdh              _keyCounter
+     00c3h              _keyState
+     07bfh              _length
+     0261h              _main
+     00d3h              _n
+     0a15h              _nineDigit1
+     0a32h              _nineDigit2
+     0a4dh              _nineDigit3
+     078ch              _oneDigit1
+     0795h              _oneDigit2
+     0888h              _oneDigit3
      0080h[1]           _opamp0
      0080h[0]           _opamp1
-     00cbh              _pressFlag
-     00cch              _pressLockFlag
-     0f2ch              _readSTimer
-     099fh              _sevenDigit1
-     09aah              _sevenDigit2
-     09b5h              _sevenDigit3
-     0c64h              _shwoSegment
-     0b82h              _sixDigit1
-     0b98h              _sixDigit2
-     0baeh              _sixDigit3
-     00ceh              _temperatur
-     0819h              _temperature
+     00bfh              _pressFlag
+     00c2h              _pressLockFlag
+     0d49h              _readSTimer
+     079eh              _sevenDigit1
+     07a9h              _sevenDigit2
+     07b4h              _sevenDigit3
+     0a63h              _shwoSegment
+     0981h              _sixDigit1
+     0997h              _sixDigit2
+     09adh              _sixDigit3
+     00d0h              _temperatur
+     0618h              _temperature
      00adh              _temperature_2
-     0ad0h              _threeDigit1
-     0ae8h              _threeDigit2
-     0afch              _threeDigit3
-     0f0bh              _timerBaseInit
-     0a93h              _towDigit1
-     0aa7h              _towDigit2
-     0abbh              _towDigit3
-     0a30h              _ziroDigit1
-     0a4fh              _ziroDigit2
-     0a6ch              _ziroDigit3
+     08cfh              _threeDigit1
+     08e7h              _threeDigit2
+     08fbh              _threeDigit3
+     0d28h              _timerBaseInit
+     0892h              _towDigit1
+     08a6h              _towDigit2
+     08bah              _towDigit3
+     082fh              _ziroDigit1
+     084eh              _ziroDigit2
+     086bh              _ziroDigit3
      0081h              ra
      0082h              rb
      0083h              rc
@@ -338,9 +339,9 @@ Input Library File: C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x
 
      Address            Public by Value
      0021h              startup_value_1
-     002fh              _builtin_holtek_uitod
-     0034h              _builtin_holtek_dtdiv
-     0070h              _builtin_holtek_dtmul
+     0031h              _builtin_holtek_uitod
+     0036h              _builtin_holtek_dtdiv
+     0072h              _builtin_holtek_dtmul
      0081h              ra
      0082h              rb
      0083h              rc
@@ -359,128 +360,130 @@ Input Library File: C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V8.x
      0096h              _builtin_holtek_prod
      009ah              _custom_log_2
      00adh              _temperature_2
-     00b0h              _builtin_holtek_ftdiv
-     00c9h              _keyCounter
-     00cbh              _pressFlag
-     00cch              _pressLockFlag
-     00cdh              _keyState
-     00ceh              _temperatur
-     00d1h              _COValue
-     00d4h              _VDD
-     00d7h              _Amplifier1
-     00dah              _n
-     00dch              _debounceCounter
-     00deh              _buttonStatus
-     00e0h              _VA0OS1
-     00e1h              _alarmCounter
-     00e2h              _builtin_holtek_ftmul
-     00e3h              _VA1OS1
-     00e4h              _VA1OS2
-     00e5h              _VA1OS
-     00e6h              _VA0OS2
-     00e7h              _VA0OS
-     00e8h              _V_op1
-     00eah              _V_op0
-     0117h              _builtin_holtek_ftsub
-     0119h              _builtin_holtek_ftadd
-     014bh              _builtin_holtek_dtsub
-     014dh              _builtin_holtek_dtadd
-     0189h              _builtin_holtek_dtol
-     01b4h              _builtin_holtek_ftol
-     01dfh              _builtin_holtek_itof
-     01e8h              _builtin_holtek_uitof
-     01ech              _builtin_holtek_dtnorm
-     0220h              _builtin_holtek_dtdecode2
-     022bh              _builtin_holtek_dtdecode1
-     0233h              _builtin_holtek_dtzero
-     0236h              _builtin_holtek_dtzero1
-     0238h              _builtin_holtek_ftnorm
-     0267h              _builtin_holtek_ftdecode2
-     0271h              _builtin_holtek_ftdecode1
-     0279h              _builtin_holtek_ftzero
-     027bh              _builtin_holtek_ftzero1
-     027dh              _builtin_holtek_dtinf
-     0284h              _builtin_holtek_ftinf
-     028ah              _key
-     0302h              _main
+     00b2h              _builtin_holtek_ftdiv
+     00bdh              _keyCounter
+     00bfh              _pressFlag
+     00c0h              _counter
+     00c2h              _pressLockFlag
+     00c3h              _keyState
+     00c4h              _COValue
+     00c7h              _VDD
+     00cah              _VAmplifier1
+     00cdh              _Amplifier1
+     00d0h              _temperatur
+     00d3h              _n
+     00d5h              _debounceCounter
+     00d7h              _buttonStatus
+     00d9h              _VA0OS1
+     00dah              _VA1OS1
+     00dbh              _VA1OS2
+     00dch              _VA1OS
+     00ddh              _VA0OS2
+     00deh              _VA0OS
+     00dfh              _alarmCounter
+     00e1h              _V_op1
+     00e3h              _V_op0
+     00e4h              _builtin_holtek_ftmul
+     0119h              _builtin_holtek_ftol
+     0144h              _builtin_holtek_dtsub
+     0146h              _builtin_holtek_dtadd
+     0182h              _builtin_holtek_ftsub
+     0184h              _builtin_holtek_ftadd
+     01b6h              _builtin_holtek_itof
+     01bfh              _builtin_holtek_uitof
+     01c3h              _builtin_holtek_dtnorm
+     01f7h              _builtin_holtek_dtdecode2
+     0202h              _builtin_holtek_dtdecode1
+     020ah              _builtin_holtek_dtzero
+     020dh              _builtin_holtek_dtzero1
+     020fh              _builtin_holtek_ftnorm
+     023eh              _builtin_holtek_ftdecode2
+     0248h              _builtin_holtek_ftdecode1
+     0250h              _builtin_holtek_ftzero
+     0252h              _builtin_holtek_ftzero1
+     0254h              _builtin_holtek_dtinf
+     025bh              _builtin_holtek_ftinf
+     0261h              _main
+     03f8h              _key
      0080h[0]           _opamp1
      0080h[1]           _opamp0
      0080h[2]           _FT
-     0671h              _S_ADC_Init
-     0677h              _S_READ_ADC
-     06e8h              _custom_log
-     0819h              _temperature
-     098dh              _oneDigit1
-     0996h              _oneDigit2
-     099fh              _sevenDigit1
-     09aah              _sevenDigit2
-     09b5h              _sevenDigit3
-     09c0h              _length
-     09d8h              _clearSegment
-     09dfh              _errorSeg
-     0a03h              _error1Seg
-     0a30h              _ziroDigit1
-     0a4fh              _ziroDigit2
-     0a6ch              _ziroDigit3
-     0a89h              _oneDigit3
-     0a93h              _towDigit1
-     0aa7h              _towDigit2
-     0abbh              _towDigit3
-     0ad0h              _threeDigit1
-     0ae8h              _threeDigit2
-     0afch              _threeDigit3
-     0b10h              _fourDigit1
-     0b22h              _fourDigit2
-     0b34h              _fourDigit3
-     0b46h              _fiveDigit1
-     0b5ah              _fiveDigit2
-     0b6eh              _fiveDigit3
-     0b82h              _sixDigit1
-     0b98h              _sixDigit2
-     0baeh              _sixDigit3
-     0bc4h              _eightDigit1
-     0be1h              _eightDigit2
-     0bfeh              _eightDigit3
-     0c16h              _nineDigit1
-     0c33h              _nineDigit2
-     0c4eh              _nineDigit3
-     0c64h              _shwoSegment
-     0da8h              _GPIOToGNDCurentInit
-     0daeh              _GPIOInit
-     0dc5h              _OPAMPset
-     0ed7h              _OPAMPInit
-     0ef3h              _ClockInit
-     0f0bh              _timerBaseInit
-     0f16h              _STimerInit
-     0f2ch              _readSTimer
-     0f39h              _PTimerInit
-     0f45h              _PWMSeter
-     0f57h              __DELAYX6
-     0f58h              __DELAYX5
-     0f59h              __DELAYX4
-     0f5ah              __DELAYX3
-     0f5bh              __DELAYX2
-     0f5ch              __DELAYX1
-     0f5dh              __DELAYX0
-     0f61h              _builtin_holtek_divmodhi4_isr00
-     0f73h              _builtin_holtek_udivmodhi4_isr00
-     0f98h              _builtin_holtek_mulhi3_isr00
-     0fabh              _builtin_holtek_divmodqi4_isr00
-     0fb7h              _builtin_holtek_udivmodqi4_isr00
+     0470h              _S_ADC_Init
+     0476h              _S_READ_ADC
+     04e7h              _custom_log
+     0618h              _temperature
+     078ch              _oneDigit1
+     0795h              _oneDigit2
+     079eh              _sevenDigit1
+     07a9h              _sevenDigit2
+     07b4h              _sevenDigit3
+     07bfh              _length
+     07d7h              _clearSegment
+     07deh              _errorSeg
+     0802h              _error1Seg
+     082fh              _ziroDigit1
+     084eh              _ziroDigit2
+     086bh              _ziroDigit3
+     0888h              _oneDigit3
+     0892h              _towDigit1
+     08a6h              _towDigit2
+     08bah              _towDigit3
+     08cfh              _threeDigit1
+     08e7h              _threeDigit2
+     08fbh              _threeDigit3
+     090fh              _fourDigit1
+     0921h              _fourDigit2
+     0933h              _fourDigit3
+     0945h              _fiveDigit1
+     0959h              _fiveDigit2
+     096dh              _fiveDigit3
+     0981h              _sixDigit1
+     0997h              _sixDigit2
+     09adh              _sixDigit3
+     09c3h              _eightDigit1
+     09e0h              _eightDigit2
+     09fdh              _eightDigit3
+     0a15h              _nineDigit1
+     0a32h              _nineDigit2
+     0a4dh              _nineDigit3
+     0a63h              _shwoSegment
+     0bc5h              _GPIOToGNDCurentInit
+     0bcbh              _GPIOInit
+     0be2h              _OPAMPset
+     0cf4h              _OPAMPInit
+     0d10h              _ClockInit
+     0d28h              _timerBaseInit
+     0d33h              _STimerInit
+     0d49h              _readSTimer
+     0d56h              _PTimerInit
+     0d62h              _PWMSeter
+     0d74h              __DELAYX6
+     0d75h              __DELAYX5
+     0d76h              __DELAYX4
+     0d77h              __DELAYX3
+     0d78h              __DELAYX2
+     0d79h              __DELAYX1
+     0d7ah              __DELAYX0
+     0d7eh              _builtin_holtek_divmodhi4_isr00
+     0d90h              _builtin_holtek_udivmodhi4_isr00
+     0db5h              _builtin_holtek_mulhi3_isr00
+     0dc8h              _builtin_holtek_divmodqi4_isr00
+     0dd4h              _builtin_holtek_udivmodqi4_isr00
 
 
 ROM Usage Statistics
      Size      Used     Percentage
-     1000h     0fd0h    98%
+     1000h     0dedh    87%
 
 RAM Usage Statistics
     Bank      Size      Used     Percentage
-     00h       0080h     006ch    84%
+     00h       0080h     0065h    78%
      01h       0080h     0000h    0%
-     Total     0100h     006ch    42%
+     Total     0100h     0065h    39%
 
 Use Stack Count
 _main: 4
+_key: 1
 _length: 1
 
 Call Tree
@@ -538,17 +541,6 @@ Call Tree
                 _builtin_holtek_ftdecode (2)
             _builtin_holtek_ftmul (1)
                 _builtin_holtek_ftdecode (2)
-            _clearSegment (1)
-            _builtin_holtek_ftsubadd (1)
-                _builtin_holtek_ftdecode (2)
-            _key (1)
-                _clearSegment (2)
-            _builtin_holtek_dtsubadd (1)
-                _builtin_holtek_dtdecode (2)
-            _builtin_holtek_dtsubadd (1)
-                _builtin_holtek_dtdecode (2)
-            _builtin_holtek_dtol (1)
-                _builtin_holtek_dtdecode (2)
             _builtin_holtek_ftol (1)
                 _builtin_holtek_ftdecode (2)
             _shwoSegment (1)
@@ -563,6 +555,7 @@ Call Tree
                     _clearSegment (3)
                 _builtin_holtek_divmodhi4_isr00 (2)
                 _builtin_holtek_mulhi3_isr00 (2)
+                _clearSegment (2)
                 _nineDigit3 (2)
                     __DELAYX (3)
                     _clearSegment (3)
@@ -646,9 +639,12 @@ Call Tree
                     __DELAYX (3)
                     _clearSegment (3)
                 _builtin_holtek_divmodqi4_isr00 (2)
+            _clearSegment (1)
+    _key
+        _clearSegment (0)
     _length
         _builtin_holtek_divmodhi4_isr00 (0)
 
-HLINK: Program entry point at section '@code' (address 0) of file 'Y:\Desktop\CODetector\ADC\CO.OBJ'
+HLINK: Program entry point at section '@code' (address 0) of file 'c:\users\tech\desktop\codetector\ADC\CO.OBJ'
 
 Total 0 error(s), Total 0 Warning(s)

@@ -912,16 +912,16 @@ int length(int number){
 			 	switch(digNumber)
 			 	{
 			 	
-			 		case 0:{ziroDigit3();} break;
-			 		case 1:{oneDigit3();}	break;
-			 		case 2:{towDigit3();}	break;
-			 		case 3:{threeDigit3();}break;
-			 		case 4:{fourDigit3();}	break;
-			 		case 5:{fiveDigit3();}	break;
-			 		case 6:{sixDigit3();}	break;
-			 		case 7:{sevenDigit3();}break;
-			 		case 8:{eightDigit3();}break;
-			 		case 9:{nineDigit3();}	break;
+			 		case 0:{clearSegment();ziroDigit3();} break;
+			 		case 1:{clearSegment();oneDigit3();}	break;
+			 		case 2:{clearSegment();towDigit3();}	break;
+			 		case 3:{clearSegment();threeDigit3();}break;
+			 		case 4:{clearSegment();fourDigit3();}	break;
+			 		case 5:{clearSegment();fiveDigit3();}	break;
+			 		case 6:{clearSegment();sixDigit3();}	break;
+			 		case 7:{clearSegment();sevenDigit3();}break;
+			 		case 8:{clearSegment();eightDigit3();}break;
+			 		case 9:{clearSegment();nineDigit3();}	break;
 			 	
 			 	
 				}
@@ -933,16 +933,16 @@ int length(int number){
 		 
 			 	switch(digNumber)
 			 	{
-			 		case 0:{ziroDigit2(); } break;
-			 		case 1:{oneDigit2();  }	break;
-			 		case 2:{towDigit2();  }	break;
-			 		case 3:{threeDigit2(); }break;
-			 		case 4:{fourDigit2();}	break;
-			 		case 5:{fiveDigit2(); }	break;
-			 		case 6:{sixDigit2(); }	break;
-			 		case 7:{sevenDigit2();}break;
-			 		case 8:{eightDigit2();}break;
-			 		case 9:{nineDigit2(); }	break;
+			 		case 0:{clearSegment();ziroDigit2(); } break;
+			 		case 1:{clearSegment();oneDigit2();  }	break;
+			 		case 2:{clearSegment();towDigit2();  }	break;
+			 		case 3:{clearSegment();threeDigit2(); }break;
+			 		case 4:{clearSegment();fourDigit2();}	break;
+			 		case 5:{clearSegment();fiveDigit2(); }	break;
+			 		case 6:{clearSegment();sixDigit2(); }	break;
+			 		case 7:{clearSegment();sevenDigit2();}break;
+			 		case 8:{clearSegment();eightDigit2();}break;
+			 		case 9:{clearSegment();nineDigit2(); }	break;
 			 	}
 				break;
 			};
@@ -951,16 +951,16 @@ int length(int number){
 			{
 		 	    switch(digNumber)
 			 	{
-			 		case 0:{ziroDigit1();} break;
-			 		case 1:{oneDigit1();}	break;
-			 		case 2:{towDigit1(); }	break;
-			 		case 3:{threeDigit1();}break;
-			 		case 4:{fourDigit1();}	break;
-			 		case 5:{fiveDigit1();}	break;
-			 		case 6:{sixDigit1(); }	break;
-			 		case 7:{sevenDigit1();}break;
-			 		case 8:{eightDigit1();}break;
-			 		case 9:{nineDigit1();}	break;		
+			 		case 0:{clearSegment();ziroDigit1();} break;
+			 		case 1:{clearSegment();oneDigit1();}	break;
+			 		case 2:{clearSegment();towDigit1(); }	break;
+			 		case 3:{clearSegment();threeDigit1();}break;
+			 		case 4:{clearSegment();fourDigit1();}	break;
+			 		case 5:{clearSegment();fiveDigit1();}	break;
+			 		case 6:{clearSegment();sixDigit1(); }	break;
+			 		case 7:{clearSegment();sevenDigit1();}break;
+			 		case 8:{clearSegment();eightDigit1();}break;
+			 		case 9:{clearSegment();nineDigit1();}	break;		
 			 	}
 				break;
 		    }

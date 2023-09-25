@@ -18,19 +18,21 @@
 #define RS 1000
 */
 //#define AVAmplifier1 995 //RS*RF/RS+RF   RS=1k external RF=150k external
-#define gainAmplifier1 6.666666666666667
+#define gainAmplifier1 7.666666666666667
 #define AVAmplifier2 13//1+R2/R3  R2=300k internal R3=10k internal
 
 
 
 #define _8_HOURS  3600
+#define _60_MINUTES 450
+#define _240_MINUTES 1800
 #define _240_MINUTES 1800
 #define _50_MINUTES 375
 #define _15_MINUTES 112
-
-
+#define _10_MINUTES 75
+#define _4_MINUTES 30
 //#define MAXppm 1000
-#define slope 0.0275 //m = y2-y1/x2-x1
+#define slope 0.04 //m = y2-y1/x2-x1
 #define ConstA 0.000000025
 #define ConstB 0.000003611
 #define ConstC 0.000052182
@@ -46,7 +48,7 @@ float VDD=0.0;
 float COValue =0.0;
 float temperatur=0.0;
 float Amplifier1=0.0;
-
+float VAmplifier1=0.0;
 
 unsigned int alarmCounter;
 
@@ -77,7 +79,7 @@ unsigned int keyCounter=0;
 
  key(void);
 void OPAMPset (void);		
-
+int counter=0;
 	void main()
 	{
 	 	
@@ -103,22 +105,39 @@ void OPAMPset (void);
 		PTimerInit();
         PWMSeter(0);
 	
-		
-		VDD = VBattery(S_READ_ADC(4));
-		temperatur= temperature(S_READ_ADC(1),VDD);	
-		Amplifier1=S_READ_ADC(5);
-		COValue=((((Amplifier1*(VDD/4095))/gainAmplifier1*1000)/15)*1000)*slope;
+	
+		while(1)
+		{
+			VDD = VBattery(S_READ_ADC(4));
+			temperatur= temperature(S_READ_ADC(1),VDD);	
+			Amplifier1=S_READ_ADC(5);
+		    VAmplifier1=(((Amplifier1*(VDD/4095))/gainAmplifier1*1000)/15)*1000;
+			COValue=VAmplifier1*slope;
+			shwoSegment(COValue );
+			
+			while(1)
+			{counter++;
+				shwoSegment(COValue);
+				if (counter>200) break;
+			}
+			counter=0;
+			clearSegment();
+			_papu4=1;
+			_pawu4=1;
+			_pawu=0b111000;	
+			pressFlag=0;
+			debounceCounter=0;
+			keyCounter=0;
 
-		clearSegment();
-		_papu4=1;
-		_pawu4=1;
-		_pawu=0b111000;	
+		}
+	
+	
+	
+	
+	
+	
 		
-		pressFlag=0;
-		debounceCounter=0;
-		keyCounter=0;
-		
-		
+	
 		
 		if(COValue>30)
 		{
@@ -130,7 +149,7 @@ void OPAMPset (void);
 		 PWMSeter(0);
 		}
 			
-		if (((COValue>30)&&(alarmCounter>= _8_HOURS))||((COValue>70)&&(alarmCounter>= _240_MINUTES))||((COValue>150)&&(alarmCounter>=_50_MINUTES))||((COValue>400)&&(alarmCounter>= _15_MINUTES)))
+		if (((COValue>30)&&(alarmCounter>= _8_HOURS))||((COValue>70)&&(alarmCounter>_60_MINUTES))||((COValue>150)&&(alarmCounter>_10_MINUTES))||((COValue>400)&&(alarmCounter>_4_MINUTES)))
 		{
 	      //PWMSeter(1);
 		
@@ -159,7 +178,7 @@ void OPAMPset (void);
 				else if(buttonStatus==DOUBLE)
 				{
 					_clrwdt();
-					shwoSegment(COValue * PPM(temperatur/10));
+					//shwoSegment(COValue* PPM(temperatur/10));
 					
 				}
 				else if(buttonStatus==SINGLE)
