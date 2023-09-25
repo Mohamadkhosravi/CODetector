@@ -91,6 +91,6 @@ float temperature(int ADCValue, float VDD) {
 	float temperatureKelvin = 1.0 / (A + B *logResistance + C *logResistance*logResistance*logResistance);
 	float temperatureCelsius = temperatureKelvin - 273.15;
 	
-	return temperatureCelsius;
+	return temperatureCelsius/10;
 
 }

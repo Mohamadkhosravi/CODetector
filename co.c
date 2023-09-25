@@ -56,7 +56,7 @@ unsigned int alarmCounter;
 #define KEY_PIN _pa4
 #define SET 0
 #define RESET 1
-#define DEBOUNCE_THRESHOLD 5000
+#define DEBOUNCE_THRESHOLD 2000
 #define PRESS_STATE_TIMOUT 500
 
 enum {
@@ -75,11 +75,11 @@ char keyState=0;
 char pressLockFlag =2;
 char pressFlag=0;
 unsigned int keyCounter=0;
-
+float TempToPPMPercentage(float temperatur);
 
  key(void);
 void OPAMPset (void);		
-int counter=0;
+
 	void main()
 	{
 	 	
@@ -89,13 +89,7 @@ int counter=0;
 			debounceCounter=0;
 		}
 			
-	
-		NTCToGND=1;
-		LEDToGND=0;
-		_vbgren=1;
-		_sda0en=1;
-		_sda1en=1; 
-	
+
 	
 		ClockInit();
 		GPIOInit();
@@ -106,21 +100,20 @@ int counter=0;
         PWMSeter(0);
 	
 	
-		while(1)
-		{
-			VDD = VBattery(S_READ_ADC(4));
-			temperatur= temperature(S_READ_ADC(1),VDD);	
-			Amplifier1=S_READ_ADC(5);
-		    VAmplifier1=(((Amplifier1*(VDD/4095))/gainAmplifier1*1000)/15)*1000;
-			COValue=VAmplifier1*slope;
-			shwoSegment(COValue );
+
+	
 			
-			while(1)
-			{counter++;
-				shwoSegment(COValue);
-				if (counter>200) break;
-			}
-			counter=0;
+		NTCToGND=1;
+		LEDToGND=0;
+		_vbgren=1;
+		_sda0en=1;
+		_sda1en=1; 
+	
+		
+			
+			
+	
+	
 			clearSegment();
 			_papu4=1;
 			_pawu4=1;
@@ -129,37 +122,42 @@ int counter=0;
 			debounceCounter=0;
 			keyCounter=0;
 
-		}
 	
 	
+        	VDD = VBattery(S_READ_ADC(4));
+			temperatur= (temperature(S_READ_ADC(1),VDD));	
+			Amplifier1=S_READ_ADC(5);
+			VAmplifier1=(((Amplifier1*(VDD/4095))/gainAmplifier1*1000)/15)*1000;
+			COValue=VAmplifier1*slope;
+		    COValue=TempToPPMPercentage(temperatur)*COValue;
+		    //COValue=PPM(temperatur)*COValue;
 	
-	
-	
-	
-		
-	
-		
-		if(COValue>30)
-		{
-			alarmCounter++;
-		}
-		else
-		{
-		if(alarmCounter>0) alarmCounter--;	
-		 PWMSeter(0);
-		}
-			
-		if (((COValue>30)&&(alarmCounter>= _8_HOURS))||((COValue>70)&&(alarmCounter>_60_MINUTES))||((COValue>150)&&(alarmCounter>_10_MINUTES))||((COValue>400)&&(alarmCounter>_4_MINUTES)))
-		{
-	      //PWMSeter(1);
-		
-		}
 	
 		while(1){
+		   
 			
 			
-	    	 key();
+			if(COValue>30)
+			{
+				alarmCounter++;
+			}
+			else
+			{
+			if(alarmCounter>0) alarmCounter--;	
+			 PWMSeter(0);
+			}
+				
+			if (((COValue>30)&&(alarmCounter>= _8_HOURS))||((COValue>70)&&(alarmCounter>_60_MINUTES))||((COValue>150)&&(alarmCounter>_10_MINUTES))||((COValue>400)&&(alarmCounter>_4_MINUTES)))
+			{
+		      //PWMSeter(1);
+			
+			}
 		
+		
+			
+			
+	    	
+		      key();
 		    if(buttonStatus==NONPRESS)
 			{
 			   _halt();			
@@ -173,23 +171,25 @@ int counter=0;
 
 		     	if(buttonStatus==IDLE)
 				{
-				
+				   
 				}
 				else if(buttonStatus==DOUBLE)
 				{
 					_clrwdt();
-					//shwoSegment(COValue* PPM(temperatur/10));
+						
+					shwoSegment(COValue);
 					
 				}
 				else if(buttonStatus==SINGLE)
 				{
 					_clrwdt();
-				    shwoSegment(temperatur/10);
+				   
 				}
 				else if(buttonStatus==LONGPRESS)
-				{
+				{	
 					_clrwdt();
-					shwoSegment(333); 
+				
+				
 				}
 			   
 			
@@ -311,8 +311,24 @@ int counter=0;
 	 }  	   	 
 	
 
-	
-	
+	float TempToPPMPercentage(float temperatur)
+	{
 
+		    if ((temperatur<0)&&(temperatur>=-20))
+			{
+				return((-0.0075*(temperatur+20)+0.60));	
+			}
+		     if ((temperatur>=0)&&(temperatur<20))
+			{
+				return ((0.0025*(temperatur)+0.75));
+			}
+		    if ((temperatur>=20)&&(temperatur<50))
+			{
+				return((0.0116*(temperatur-20)+0.100));
+			}
+		    if ((temperatur>=50)&&(temperatur<=70))
+			{
+			  return((0.005*(temperatur-50)+0.135));
+			}
 	
-	
+	}
