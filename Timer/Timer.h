@@ -1,17 +1,36 @@
 
-#ifndef TM_H
-#define TM_H
-
 #include "BA45F5240.h"
+#define TM_H
+#ifdef TM_H
 
-void timerBaseInit(void);
-void STimerInit(void);
-void PTimerInit(void);
-int readSTimer(void);
-void PWMSeter(char status);
-//#define _TIMER_COUNTER_MODE
-#define COMPARE_MATCH_OUTPUT_MODE
 
+#define PTIMER
+	
+	
+	
+	#ifdef BASETIMER 
+	
+		void timerBaseInit(void);
+		
+	#endif
+	
+	#ifdef  STIMER
+	
+	  //#define _TIMER_COUNTER_MODE
+	   #define COMPARE_MATCH_OUTPUT_MODE
+		void STimerInit(void);
+		int readSTimer(void);
+		
+	#endif	
+	
+	
+	#ifdef PTIMER
+			
+		void PTimerInit(void);
+		void PWMSeter(char status);
+	
+	#endif
+	
 
 
 #endif

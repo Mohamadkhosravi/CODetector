@@ -149,7 +149,7 @@ void OPAMPset (void);
 				
 			if (((COValue>30)&&(alarmCounter>= _8_HOURS))||((COValue>70)&&(alarmCounter>_60_MINUTES))||((COValue>150)&&(alarmCounter>_10_MINUTES))||((COValue>400)&&(alarmCounter>_4_MINUTES)))
 			{
-		      //PWMSeter(1);
+		      PWMSeter(1);
 			
 			}
 		
