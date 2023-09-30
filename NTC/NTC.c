@@ -1,32 +1,5 @@
 
 #include "NTC.h"
-/*
-	
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	//Sink Current Generator
-	
-	//Sink current generator enable control
-	_isgen=1;
-	
-	//Sink current generator control for ISINK0 pin
-	//Current value (mA) = 50 + 10 × (ISGDATA0[4:0])
-	_isgdata0=0b00000000;
-	
-	//Sink current generator control for ISINK1 pin
-	//Current value (mA) = 50 + 5 × (ISGDATA1[4:0])
-	_isgdata1=0b00000000;
-	
-	
-	
-	//Enable/Disable ISINK0 pin sink current control
-	_isgs0=0;
-	
-	//Enable/Disable ISINK1 pin sink current control
-	_isgs1=0;
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-*/
 
 #ifdef _USE_MATH_H
 // Nothing additional is needed here when using math.h
@@ -62,21 +35,6 @@
 #endif
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 float temperature(int ADCValue, float VDD) {
 
 
@@ -88,8 +46,8 @@ float temperature(int ADCValue, float VDD) {
 
 	// 1/A+B*LN(RNTC)*C((LN(RNTC)^3)
 	
-	float temperatureKelvin = 1.0 / (A + B *logResistance + C *logResistance*logResistance*logResistance);
-	float temperatureCelsius = temperatureKelvin - 273.15;
+	float temperatureCelsius = 1.0 / (A + B *logResistance + C *logResistance*logResistance*logResistance)- 273.15;
+//	float temperatureCelsius = temperatureKelvin - 273.15;
 	
 	return temperatureCelsius/10;
 

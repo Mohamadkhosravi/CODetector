@@ -1,6 +1,6 @@
 
 #ifndef EEPROM
-//#define  EEPROM
+#define  EEPROM
 #include "BA45F5240.h"
 	
 	#define EEPROM_ADDRESS_REG  _eea// EEPROM address register

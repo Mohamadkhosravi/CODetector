@@ -6,7 +6,7 @@
 
 void errorSeg(void){
 	//clearSegment();
-	CONFIGH_SEG1=OUTPUT;
+/*	CONFIGH_SEG1=OUTPUT;
 	CONFIGH_SEG2=OUTPUT;
 	CONFIGH_SEG5=OUTPUT;
 	CONFIGH_SEG6=OUTPUT;
@@ -37,7 +37,7 @@ void errorSeg(void){
 	SEG2=0;
 	SEG5=1;
     GCC_DELAY(1000);
-    //=================== o
+    //=================== o*/
  
 }
 
@@ -46,7 +46,7 @@ void errorSeg(void){
 
 void error1Seg(void){
 
-	CONFIGH_SEG1=OUTPUT;
+/*	CONFIGH_SEG1=OUTPUT;
 	CONFIGH_SEG2=OUTPUT;
 	CONFIGH_SEG5=OUTPUT;
 	CONFIGH_SEG6=OUTPUT;
@@ -87,7 +87,7 @@ void error1Seg(void){
 	 SEG2=1;
 	 SEG4=0;
 	 SEG5=0;
-	 GCC_DELAY(1000);
+	 GCC_DELAY(1000);*/
 }
 
 

@@ -105,7 +105,6 @@ opamp1=_sda1o;
 	VA0OS1=_sda1vos && 0b00111111;
 	if (VA1OS1>=0b00111111) break;
 	}
-
 VA1OS1=_sda1of0<<0 || _sda1of1<<1 || _sda1of2<<2 || _sda1of3<<3 || _sda1of4<<4 || _sda1of5<<5 ;
 
 //Step4
