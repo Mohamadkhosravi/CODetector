@@ -5,10 +5,10 @@
 // Nothing additional is needed here when using math.h
 #else
 	
-	int n=0;
+
 	
 	double custom_log(double x) {
-		
+			int n=0;
 		if (x <= 0) {
 			
 			return -1.0; // Not defined for non-positive numbers

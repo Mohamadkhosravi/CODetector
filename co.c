@@ -24,7 +24,7 @@
 float VDD=0.0;
 float COValue =0.0;
 float temperatur=0.0;
-float VAmplifier1=0.0;
+//float VAmplifier1=0.0;
 
 
 
@@ -66,7 +66,7 @@ float TempToPPMPercentage(float temperatur);
 		S_ADC_Init();
 		PTimerInit();
         PWMSeter(0);
-	
+	    
 		NTCToGND=1;
 		LEDToGND=0;
 		_vbgren=1;
@@ -83,8 +83,8 @@ float TempToPPMPercentage(float temperatur);
 		VDD = VBattery(S_READ_ADC(4));
 
 		temperatur= (temperature(S_READ_ADC(1),VDD));	
-		VAmplifier1=S_READ_ADC(5)*(VDD/4095);
-		COValue=(((VAmplifier1/gainAmplifier1*1000)/RSHANT)*1000)*slope;
+		//VAmplifier1=S_READ_ADC(5)*(VDD/4095);
+		COValue=((((S_READ_ADC(5)*(VDD/4095))/gainAmplifier1*1000)/RSHANT)*1000)*slope;
 		COValue=(TempToPPMPercentage(temperatur)*10)*COValue;
 		NTCToGND=0;
 		
@@ -126,12 +126,14 @@ float TempToPPMPercentage(float temperatur);
 				else if(buttonStatus==SINGLE)
 				{
 				    _clrwdt();
-				     shwoSegment(temperatur);
+				     shwoSegment(COValue);
 				}
 				else if(buttonStatus==DOUBLE)
 				{
 					_clrwdt();	
-					shwoSegment(COValue);	
+					if(VDD>3.7)shwoSegment(100);
+					else if(VDD<3)shwoSegment(75);
+					else shwoSegment(15);
 				}
 			
 				else if(buttonStatus==LONGPRESS)
