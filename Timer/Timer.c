@@ -280,7 +280,7 @@
 	 	{
 		 	//==================
 			//PTM CCRA Low Byte
-			 _ptmal=0b00100000;
+			 _ptmal=18;
 			//PTM CCRA High Byte Register 
 			_ptmah=0b00;
 			//==================
@@ -288,7 +288,7 @@
 			//==================
 			
 			//PTM CCRP Low Byte Register
-			_ptmrpl=0b00111111;
+			_ptmrpl=37;
 			//PTM CCRP High Byte Register
 			_ptmrph=0b00;
 			
