@@ -50,12 +50,13 @@ typedef enum {
 
 buttonType key(void);		
 float TempToPPMPercentage(float temperatur);
+
 	void main()
 	{
 
 		if(_to==0)
 		{
-		alarmCounter=0;
+			alarmCounter=0;
 		}
 			
 		ClockInit();
@@ -84,13 +85,12 @@ float TempToPPMPercentage(float temperatur);
 		VAmplifier1=S_READ_ADC(5)*(VDD/4095);
 		COValue=(((VAmplifier1/gainAmplifier1*1000)/RSHANT)*1000)*slope;
 		COValue=(TempToPPMPercentage(temperatur)*10)*COValue;
-		
+		NTCToGND=0;
 		
 		if((limit1CO)||(limit2CO)||(limit3CO)||(limit4CO))PWMSeter(1);	
 		if(COValue>30)
 		{
 			alarmCounter++;
-		
 		}
 		else
 		{
@@ -101,12 +101,11 @@ float TempToPPMPercentage(float temperatur);
 
 		while(1){ 
 			
-		   buttonType buttonStatus;
-	
+		    buttonType buttonStatus;
 		    buttonStatus=key();
+		    
 		    if(buttonStatus==NONPRESS)
 			{
-			
 			   _halt();			
 			}
 		    else
@@ -139,8 +138,7 @@ float TempToPPMPercentage(float temperatur);
 		           PWMSeter(1);
 				
 				}
-			  
-			
+
 		    	 clearSegment();	
 				_papu4=1;
 				_pawu4=1;
@@ -150,13 +148,9 @@ float TempToPPMPercentage(float temperatur);
 			_papu4=1;
 			_pawu4=1;
 			_pawu=0b111000;	
-		
-			
+
 		}
-			
-			
-		
-	    
+  
 		
 	}	
 
@@ -164,7 +158,7 @@ float TempToPPMPercentage(float temperatur);
 	float TempToPPMPercentage(float temperatur)
 	{
 
-		   /* if ((temperatur<0)&&(temperatur>=-20))
+		    /*if ((temperatur<0)&&(temperatur>=-20))
 			{
 				return((-0.0075*(temperatur+20)+0.60));	
 			}*/
