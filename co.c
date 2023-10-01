@@ -79,8 +79,9 @@ float TempToPPMPercentage(float temperatur);
 		_pawu4=1;
 		_pawu=0b111000;	
 		
-
+        
 		VDD = VBattery(S_READ_ADC(4));
+
 		temperatur= (temperature(S_READ_ADC(1),VDD));	
 		VAmplifier1=S_READ_ADC(5)*(VDD/4095);
 		COValue=(((VAmplifier1/gainAmplifier1*1000)/RSHANT)*1000)*slope;
@@ -98,6 +99,9 @@ float TempToPPMPercentage(float temperatur);
 		  if(alarmCounter>0) alarmCounter--;	
 		  PWMSeter(0);
 		}
+       
+   
+     
 
 		while(1){ 
 			
@@ -121,20 +125,19 @@ float TempToPPMPercentage(float temperatur);
 				}
 				else if(buttonStatus==SINGLE)
 				{
-					_clrwdt();
-				   shwoSegment(temperatur);
+				    _clrwdt();
+				     shwoSegment(temperatur);
 				}
 				else if(buttonStatus==DOUBLE)
 				{
 					_clrwdt();	
-					shwoSegment(COValue);
-					
+					shwoSegment(COValue);	
 				}
 			
 				else if(buttonStatus==LONGPRESS)
 				{	
 					_clrwdt();
-				//	shwoSegment(alarmCounter);
+				  // shwoSegment(alarmCounter);
 		           PWMSeter(1);
 				
 				}
@@ -158,10 +161,10 @@ float TempToPPMPercentage(float temperatur);
 	float TempToPPMPercentage(float temperatur)
 	{
 
-		    /*if ((temperatur<0)&&(temperatur>=-20))
+		    if ((temperatur<0)&&(temperatur>=-20))
 			{
 				return((-0.0075*(temperatur+20)+0.60));	
-			}*/
+			}
 	        if ((temperatur>=0)&&(temperatur<20))
 			{
 				return ((0.0025*(temperatur)+0.75));
