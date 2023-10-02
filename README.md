@@ -1,2 +1,0 @@
-# CODetector
-CO Detector
