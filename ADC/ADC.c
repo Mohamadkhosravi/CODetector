@@ -22,7 +22,7 @@ void S_ADC_Init()
 //*@param[in]  : ADC channel: AN0, AN1, AN2, AN3, VBGREF, OPA0O, OPA1O, LINEV
 //*@retval     : AD Value
 //===========================================================
- (int*)  S_READ_ADC(unsigned char CH)
+unsigned int  S_READ_ADC(unsigned char CH)
 {
     unsigned int temp=0;
     int *Ptr;
@@ -82,7 +82,7 @@ void S_ADC_Init()
     }
     else {temp =((_sadol>>4))|((_sadoh<<4));}
    
-   Ptr=&temp;
+  // Ptr=&temp;
 
-    return Ptr; // Return the ADC conversion result.
+    return temp; // Return the ADC conversion result.
 }
