@@ -26,9 +26,14 @@
 #define BUZZER_OFF  PWMSeter(0);
 
 
+#define FULL_BATTERY 4
+#define MID_BATTERY  3.2
+#define LOW_BATTERY  3
+
 unsigned int alarmCounter;
 
-#define limit1CO   ((alarmCounter>=_4_MINUTES)&&(COValue>400))
+#define limit1CO   ((alarmCounter>=3)&&(COValue>400))
+//#define limit1CO   ((alarmCounter>=_4_MINUTES)&&(COValue>400))
 #define limit2CO   ((alarmCounter>=_10_MINUTES)&&(COValue>125)) 
 #define limit3CO   ((alarmCounter>=_50_MINUTES)&&(COValue>75)) 
 #define limit4CO   ((alarmCounter>=_8_HOURS)&&(COValue>30))
@@ -86,31 +91,27 @@ unsigned int COValue=0;
      
   void buzzerBIB(char number){   
 	  
-    unsigned int cunter =0;
-   
-		while(1)
-		{
-		     
-	     cunter++;
-	     GCC_DELAY(30000);
-	     if((cunter>=2)&&(cunter<8))PWMSeter(1);
-		 else if((cunter>=8)&&(cunter<13))PWMSeter(0); 
+    unsigned char cunter;
+    unsigned char i;
+	  char index=number;
 	
-		 else if((cunter>=13)&&(cunter<19))PWMSeter(1);
-		 else if((cunter>=19)&&(cunter<24))PWMSeter(0);
-		 
-		 else if((cunter>=24)&&(cunter<30))PWMSeter(1);
-		 else if((cunter>=30)&&(cunter<35))PWMSeter(0);
-		 
-		 else if((cunter>=35)&&(cunter<41))PWMSeter(1);
-		 else if((cunter>=41)&&(cunter<46))PWMSeter(0);
-		 /*else if((cunter>=9)&&(cunter<15))PWMSeter(0);
-	     else if (cunter>=15)
-		 	cunter=0;
-		 	break;*/
-		}	
-
+       if(number==0)index=1;
 	
+		for( i=0 ; i<index; i++){
+	       // cunter=0;
+	      
+	            while(1){
+				cunter++;
+				GCC_DELAY(30000);
+				if((cunter>=2)&&(cunter<8))BUZZER_ON
+				else if((cunter>=8)&&(cunter<13))BUZZER_OFF
+				else if(cunter>18)break ;
+	            }
+	            cunter=0;
+			 
+		}
+    	if(number>0)while(1){}
+			
 
    }
 
@@ -133,7 +134,7 @@ unsigned int COValue=0;
 		//PWMSeter(0);
 		void buzzerBIB(char number);
 		
-		NTCToGND=1;
+    	NTCToGND=1;
 		
 		_vbgren=1;
 		_sda0en=1;
@@ -143,17 +144,29 @@ unsigned int COValue=0;
 		_papu4=1;
 		_pawu4=1;
 		_pawu=0b111000;	
+
 		VDD = VBattery(S_READ_ADC(4));
 		COValue = CO(VDD,S_READ_ADC(5));
-	
-		NTCToGND=0;
 		
-     // if((limit1CO)||(limit2CO)||(limit3CO)||(limit4CO))PWMSeter(1);
+   		NTCToGND=0;
 		
+		if((limit1CO)||(limit2CO)||(limit3CO)||(limit4CO)){
 			
+			while(1) 
+			{
+				 _clrwdt();
+				 LEDToGND=1;
+				 buzzerBIB(0);
+			
+			}
+		}		
 		if(COValue>30)
 		{
+			LEDToGND=1;
+			buzzerBIB(1);
 			alarmCounter++;
+			LEDToGND=0;
+			
 		}
 		else
 		{
@@ -165,8 +178,18 @@ unsigned int COValue=0;
         _pac3=0;
         _pa3=1;
       
-    
-        
+     
+	     if (VDD<=LOW_BATTERY)
+	     {
+				_pac3=0;
+				_pa3=1;
+				buzzerBIB(1);
+				_pac3=0;
+				_pa3=0;
+		  }
+			
+			
+		
 		while(1){ 
 			
 		
@@ -189,33 +212,27 @@ unsigned int COValue=0;
 
 		     	if(buttonStatus==IDLE)
 				{
-				  PWMSeter(0); 
+				     // PWMSeter(0); 
 				}
 				else if(buttonStatus==SINGLE)
 				{
 				    _clrwdt();
-				     shwoSegment(COValue);
+				     shwoSegment(VDD*10);
 				}
 				else if(buttonStatus==DOUBLE)
 				{
-					_clrwdt();
-					
-						
-					if(VDD>3.7)shwoSegment(100);
-					else if(VDD<3)shwoSegment(75);
+					_clrwdt();	
+					if(VDD >= FULL_BATTERY) shwoSegment(100);
+					else if((VDD < FULL_BATTERY)&&(VDD > LOW_BATTERY))shwoSegment(75);
 					else shwoSegment(15);
 				}
 			
 				else if(buttonStatus==LONGPRESS)
 				{
 					
-					/*buzzerBIB();
-					buzzerBIB();
-					buzzerBIB();*/
-					
 					_clrwdt();
-					
-			       buzzerBIB(2);
+			       	
+			       buzzerBIB(4);
 			
 				}
  
@@ -238,21 +255,21 @@ unsigned int COValue=0;
 	float TempToPPMPercentage(float temperatur)
 	{
 
-		    if ((temperatur<0)&&(temperatur>=-20))
-			{
-				return((-0.0075*(temperatur+20)+0.60));	
-			}
-	        if ((temperatur>=0)&&(temperatur<20))
-			{
-				return ((0.0025*(temperatur)+0.75));
-			}
-		    if ((temperatur>=20)&&(temperatur<50))
-			{
-				return((0.0116*(temperatur-20)+0.100));
-			}
-		     if ((temperatur>=50)&&(temperatur<=70))
-			{
-			  return((0.005*(temperatur-50)+0.135));
-			}
-	
-	}
+	    if ((temperatur<0)&&(temperatur>=-20))
+		{
+			return((-0.0075*(temperatur+20)+0.60));	
+		}
+        if ((temperatur>=0)&&(temperatur<20))
+		{
+			return ((0.0025*(temperatur)+0.75));
+		}
+	    if ((temperatur>=20)&&(temperatur<50))
+		{
+			return((0.0116*(temperatur-20)+0.100));
+		}
+	     if ((temperatur>=50)&&(temperatur<=70))
+		{
+		  return((0.005*(temperatur-50)+0.135));
+		}
+
+}

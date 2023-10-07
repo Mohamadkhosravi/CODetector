@@ -22,7 +22,7 @@ unsigned int keyCounter=0;
 #define DEBOUNCE_THRESHOLD 2000
 #define PRESS_STATE_TIMOUT 500
 
-#define LONGPRESS_TIMOUT 1000
+#define LONGPRESS_TIMOUT 500
 
 
 buttonType key(void);
