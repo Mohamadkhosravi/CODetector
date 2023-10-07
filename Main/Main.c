@@ -52,23 +52,23 @@ float TempToPPMPercentage(float temperatur);
 
 	
 float VDD=0.0;
-int COValue;
-float VAmplifier1=0.0;
+unsigned int COValue=0;
 
- int CO(char VDD,int *ADC){
+ int CO(float VCO,unsigned int ADC){
 /*	OPAMPInit();
 	OPAMPset ();
 		_vbgren=1;
 		_sda0en=1;
 		_sda1en=1;*/
-		
+	
 	float temperatur=0.0;
 	float VAmplifier1=0.0;
 	float COValue =0.0;
-	int COV=*ADC;
-	
+	unsigned int COV=0;
+
+	//COV=S_READ_ADC(5);
 //	temperatur= (temperature(S_READ_ADC(1),VDD));
-	VAmplifier1=(COV)*(VDD/4095);
+	VAmplifier1=ADC*(VCO/4095);
 	COValue=((((VAmplifier1)/gainAmplifier1*1000)/RSHANT)*1000)*slope;
 //	COValue=(TempToPPMPercentage(temperatur)*10)*COValue;
 	return COValue; 
@@ -86,52 +86,31 @@ float VAmplifier1=0.0;
      
   void buzzerBIB(char number){   
 	  
-	//	unsigned long int counter=0;
+    unsigned int cunter =0;
+   
+		while(1)
+		{
+		     
+	     cunter++;
+	     GCC_DELAY(30000);
+	     if((cunter>=2)&&(cunter<8))PWMSeter(1);
+		 else if((cunter>=8)&&(cunter<13))PWMSeter(0); 
 	
-	//	while(1){
-			
-		    //==================
-			//PTM CCRA Low Byte
-		//	 _ptmal=18;
-			//PTM CCRA High Byte Register 
-		//	_ptmah=0b00;
-			//==================
-			//*********************
-			//==================
-			
-			//PTM CCRP Low Byte Register
-		//	_ptmrpl=37;
-			//PTM CCRP High Byte Register
-		//	_ptmrph=0b00;
-			
-			//==================		
-			/************************
-			/*
-			
-			PTPAU: PTM Counter Pause Control
-			0: Run
-			1: Pause	
-			*/	
-		//	_ptpau=0;
-			
-			/*PTON: PTM Counter On/Off Control
-			0: Off
-			1: On
-			*/
-		/*	_pton=1;
-	*/
-	    // counter++;
-	    // if(counter>10000)break;
-	
-	    // }
-		while(1){
-			number--;	
-			GCC_DELAY(3000);
-			PWMSeter(1);
-			GCC_DELAY(3000);
-		    PWMSeter(0);
-	    if(number<=0)break;
+		 else if((cunter>=13)&&(cunter<19))PWMSeter(1);
+		 else if((cunter>=19)&&(cunter<24))PWMSeter(0);
+		 
+		 else if((cunter>=24)&&(cunter<30))PWMSeter(1);
+		 else if((cunter>=30)&&(cunter<35))PWMSeter(0);
+		 
+		 else if((cunter>=35)&&(cunter<41))PWMSeter(1);
+		 else if((cunter>=41)&&(cunter<46))PWMSeter(0);
+		 /*else if((cunter>=9)&&(cunter<15))PWMSeter(0);
+	     else if (cunter>=15)
+		 	cunter=0;
+		 	break;*/
 		}	
+
+	
 
    }
 
@@ -164,14 +143,12 @@ float VAmplifier1=0.0;
 		_papu4=1;
 		_pawu4=1;
 		_pawu=0b111000;	
-	//	VDD = VBattery(S_READ_ADC(4));
-		//VAmplifier1=S_READ_ADC(5)*(VDD/4095);
-		//int *ptr = S_READ_ADC(5);
+		VDD = VBattery(S_READ_ADC(4));
 		COValue = CO(VDD,S_READ_ADC(5));
-		
+	
 		NTCToGND=0;
 		
-      if((limit1CO)||(limit2CO)||(limit3CO)||(limit4CO))PWMSeter(1);
+     // if((limit1CO)||(limit2CO)||(limit3CO)||(limit4CO))PWMSeter(1);
 		
 			
 		if(COValue>30)
@@ -218,7 +195,6 @@ float VAmplifier1=0.0;
 				{
 				    _clrwdt();
 				     shwoSegment(COValue);
-				    //shwoSegment(VAmplifier1);
 				}
 				else if(buttonStatus==DOUBLE)
 				{
