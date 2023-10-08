@@ -26,9 +26,9 @@
 #define BUZZER_OFF  PWMSeter(0);
 
 
-#define FULL_BATTERY 4
-#define MID_BATTERY  3.2
-#define LOW_BATTERY  3
+#define FULL_BATTERY 40
+//#define MID_BATTERY  3.2
+#define LOW_BATTERY  30
 
 unsigned int alarmCounter;
 
@@ -56,10 +56,10 @@ float TempToPPMPercentage(float temperatur);
 
 
 	
-float VDD=0.0;
+float VDD=0;
 unsigned int COValue=0;
 
- int CO(float VCO,unsigned int ADC){
+ int CO(float VCC,unsigned int ADC){
 /*	OPAMPInit();
 	OPAMPset ();
 		_vbgren=1;
@@ -69,14 +69,39 @@ unsigned int COValue=0;
 	float temperatur=0.0;
 	float VAmplifier1=0.0;
 	float COValue =0.0;
-	unsigned int COV=0;
 
+  
 	//COV=S_READ_ADC(5);
-//	temperatur= (temperature(S_READ_ADC(1),VDD));
-	VAmplifier1=ADC*(VCO/4095);
+	temperatur= (temperature(S_READ_ADC(1),VCC));
+	VAmplifier1=ADC*((VCC)/4095);
 	COValue=((((VAmplifier1)/gainAmplifier1*1000)/RSHANT)*1000)*slope;
+	
+         if ((-20<=temperatur<0))
+		{
+			return((-0.0075*(temperatur+20)+0.60))*COValue;	
+		}
+       	 if ((20<temperatur>=0))
+		{
+			return ((0.0025*(temperatur)+0.75))*COValue;
+		}
+	    if ((temperatur>=20)&&(temperatur<50))
+		{
+			return((0.0116*(temperatur-20)+0.100))*COValue;
+		}
+	     if ((temperatur>=50)&&(temperatur<=70))
+		{
+		  return((0.005*(temperatur-50)+0.135))*COValue;
+
+		}
+	
+	
+	
+	
+	
+	
+	
 //	COValue=(TempToPPMPercentage(temperatur)*10)*COValue;
-	return COValue; 
+    	return COValue; 
 
 
 }
@@ -89,33 +114,33 @@ unsigned int COValue=0;
 
 
      
-  void buzzerBIB(char number){   
-	  
-    unsigned char cunter;
-    unsigned char i;
-	  char index=number;
-	
-       if(number==0)index=1;
-	
-		for( i=0 ; i<index; i++){
-	       // cunter=0;
-	      
-	            while(1){
+	void buzzerBIB(char number){   
+		  
+		unsigned char cunter;
+		unsigned char i;
+		char index=number;
+		
+		if(number==0)index=1;
+		
+		for( i=0 ; i<number; i++){
+			
+		    cunter=0;
+		    while(1){
 				cunter++;
 				GCC_DELAY(30000);
 				if((cunter>=2)&&(cunter<8))BUZZER_ON
 				else if((cunter>=8)&&(cunter<13))BUZZER_OFF
 				else if(cunter>18)break ;
-	            }
-	            cunter=0;
-			 
+		    }
+		    cunter=0;
+		 
 		}
-    	if(number>0)while(1){}
-			
-
-   }
-
- 
+		if(number>0)while(1){}
+				
+	
+	}
+	
+	
 	void main()
 	{
 
@@ -186,9 +211,13 @@ unsigned int COValue=0;
 				buzzerBIB(1);
 				_pac3=0;
 				_pa3=0;
+			   buzzerBIB(1);
 		  }
 			
-			
+			_pac3=0;
+			_pa3=1;	
+			_pac3=0;
+			_pa3=0;	
 		
 		while(1){ 
 			
@@ -217,21 +246,20 @@ unsigned int COValue=0;
 				else if(buttonStatus==SINGLE)
 				{
 				    _clrwdt();
-				     shwoSegment(VDD*10);
+				     shwoSegment(COValue);
 				}
 				else if(buttonStatus==DOUBLE)
 				{
 					_clrwdt();	
 					if(VDD >= FULL_BATTERY) shwoSegment(100);
-					else if((VDD < FULL_BATTERY)&&(VDD > LOW_BATTERY))shwoSegment(75);
-					else shwoSegment(15);
+					else if(VDD<LOW_BATTERY)shwoSegment(15);
+					else shwoSegment(75);
 				}
 			
 				else if(buttonStatus==LONGPRESS)
 				{
 					
 					_clrwdt();
-			       	
 			       buzzerBIB(4);
 			
 				}
@@ -252,7 +280,7 @@ unsigned int COValue=0;
 	}	
 
 
-	float TempToPPMPercentage(float temperatur)
+/*	float TempToPPMPercentage(float temperatur)
 	{
 
 	    if ((temperatur<0)&&(temperatur>=-20))
@@ -272,4 +300,4 @@ unsigned int COValue=0;
 		  return((0.005*(temperatur-50)+0.135));
 		}
 
-}
+}*/
