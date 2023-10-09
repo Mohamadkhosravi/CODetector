@@ -22,8 +22,28 @@
 
 
 
-  #define NTCToGND _isgs0
-  #define LEDToGND  _isgs1
+#define NTCToGND _isgs0
+#define LEDToGND  _isgs1
+
+#define	PULL_HIGH_KEY _papu4=1;
+#define	WAKE_UP_KEY _pawu4=1;PULL_HIGH_KEY
+
+#define LED_RED_ON 	LEDToGND=1;
+#define LED_RED_OFF  LEDToGND=0;
+
+#define LED_YELLOW_ON _pac3=0;_pa3=1;	
+#define LED_YELLOW_OFF _pac3=0;_pa3=0;					
+
+#define GPIOS_INPUT	 clearSegment();
+
+
+#define BLINK_LED_GREEN  _pac3=0;_pa3=1;GCC_DELAY(4000);_pac3=0;_pa3=0;
+
+
+
+
+
+
   
   //#define Curent0 0b00000000
   

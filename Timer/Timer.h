@@ -4,6 +4,9 @@
 #ifdef TM_H
 
 
+
+
+
 #define PTIMER
 	
 	
@@ -25,9 +28,14 @@
 	
 	
 	#ifdef PTIMER
+		
 			
 		void PTimerInit(void);
 		void PWMSeter(char status);
+		
+		#define BUZZER_ON   PWMSeter(1);
+        #define BUZZER_OFF  PWMSeter(0);
+		
 	
 	#endif
 	
