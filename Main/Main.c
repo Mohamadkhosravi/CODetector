@@ -18,7 +18,7 @@
 #define _4_MINUTES  30
 
 #define slope 0.04 //m = y2-y1/x2-x1
-#define I(VOut)(VOut+((RS+(RF)/RS*(RF))*((R2/R3)+1)))
+//#define I(VOut)(VOut+((RS+(RF)/RS*(RF))*((R2/R3)+1)))
 #define VBattery(ADC_BAT)( 1.20*(4095.000/ ADC_BAT))
 
 
@@ -26,9 +26,9 @@
 #define BUZZER_OFF  PWMSeter(0);
 
 
-#define FULL_BATTERY 40
+#define FULL_BATTERY 4
 //#define MID_BATTERY  3.2
-#define LOW_BATTERY  30
+#define LOW_BATTERY  3
 
 unsigned int alarmCounter;
 
@@ -51,70 +51,48 @@ typedef enum {
 }buttonType;
 
 buttonType key(void);		
-float TempToPPMPercentage(float temperatur);
-
-
-
-	
-float VDD=0;
+float TempToPPMPercentage(float temperatur);	
+float VDD=0.0;
 unsigned int COValue=0;
 
- int CO(float VCC,unsigned int ADC){
-/*	OPAMPInit();
-	OPAMPset ();
-		_vbgren=1;
-		_sda0en=1;
-		_sda1en=1;*/
-	
-	float temperatur=0.0;
-	float VAmplifier1=0.0;
-	float COValue =0.0;
+ int ReadCO(float VCC,unsigned int ADC){
 
+	
+	 float temperatur=0.0;
+	 float VAmplifier1=0.0;
+	 unsigned int CO ;
+	
   
-	//COV=S_READ_ADC(5);
-	temperatur= (temperature(S_READ_ADC(1),VCC));
+   temperatur= (temperature(S_READ_ADC(1),VCC));
 	VAmplifier1=ADC*((VCC)/4095);
-	COValue=((((VAmplifier1)/gainAmplifier1*1000)/RSHANT)*1000)*slope;
-	
-         if ((-20<=temperatur<0))
+	CO = ((((VAmplifier1)/gainAmplifier1*1000)/RSHANT)*1000)*slope;
+   
+        if (temperatur<0)
 		{
-			return((-0.0075*(temperatur+20)+0.60))*COValue;	
+		 	return (((-0.75*(temperatur+20)+60))/100)*CO;	
+		} 
+        else if ((temperatur>=0)&&(temperatur<20))
+		{
+	    	return  ((0.25*(temperatur)+75)/100)*CO;
 		}
-       	 if ((20<temperatur>=0))
-		{
-			return ((0.0025*(temperatur)+0.75))*COValue;
+	    else if ((temperatur>=20)&&(temperatur<50))
+		{	
+			return ((1.1666*(temperatur-20)+100)/100)*CO;
 		}
-	    if ((temperatur>=20)&&(temperatur<50))
-		{
-			return((0.0116*(temperatur-20)+0.100))*COValue;
-		}
-	     if ((temperatur>=50)&&(temperatur<=70))
-		{
-		  return((0.005*(temperatur-50)+0.135))*COValue;
+	   else if ((temperatur>=50))
+		{	
+		   return (((0.5*(temperatur-50)+135)/100))*CO;
 
 		}
+
 	
-	
-	
-	
-	
-	
-	
-//	COValue=(TempToPPMPercentage(temperatur)*10)*COValue;
-    	return COValue; 
+
 
 
 }
 
-
-
-
-
-
-
-
      
-	void buzzerBIB(char number){   
+	void buzzerAlarm(char number){   
 		  
 		unsigned char cunter;
 		unsigned char i;
@@ -122,7 +100,7 @@ unsigned int COValue=0;
 		
 		if(number==0)index=1;
 		
-		for( i=0 ; i<number; i++){
+		for( i=0 ; i<index; i++){
 			
 		    cunter=0;
 		    while(1){
@@ -157,7 +135,7 @@ unsigned int COValue=0;
 		PTimerInit();
 		
 		//PWMSeter(0);
-		void buzzerBIB(char number);
+		void buzzerAlarm(char number);
 		
     	NTCToGND=1;
 		
@@ -169,26 +147,30 @@ unsigned int COValue=0;
 		_papu4=1;
 		_pawu4=1;
 		_pawu=0b111000;	
-
+		
+    	_vbgren=1;
+		_sda0en=1;
+		_sda1en=1; 
+		
 		VDD = VBattery(S_READ_ADC(4));
-		COValue = CO(VDD,S_READ_ADC(5));
-		
-   		NTCToGND=0;
-		
+     	COValue = ReadCO(VDD,S_READ_ADC(5));
+	//	COValue=S_READ_ADC(5)/10;
+   		//NTCToGND=0;
+	
 		if((limit1CO)||(limit2CO)||(limit3CO)||(limit4CO)){
 			
 			while(1) 
 			{
 				 _clrwdt();
 				 LEDToGND=1;
-				 buzzerBIB(0);
-			
+				 buzzerAlarm(0);
+			     
 			}
 		}		
 		if(COValue>30)
 		{
 			LEDToGND=1;
-			buzzerBIB(1);
+			buzzerAlarm(0);
 			alarmCounter++;
 			LEDToGND=0;
 			
@@ -200,30 +182,31 @@ unsigned int COValue=0;
 		 
 		}
        //yelow
-        _pac3=0;
-        _pa3=1;
+    
+		_pac3=0;
+		_pa3=1;
+		GCC_DELAY(4000);	
+		_pac3=0;
+		_pa3=0;	
+		
+			
       
      
 	     if (VDD<=LOW_BATTERY)
 	     {
 				_pac3=0;
 				_pa3=1;
-				buzzerBIB(1);
+				buzzerAlarm(0);
 				_pac3=0;
 				_pa3=0;
-			   buzzerBIB(1);
+			 
 		  }
 			
-			_pac3=0;
-			_pa3=1;	
-			_pac3=0;
-			_pa3=0;	
 		
 		while(1){ 
 			
 		
-			
-			
+		
 			 
 		    buttonType buttonStatus;
 		    buttonStatus=key();
@@ -252,15 +235,15 @@ unsigned int COValue=0;
 				{
 					_clrwdt();	
 					if(VDD >= FULL_BATTERY) shwoSegment(100);
-					else if(VDD<LOW_BATTERY)shwoSegment(15);
-					else shwoSegment(75);
+					else if(VDD<LOW_BATTERY)shwoSegment(75);
+					else shwoSegment(15);
 				}
 			
 				else if(buttonStatus==LONGPRESS)
 				{
 					
 					_clrwdt();
-			       buzzerBIB(4);
+			       buzzerAlarm(4);
 			
 				}
  

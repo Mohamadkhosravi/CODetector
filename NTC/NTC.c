@@ -50,5 +50,5 @@ float temperature(int ADCValue, float VDD) {
 //	float temperatureCelsius = temperatureKelvin - 273.15;
 	
 	return temperatureCelsius/10;
-
+  
 }

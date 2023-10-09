@@ -50,11 +50,14 @@
 /*  3 point from your ntc in different temperatures , you can use from
 https://www.thinksrs.com/downloads/programs/therm%20calc/ntccalibrator/ntccalculator.html
 */
-	
+	/*
 	#define  A  0.001129148
 	#define  B  0.000234125
-	#define  C  0.0000000876741
+	#define  C  0.0000000876741*/
 	
+	#define  A  0.001277368 //    T1=-30^C   R1=154882kR
+	#define  B  0.000208223 //    T2=25^C    R2=10000KR
+	#define  C  0.0000002032989// T3=80^C R3=1228KR
 	
 	float temperature(int ADCValue, float VDD);
    
