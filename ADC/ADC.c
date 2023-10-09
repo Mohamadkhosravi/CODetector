@@ -25,7 +25,7 @@ void S_ADC_Init()
 unsigned int  S_READ_ADC(unsigned char CH)
 {
     unsigned int temp=0;
-    int *Ptr;
+
     
     // Switch statement to set the appropriate ADC channel based on the input parameter CH.
     switch(CH)

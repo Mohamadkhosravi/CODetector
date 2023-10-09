@@ -1,3 +1,4 @@
+// Include necessary hardware-specific header files
 #include "BA45F5240.h"
 #include "ADC.h" 
 #include "NTC.h" 
@@ -7,34 +8,36 @@
 #include "Timer.h"
 #include "CO.h"
 
-
-
-//#define I(VOut)(VOut+((RS+(RF)/RS*(RF))*((R2/R3)+1)))
+//===================================
+// Battery voltage calculation macro
 #define VBattery(ADC_BAT)( 1.20*(4095.000/ ADC_BAT))
+
+// Battery status thresholds
 #define FULL_BATTERY 4
 #define LOW_BATTERY  3
-
-
-
+	
+// Variable to keep track of alarm counts
 unsigned int alarmCounter;
 
 
-//clock time is 8s
+// Time constants for CO monitoring
 #define _8_HOURS    3600
 #define _50_MINUTES 375
 #define _10_MINUTES 75
 #define _4_MINUTES  30
 
-
+// Minimum CO level allowed
 #define MINIMUM_CO_ALLOWED 30
 
+// CO level limits and corresponding time thresholds
 #define LIMIT_1_CO   ((alarmCounter>=_4_MINUTES)&&(COValue>400))
 #define LIMIT_2_CO   ((alarmCounter>=_10_MINUTES)&&(COValue>125)) 
 #define LIMIT_3_CO   ((alarmCounter>=_50_MINUTES)&&(COValue>75)) 
 #define LIMIT_4_CO   ((alarmCounter>=_8_HOURS)&&(COValue>30))
 
+//===================================
 
-
+// Enumeration for button press types
 typedef enum {
 
 	IDLE,
@@ -45,12 +48,14 @@ typedef enum {
 
 }buttonType;
 
-buttonType key(void);
-			
+
+
+// Variables for storing sensor values			
 float VDD=0.0;
 unsigned short int temperatur=0;
 unsigned int COValue=0;
 
+//===================================
 
 	
 	void main()
@@ -60,7 +65,8 @@ unsigned int COValue=0;
 		{
 			alarmCounter=0;
 		}
-		
+			
+		// Initialize hardware peripherals and configurations
 		ClockInit();
 		GPIOInit();
 		GPIOToGNDCurentInit();
@@ -68,32 +74,32 @@ unsigned int COValue=0;
 		S_ADC_Init();
 		PTimerInit();
 		
-		//PWMSeter(0);
+		// Function to read button press type
+		buttonType key();
 		void buzzerAlarm(char number);
 		
-    	NTCToGND=1;
+		//Set up sensor and power-related configurations
 		
-		_vbgren=1;
-		_sda0en=1;
-		_sda1en=1; 
-		
-    	GPIOS_INPUT
+    	NTCToGND=1;//NTC GNDs PIN Connecte to GND 
+    	
+    	GPIOS_INPUT//ALL GPIOS INPUT config
 		WAKE_UP_KEY
+    	_vbgren=1;//READ VBRG(voltage refrence 1.2V) for read VBattery ENABLE
+		_sda0en=1;//OPAMP0 ENABLE
+		_sda1en=1;//OPAMP1 ENABLE 
 		
-		//_pawu=0b111000;	
-		
-    	_vbgren=1;
-		_sda0en=1;
-		_sda1en=1; 
-		
+		// Read battery voltage, temperature, and CO level
 		VDD = VBattery(S_READ_ADC(4));
 	    temperatur= (temperature(S_READ_ADC(1),VDD));
      	COValue = ReadCO(VDD,S_READ_ADC(5),temperatur);
      	
+     	//NTC GNDs PIN Disconnecte to GND 
    		NTCToGND=0;
-	
+   		
+		// Perform actions based on CO levels
 		if((LIMIT_1_CO)||(LIMIT_2_CO)||(LIMIT_3_CO)||(LIMIT_4_CO)){
 			
+		 // Trigger alarms and indicate danger	
 			while(1) 
 			{
 				 _clrwdt();
@@ -105,6 +111,7 @@ unsigned int COValue=0;
 				
 		if(COValue > MINIMUM_CO_ALLOWED)
 		{
+		 // Trigger an alarm and increment the alarm counter	
 		    LED_RED_ON
 			buzzerAlarm(0);
 			alarmCounter++;
@@ -113,13 +120,15 @@ unsigned int COValue=0;
 		}
 		else
 		{
+		 // Decrease the alarm counter and turn off the buzzer	
 		  if(alarmCounter>0) alarmCounter--;	
 		  BUZZER_OFF
 		 
 		}
     
          BLINK_LED_GREEN
-		
+         
+		// Check battery voltage and trigger alarms if it's too low
 		if (VDD <= LOW_BATTERY)
 		{
 			LED_YELLOW_ON
@@ -131,32 +140,37 @@ unsigned int COValue=0;
 		
 		while(1){ 
 			
-		
-		
+		 // Handle button presses and perform actions accordingly
 			 
 		    buttonType buttonStatus;
 		    buttonStatus=key();
 		    
 		    if(buttonStatus==NONPRESS)
 			{
+			// Enter low-power mode if no button is pressed	
 			   _halt();			
 			}
 		    else
 		    {
+		    // Wake up from low-power mode and handle button press	
 				WAKE_UP_KEY	
 			    GPIOS_INPUT
 
 		     	if(buttonStatus==IDLE)
 				{
-				     
+				  // Handle IDLE button press    
 				}
 				else if(buttonStatus==SINGLE)
 				{
+				// Handle SINGLE button press
+				// Display CO value on a 3-digit 7-segment display
 				    _clrwdt();
 				     shwoSegment(COValue);
 				}
 				else if(buttonStatus==DOUBLE)
 				{
+				// Handle DOUBLE button press
+				// Handle LONGPRESS button press	
 					_clrwdt();	
 					if(VDD >= FULL_BATTERY) shwoSegment(100);
 					else if(VDD<LOW_BATTERY)shwoSegment(75);
@@ -165,7 +179,8 @@ unsigned int COValue=0;
 			
 				else if(buttonStatus==LONGPRESS)
 				{
-					
+				// Handle LONGPRESS button press	
+				// Trigger a long press alarm	
 					_clrwdt();
 			       buzzerAlarm(4);
 			
@@ -186,7 +201,7 @@ unsigned int COValue=0;
 		
 	}	
 
-     
+   // Function to control the buzzer for alarms  
 	void buzzerAlarm(char number){   
 		  
 		unsigned char cunter;
