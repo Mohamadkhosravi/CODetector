@@ -94,7 +94,7 @@ for alarm we use 2 wire buzzer with resonator circuit
 The firmware of this project is written in C and assembly language using Holtec's own proprietary IDE HT-IDE3000  on the BA45F5240 microcontroller
 The main code scenario is in file Main.c  and other modules are written in libraries with related names in header and C files.
 main scenario this is : if CO sensor detect co values is more than MINIMUM CO ALLOWED, sensor alarming 
-for 
+The limits that exist for comparing the value of CO are defined according to American Standard – UL2034
 
 
 
