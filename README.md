@@ -86,10 +86,15 @@ for measure Temperature ,we used NTC 10k 5% for part number MF52 A 103 J 3950
 ### Alarm 
 for alarm we use 2 wire buzzer with resonator circuit
 
+
+
 ![3](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/51b13706-63c2-4031-aca4-4b330883896e)
 
-
-
+##Examining the general scenario and performance of different departments
+The firmware of this project is written in C and assembly language using Holtec's own proprietary IDE HT-IDE3000  on the BA45F5240 microcontroller
+The main code scenario is in file Main.c  and other modules are written in libraries with related names in header and C files.
+main scenario this is : if CO sensor detect co values is more than MINIMUM CO ALLOWED, sensor alarming 
+for 
 
 
 
