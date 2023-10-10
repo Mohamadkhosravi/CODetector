@@ -20,8 +20,32 @@ For this project, we used BA45F5240 microcontroller for HOLTEK company
 ![1](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/7303fa27-6e76-4fca-b92d-a3873ea8319e)
 
 this micro have :
-4kb flash memory , working voltage 2.2V to 5.5V, 64byte EEPROM,4chanel ADC12bit,2 Timer 10bit
+
+ working voltage 2.2V to 5.5V
+ 
+ 4chanel ADC12bit,
 clock  in micro is 32kH to 8MH 
+
+Flash Program Memory: 4K×16
+
+RAM Data Memory: 256×8
+
+True EEPROM Memory: 64×8
+
+2 Timer 10bit and internal Watchdog Timer
+
+Watchdog Timer function
+
+Up to 13 bidirectional I/O lines
+
+Up to two external interrupt lines shared with I/O pins
+
+Universal Serial Interface Module – USIM for SPI, I2C or UART communication
+
+Up to 4 external channel 12-bit resolution A/D converter with Internal Reference Voltage VBGREF
+
+BA45F5240 Datasheet
+
 
 
 
