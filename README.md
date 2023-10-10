@@ -19,32 +19,64 @@ For this project, we used BA45F5240 microcontroller for HOLTEK company
 
 ![1](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/7303fa27-6e76-4fca-b92d-a3873ea8319e)
 
-this micro have :
+## MCU Peripheral Features
+* working voltage 2.2V to 5.5V
 
- working voltage 2.2V to 5.5V
- 
- 4chanel ADC12bit,
-clock  in micro is 32kH to 8MH 
+* clock  in micro is 32kH to 8MH 
 
-Flash Program Memory: 4K×16
+* Flash Program Memory: 4K×16
 
-RAM Data Memory: 256×8
+* RAM Data Memory: 256×8
 
-True EEPROM Memory: 64×8
+* True EEPROM Memory: 64×8
 
-2 Timer 10bit and internal Watchdog Timer
+* 2 Timer 10bit and internal Watchdog Timer
 
-Watchdog Timer function
+* Watchdog Timer function
 
-Up to 13 bidirectional I/O lines
+* Up to 13 bidirectional I/O lines
 
-Up to two external interrupt lines shared with I/O pins
+* Up to two external interrupt lines shared with I/O pins
 
-Universal Serial Interface Module – USIM for SPI, I2C or UART communication
+* Universal Serial Interface Module – USIM for SPI, I2C or UART communication
 
-Up to 4 external channel 12-bit resolution A/D converter with Internal Reference Voltage VBGREF
+* Up to 4 external channel 12-bit resolution A/D converter with Internal Reference Voltage VBGREF
+* Multi-mode operation: FAST, SLOW, IDLE and SLEEP
 
-BA45F5240 Datasheet
+BA45F5240 Datasheet [https://www.holtek.com.tw/webapi/11842/BA45F5240_5240-2v140.pdf] 
+
+this MCU designed especially for smoke detector applications but we used for CO gas detection
+# CO Sensor 
+For this project, we used ME2-CO Electrochemical Carbon Monoxide Sensor with UL certificate for Winsen company
+
+![ME2-CO](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/c61d3add-fc4e-4da1-88d0-90ea02925615)
+
+Technical parameters :
+* Measurement Range	0~1000 ppm
+* Max detecting concentration	2000 ppm
+* Sensitivity	0.023±0.008 µA/ppm
+* Resolution ratio	0.5 ppm
+* Response time（T90）	≤50 S
+* Load resistance	200 Ω（recommended）
+* Repeatability	<3%output value
+* Stability（／year）	<10%
+* Output Linearity	Linear
+* Zero drift（-20℃～40℃）	≤10 ppm
+* Storage temperature	-20℃～50℃
+* Storage Humidity	15%～90%RH
+* Pressure range	normal atmosphere ±10%
+* Anticipated using life	5 years
+
+
+ME2-CO Datasheet  [https://www.winsen-sensor.com/d/files/me2-co-0-1000ppm-manual%EF%BC%88ver1_3%EF%BC%89.pdf]
+## Display 
+ For show information we used seven segment 3 Digit Complex for part number MMC1808 B B10
+
+![2](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/610d305e-6a13-4920-a16e-bc3b92a0b769)
+
+MMC1808 B B10 Datasheet [MMD1808B-B10-DataSheet.pdf](https://github.com/Mohamadkhosravi/CODetector/files/12854924/MMD1808B-B10-DataSheet.pdf)
+
+
 
 
 
