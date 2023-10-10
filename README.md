@@ -15,10 +15,13 @@ To prevent carbon monoxide poisoning, it's essential to have proper ventilation 
 This project is used to measure and warn of CO gas
 
 # Technical description of the project
-For this project, we used HA222 microcontroller for HOLTEK company
+For this project, we used BA45F5240 microcontroller for HOLTEK company
+
+![1](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/7303fa27-6e76-4fca-b92d-a3873ea8319e)
+
+this micro have :
+4kb flash memory , working voltage 2.2V to 5.5V, 64byte EEPROM,4chanel ADC12bit,2 Timer 10bit
+clock  in micro is 32kH to 8MH 
 
 
-
-
-ف
 
