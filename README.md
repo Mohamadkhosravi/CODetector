@@ -71,10 +71,20 @@ Technical parameters :
 ME2-CO Datasheet  [https://www.winsen-sensor.com/d/files/me2-co-0-1000ppm-manual%EF%BC%88ver1_3%EF%BC%89.pdf]
 ## Display 
  For show information we used seven segment 3 Digit Complex for part number MMC1808 B B10
-
 ![2](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/610d305e-6a13-4920-a16e-bc3b92a0b769)
 
 MMC1808 B B10 Datasheet [MMD1808B-B10-DataSheet.pdf](https://github.com/Mohamadkhosravi/CODetector/files/12854924/MMD1808B-B10-DataSheet.pdf)
+
+## Temperature Sensor
+for measure Temperature ,we used NTC 10k 5% for part number MF52 A 103 J 3950
+![MF52_3095-550x550](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/ddeee2ff-c82c-4cc2-ac04-5c27fff9d2ae)
+
+## Alarm 
+for alarm we use 2 wire buzzer with resonator circuit
+![3](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/51b13706-63c2-4031-aca4-4b330883896e)
+
+
+
 
 
 
