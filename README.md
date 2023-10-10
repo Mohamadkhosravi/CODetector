@@ -45,7 +45,7 @@ For this project, we used BA45F5240 microcontroller for HOLTEK company
 * Up to 4 external channel 12-bit resolution A/D converter with Internal Reference Voltage VBGREF
 * Multi-mode operation: FAST, SLOW, IDLE and SLEEP
 
-BA45F5240 Datasheet [https://www.holtek.com.tw/webapi/11842/BA45F5240_5240-2v140.pdf] 
+BA45F5240 [Datasheet](https://www.holtek.com.tw/webapi/11842/BA45F5240_5240-2v140.pdf) 
 
 this MCU designed especially for smoke detector applications but we used for CO gas detection
 ### CO Sensor 
@@ -70,13 +70,13 @@ Technical parameters :
 * Anticipated using life	5 years
 
 
-ME2-CO Datasheet  [https://www.winsen-sensor.com/d/files/me2-co-0-1000ppm-manual%EF%BC%88ver1_3%EF%BC%89.pdf]
+ME2-CO  Datasheet (https://www.winsen-sensor.com/d/files/me2-co-0-1000ppm-manual%EF%BC%88ver1_3%EF%BC%89.pdf)
 ### Display 
  For show information we used seven segment 3 Digit Complex for part number MMC1808 B B10
  
 ![2](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/610d305e-6a13-4920-a16e-bc3b92a0b769)
 
-MMC1808 B B10 Datasheet [MMD1808B-B10-DataSheet.pdf](https://github.com/Mohamadkhosravi/CODetector/files/12854924/MMD1808B-B10-DataSheet.pdf)
+MMC1808 B B10 Datasheet [Datasheet][MMD1808B-B10-DataSheet.pdf](https://github.com/Mohamadkhosravi/CODetector/files/12854924/MMD1808B-B10-DataSheet.pdf)
 
 ### Temperature Sensor
 for measure Temperature ,we used NTC 10k 5% for part number MF52 A 103 J 3950
@@ -90,11 +90,60 @@ for alarm we use 2 wire buzzer with resonator circuit
 
 ![3](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/51b13706-63c2-4031-aca4-4b330883896e)
 
-##Examining the general scenario and performance of different departments
+## Examining the general scenario and performance of different departments
 The firmware of this project is written in C and assembly language using Holtec's own proprietary IDE HT-IDE3000  on the BA45F5240 microcontroller
 The main code scenario is in file Main.c  and other modules are written in libraries with related names in header and C files.
-main scenario this is : if CO sensor detect co values is more than MINIMUM CO ALLOWED, sensor alarming 
+main scenario this is : 
+
+### Normal state
+
+--In normal mode--, the green LED blinks every 8 seconds when the watchdog wakes up and goes back to sleep mode.
+When pressing the key, the micro wakes up and , we have:
+
+* by pressing the key once, we can see the amount of CO gas in ppm
+* By pressing the key twice, we can see the battery charge percentage
+* By pressing the key for a long time, the alarm will sound 4 times
+After a few seconds after pressing the micro key, it goes to normal mode, i.e. sleep mode
+
+### Low battery state
+when battery voltage geting leser than "LOW_BATTERY" yellow LED blinks every 8 seconds
+
+
+### Alarm state
+If the CO sensor detects CO values greater than "MINIMUM_CO_ALLOWED", increment the alarm time counter.
+And when we pass one of the limits according to the standard, the alarm sounds and the red LED remains on.
+
+
 The limits that exist for comparing the value of CO are defined according to American Standard – UL2034
+According to the definition of this standard, we have:
+# #
+Main alarm requirements :
+ * at 30ppm CO, the alarm must not activate for at least 8 hours
+ * at 70ppm CO, the alarm must not activate before 60 minutes but must
+ * activate before 240 minutes
+ * at 150ppm CO, the alarm must not activate before 10 minutes but must
+ * activate before 50 minutes
+ * at 400ppm CO, the alarm must not activate before 4 minutes but must activate before 15 minutes
+  
+
+# # 
+this limits defined in main code for 4 limit defined
+# # 
+```
+ #define MINIMUM_CO_ALLOWED 30
+ #define LIMIT_1_CO   ((alarmCounter>=_4_MINUTES)&&(COValue>400))
+ #define LIMIT_2_CO   ((alarmCounter>=_10_MINUTES)&&(COValue>125)) 
+ #define LIMIT_3_CO   ((alarmCounter>=_50_MINUTES)&&(COValue>75)) 
+ #define LIMIT_4_CO   ((alarmCounter>=_8_HOURS)&&(COValue>30))
+```
+## Description of libraries
+To set up and measure the amount of CO gas based on the data sheet of the CO gas sensor [ME2-CO](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/c61d3add-fc4e-4da1-88d0-90ea02925615)  , we must use the following circuit
+
+![4](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/d037fe12-3cf4-412c-acc0-197c10b30f03)
+
+To set up the sensor, we have used the internal micro opamp which is located in the OPAMP.C and OPAMP.h files
+In the opamp file, we first set the output offset to zero, then set the registers related to the internal opamp keys
+
 
 
 
