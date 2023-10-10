@@ -143,6 +143,38 @@ To set up and measure the amount of CO gas based on the data sheet of the CO gas
 
 To set up the sensor, we have used the internal micro opamp which is located in the OPAMP.C and OPAMP.h files
 In the opamp file, we first set the output offset to zero, then set the registers related to the internal opamp keys
+![5](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/f6979095-c815-479c-8207-c5fdd2a394b5)
+Smoke Detector AFE Block Diagram
+for change this keys used from this registers in OPAMP.c
+```
+sds0=0;
+_sds1=0;
+_sds2=1;////////
+_sds3=0;////////
+_sds4=1;
+//01: AC coupling mode
+_sds5=0;
+_sds6=0;
+
+_sda0ofm=0;
+_sda1ofm=0;
+
+```
+This op-amp topology is called non-inverting topology
+The RF resistance is set in this internal project and its value is 100 kiloohms
+```
+//R1 resistance control
+_sdpgac0=0b00000001;  //*100k
+```
+RI is external and value is 15 kR
+The gain of op_amp 1 is obtained from the following formula and its value is 7.6 and it is defined in the header file.
+NON-INVERTING Gain = Rf/Ri + 1 
+```
+#define gainAmplifier1 7.666666666666667  //gainAmplifier1=1+(100k/15k)
+```
+we don't use amplifier 2
+
+
 
 
 
