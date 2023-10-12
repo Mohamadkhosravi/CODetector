@@ -76,7 +76,7 @@ ME2-CO  Datasheet (https://www.winsen-sensor.com/d/files/me2-co-0-1000ppm-manual
  
 ![2](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/610d305e-6a13-4920-a16e-bc3b92a0b769)
 
-MMC1808 B B10 Datasheet [Datasheet][MMD1808B-B10-DataSheet.pdf](https://github.com/Mohamadkhosravi/CODetector/files/12854924/MMD1808B-B10-DataSheet.pdf)
+MMC1808 B B10 Datasheet [MMD1808B-B10-DataSheet.pdf](https://github.com/Mohamadkhosravi/CODetector/files/12854924/MMD1808B-B10-DataSheet.pdf)
 
 ### Temperature Sensor
 for measure Temperature ,we used NTC 10k 5% for part number MF52 A 103 J 3950
@@ -84,21 +84,27 @@ for measure Temperature ,we used NTC 10k 5% for part number MF52 A 103 J 3950
 ![MF52_3095-550x550](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/ddeee2ff-c82c-4cc2-ac04-5c27fff9d2ae)
 
 ### Alarm 
-for alarm we use 2 wire buzzer with resonator circuit
-
-
 
 ![3](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/51b13706-63c2-4031-aca4-4b330883896e)
 
 ## Examining the general scenario and performance of different departments
-The firmware of this project is written in C and assembly language using Holtec's own proprietary IDE HT-IDE3000  on the BA45F5240 microcontroller
-The main code scenario is in file Main.c  and other modules are written in libraries with related names in header and C files.
+The firmware of this project is written in C and assembly language using Holtec's own proprietary [IDE HT-IDE3000](https://www.holtek.com/page/ice)  on the BA45F5240 microcontroller
+The main code scenario is in file [Main.c](https://github.com/Mohamadkhosravi/CODetector/blob/main/Main/Main.c) and other modules are written in libraries with related names in header and C files.
 main scenario this is : 
 
 ### Normal state
 
---In normal mode--, the green LED blinks every 8 seconds when the watchdog wakes up and goes back to sleep mode.
-When pressing the key, the micro wakes up and , we have:
+In normal mode, the green LED blinks every 8 seconds 
+```	
+BLINK_LED_GREEN
+
+```	
+when the watchdog wakes up and goes back to sleep mode.
+```
+// Enter low-power mode if no button is pressed	
+ _halt();
+```	
+When pressing the key, the micro wakes up and :
 
 * by pressing the key once, we can see the amount of CO gas in ppm
 * By pressing the key twice, we can see the battery charge percentage
@@ -112,9 +118,41 @@ when battery voltage geting leser than "LOW_BATTERY" yellow LED blinks every 8 s
 ### Alarm state
 If the CO sensor detects CO values greater than "MINIMUM_CO_ALLOWED", increment the alarm time counter.
 And when we pass one of the limits according to the standard, the alarm sounds and the red LED remains on.
+for alarm we use 2 wire buzzer with resonator circuit
+```	
+if(COValue > MINIMUM_CO_ALLOWED)
+		{
+		 // Trigger an alarm and increment the alarm counter	
+		    LED_RED_ON
+			buzzerAlarm(0);
+			alarmCounter++;
+	    	LED_RED_OFF
+			
+		}
+		else
+		{
+		 // Decrease the alarm counter and turn off the buzzer	
+		  if(alarmCounter>0) alarmCounter--;	
+		  BUZZER_OFF
+		 
+		}
+```	
+```	
+if((LIMIT_1_CO)||(LIMIT_2_CO)||(LIMIT_3_CO)||(LIMIT_4_CO)){
+		
+		 // Trigger alarms and indicate danger	
+			while(1) 
+			{
+				 _clrwdt();
+				 LED_RED_ON
+				 buzzerAlarm(0);
+			     
+			}
+		}
+```
+# #
 
-
-The limits that exist for comparing the value of CO are defined according to American Standard – UL2034
+The limits that exist for comparing the value of CO are defined according to [American Standard – UL2034](https://www.carbonmonoxidekills.com/carbon-monoxide-detectors/ul2034-american/)
 According to the definition of this standard, we have:
 # #
 Main alarm requirements :
@@ -141,13 +179,13 @@ To set up and measure the amount of CO gas based on the data sheet of the CO gas
 
 ![4](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/d037fe12-3cf4-412c-acc0-197c10b30f03)
 
-To set up the sensor, we have used the internal micro opamp which is located in the OPAMP.C and OPAMP.h files
+To set up the sensor, we have used the internal micro opamp which is located in the [OPAMP.C](https://github.com/Mohamadkhosravi/CODetector/blob/main/OPAMP/OPAMP.c) and [OPAMP.h](https://github.com/Mohamadkhosravi/CODetector/blob/main/OPAMP/OPAMP.h) files
 In the opamp file, we first set the output offset to zero, then set the registers related to the internal opamp keys
 ![5](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/f6979095-c815-479c-8207-c5fdd2a394b5)
 Smoke Detector AFE Block Diagram
-for change this keys used from this registers in OPAMP.c
+for change this keys used from this registers in  [OPAMP.C](https://github.com/Mohamadkhosravi/CODetector/blob/main/OPAMP/OPAMP.c)
 ```
-sds0=0;
+_sds0=0;
 _sds1=0;
 _sds2=1;////////
 _sds3=0;////////
