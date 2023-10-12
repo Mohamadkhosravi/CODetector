@@ -205,14 +205,14 @@ The RF resistance is set in this internal project and its value is 100 kiloohms
 _sdpgac0=0b00000001;  //*100k
 ```
 RI is external and value is 15 kR
-The gain of op_amp 1 is obtained from the following formula and its value is 7.6 and it is defined in the CO.h file.
+The gain of op_amp 1 is obtained from the following formula and its value is 7.6 and it is defined in the [CO.h](https://github.com/Mohamadkhosravi/CODetector/blob/main/CO/CO.h) file.
 NON-INVERTING Gain = Rf/Ri + 1 
 ```
 #define gainAmplifier1 7.666666666666667  //gainAmplifier1=1+(100k/15k)
 ```
 we don't use amplifier 2
 # # 
-for calculate co we need convert current to voltage for this do we use RSHANT 15k ohm,this parameter for calculation co value defined in CO.h
+for calculate co we need convert current to voltage for this do we use RSHANT 15k ohm,this parameter for calculation CO value defined in [CO.h](https://github.com/Mohamadkhosravi/CODetector/blob/main/CO/CO.h)
 ```
 #define RSHANT 15 //15k
 ```
