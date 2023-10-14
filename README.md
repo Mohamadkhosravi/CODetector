@@ -84,8 +84,10 @@ for measure Temperature ,we used NTC 10k 5% for part number MF52 A 103 J 3950
 ![MF52_3095-550x550](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/ddeee2ff-c82c-4cc2-ac04-5c27fff9d2ae)
 
 ### Alarm 
+we used  tow wire active buzzer
 
-![3](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/51b13706-63c2-4031-aca4-4b330883896e)
+![BUZZER](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/69310d27-9776-4dab-9bab-7d9b3d7c1800)
+
 
 ## Examining the general scenario and performance of different departments
 The firmware of this project is written in C and assembly language using Holtec's own proprietary [IDE HT-IDE3000](https://www.holtek.com/page/ice)  on the BA45F5240 microcontroller
@@ -317,6 +319,27 @@ _vbgren=1;//READ VBRG(voltage refrence 1.2V) for read VBattery ENABLE
 // Read battery voltage
 VDD = VBattery(S_READ_ADC(4));
 ```
+## Alert function
+We use the following function to sound the alarm.
+```
+void buzzerAlarm(char number);
+
+```
+ This function takes the number of warning times from the input, turns on the alarm for 350 milliseconds and turns off the alarm for 300 milliseconds.
+ If the input of the function is 0, there is no limit for repetition and the function is executed at least once
+
+To sound the buzzer, we generate a frequency of 3.3kHz using the PTM timer in the PWM mode([Timer.c](https://github.com/Mohamadkhosravi/CODetector/blob/main/Timer/Timer.c),[Timer.h](https://github.com/Mohamadkhosravi/CODetector/blob/main/Timer/Timer.h)) and feed it to the input of the external oscillator.
+
+```
+ void PWMSeter(char status)
+```
+If the setter input is one, the timer output starts to oscillate with a frequency of 3.3 kHz, and if the input is zero, the PWM is turned off.
+```
+#define BUZZER_ON   PWMSeter(1);
+#define BUZZER_OFF  PWMSeter(0);
+```
+### Buzzer external ocilator 
+![3](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/51b13706-63c2-4031-aca4-4b330883896e)
 
 
 
