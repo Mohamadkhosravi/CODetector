@@ -216,9 +216,64 @@ for calculate co we need convert current to voltage for this do we use RSHANT 15
 ```
 #define RSHANT 15 //15k
 ```
+for enable opamp we used form this codes in Main:
+
+```
+_sda0en=1;//OPAMP0 ENABLE
+_sda1en=1;//OPAMP1 ENABLE 
+```
+for reading CO value we use CORead()function ,exist in[CO.c](https://github.com/Mohamadkhosravi/CODetector/blob/main/CO/CO.c) file ; 
+This function takes 
+* MCU voltage
+* OPAMP 1 outputs value from ADC channel 5
+* Temperature value
+```
+COValue = ReadCO(VDD,S_READ_ADC(5),temperatur);
+```
+for calculate CO we used from charts in CO sensor ME2-CO  Datasheet (https://www.winsen-sensor.com/d/files/me2-co-0-1000ppm-manual%EF%BC%88ver1_3%EF%BC%89.pdf)
+
+![6](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/61a3df77-5123-4f0b-9dcb-5511f7561184)
+
+from this chart we can calculate co(ppm) values from current(ua) value sensor
+
+To measure the amount of sensor current, we convert the amount of current into voltage by means of shunt resistance and get its value after amplification by amplifier.
+The voltage value has a certain slope with the value of CO, by multiplying the voltage value with the slope, the value of CO comes.
+```
+#define gainAmplifier1 7.666666666666667  //gainAmplifier1=1+(100k/15k)
+#define RSHANT 15 //15k
+#define slope 0.04 //m = y2-y1/x2-x1
+
+```
+
+```
+VAmplifier1=ADCAmplifier*((VCC)/4095);
+CO = ((((VAmplifier1)/gainAmplifier1*1000)/RSHANT)*1000)*slope;
+```
+The following chart is used to calculate the CO amount of changes measured in relation to temperature
+
+![7](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/1c2f2423-3bc6-4b96-9600-6fbc0fae4bfb)
+
+According to the chart, in 4 intervals, this value was checked on the value of CO
+```
+        if (temperatur<0)
+        {
+          return (((-0.75*(temperatur+20)+60))/100)*CO;	
+        } 
+        else if ((temperatur>=0)&&(temperatur<20))
+        {
+           return  ((0.25*(temperatur)+75)/100)*CO;
+        }
+        else if ((temperatur>=20)&&(temperatur<50))
+        {	
+          return ((1.1666*(temperatur-20)+100)/100)*CO;
+        }
+          else if ((temperatur>=50))
+         {	
+           return (((0.5*(temperatur-50)+135)/100))*CO;
+         }
 
 
-
+```
 
 
 
