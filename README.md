@@ -174,7 +174,9 @@ this limits defined in main code for 4 limit defined
  #define LIMIT_3_CO   ((alarmCounter>=_50_MINUTES)&&(COValue>75)) 
  #define LIMIT_4_CO   ((alarmCounter>=_8_HOURS)&&(COValue>30))
 ```
-## Description of libraries
+# Description of libraries
+
+##Internal op-amp settings
 To set up and measure the amount of CO gas based on the data sheet of the CO gas sensor [ME2-CO](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/c61d3add-fc4e-4da1-88d0-90ea02925615)  , we must use the following circuit
 
 ![4](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/d037fe12-3cf4-412c-acc0-197c10b30f03)
@@ -222,9 +224,13 @@ for enable opamp we used form this codes in Main:
 _sda0en=1;//OPAMP0 ENABLE
 _sda1en=1;//OPAMP1 ENABLE 
 ```
-for reading CO value we use CORead()function ,exist in[CO.c](https://github.com/Mohamadkhosravi/CODetector/blob/main/CO/CO.c) file ; 
+# #
+
+## Calculate  CO value
+
+for reading CO value we use  ReadCO function ,exist in[CO.c](https://github.com/Mohamadkhosravi/CODetector/blob/main/CO/CO.c) file ; 
 This function takes 
-* MCU voltage
+* MCU voltage(VDD/VCC)
 * OPAMP 1 outputs value from ADC channel 5
 * Temperature value
 ```
@@ -274,6 +280,44 @@ According to the chart, in 4 intervals, this value was checked on the value of C
 
 
 ```
+# #
+## Calculate temperature
+for calculate temperature we use from redtemp function into [NTC.c](https://github.com/Mohamadkhosravi/CODetector/blob/main/NTC/NTC.c) and [NTC.h](https://github.com/Mohamadkhosravi/CODetector/blob/main/NTC/NTC.h) libraries
+This function takes the ADC NTC (chanel 1)value and  voltage MCU(VDD) value at the input and returns the temperature value at the output
+```
+temperatur= (temperature(S_READ_ADC(1),VDD));
+```
+In the [NTC.h](https://github.com/Mohamadkhosravi/CODetector/blob/main/NTC/NTC.h) files, you can apply the changes you need according to the NTC closing arrangement, the amount of ADC bits and other settings.
+Also, due to the different types of ntc, in order to calibrate the NTCs, you can change the value of the three A,B,C constants according to your NTC.
+
+```
+#define  A  0.001277368 //    T1=-30^C   R1=154882kR
+#define  B  0.000208223 //    T2=25^C    R2=10000KR
+#define  C  0.0000002032989// T3=80^C R3=1228KR
+```
+for calculate A B C value you can used from [this website](https://www.thinksrs.com/downloads/programs/therm%20calc/ntccalibrator/ntccalculator.html)
+
+## Calculate MCU voltage (VDD)
+for detect value MCU voltage we used from internal reference voltage in holtek
+We can read this value from ADC channel 4
+for this purpose we use from VBattery() macro function
+
+```
+// Battery voltage calculation macro
+#define VBattery(ADC_BAT)( 1.20*(4095.000/ ADC_BAT))
+
+```
+For enable reading this value we used from this code:
+
+```
+_vbgren=1;//READ VBRG(voltage refrence 1.2V) for read VBattery ENABLE
+```
+
+```
+// Read battery voltage
+VDD = VBattery(S_READ_ADC(4));
+```
+
 
 
 
