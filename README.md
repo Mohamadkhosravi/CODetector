@@ -214,6 +214,9 @@ NON-INVERTING Gain = Rf/Ri + 1
 ```
 #define gainAmplifier1 7.666666666666667  //gainAmplifier1=1+(100k/15k)
 ```
+![InternalOpamp](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/56b186b6-f74e-4c12-aba6-de7d05fd217d)
+
+
 we don't use amplifier 2
 # # 
 for calculate co we need convert current to voltage for this do we use RSHANT 15k ohm,this parameter for calculation CO value defined in [CO.h](https://github.com/Mohamadkhosravi/CODetector/blob/main/CO/CO.h)
@@ -340,6 +343,13 @@ If the setter input is one, the timer output starts to oscillate with a frequenc
 ```
 ### Buzzer external ocilator 
 ![3](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/51b13706-63c2-4031-aca4-4b330883896e)
+
+## Project testing
+The following circuit can be used to simulate the sensor
+![Sensor simulator](https://github.com/Mohamadkhosravi/CODetector/assets/94738811/0f89a3f1-360e-48ab-bf9f-c86de5820ff8)
+
+This circuit outputs a millivolt voltage which is used to simulate the current of the sensor.
+
 
 
 
