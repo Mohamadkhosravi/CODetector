@@ -60,7 +60,7 @@ unsigned int COValue=0;
 	
 	void main()
 	{
-
+        //This condition is executed when the micro is turned on for the first time
 		if(_to==0)
 		{
 			alarmCounter=0;
@@ -80,9 +80,9 @@ unsigned int COValue=0;
 		
 		//Set up sensor and power-related configurations
 		
-    	NTCToGND=1;//NTC GNDs PIN Connecte to GND 
-    	
-    	GPIOS_INPUT//ALL GPIOS INPUT config
+    	NTCToGND=1;//The NTC GND pin is connected to the GND
+  	
+    	GPIOS_INPUT//config all GPIOS to INPUT
 		WAKE_UP_KEY
     	_vbgren=1;//READ VBRG(voltage refrence 1.2V) for read VBattery ENABLE
 		_sda0en=1;//OPAMP0 ENABLE
@@ -93,8 +93,8 @@ unsigned int COValue=0;
 	    temperatur= (temperature(S_READ_ADC(1),VDD));
      	COValue = ReadCO(VDD,S_READ_ADC(5),temperatur);
      	
-     	//NTC GNDs PIN Disconnecte to GND 
-   		NTCToGND=0;
+     
+   		NTCToGND=0;//The NTC GND pin is disconnected to the GND
    		
 		// Perform actions based on CO levels
 		if((LIMIT_1_CO)||(LIMIT_2_CO)||(LIMIT_3_CO)||(LIMIT_4_CO)){
